@@ -1,1 +1,12 @@
 <h1>Signin</h1>
+
+<%= form_tag do %>
+
+    <%= label_tag :email, "Email" %>
+    <%= text_field_tag :email %>
+    <br>
+    <%= label_tag :password_digest, "Password" %>
+    <%= text_field_tag :password_digest %>
+    <br>
+    <%= submit_tag "Signin" %>
+<% end %>

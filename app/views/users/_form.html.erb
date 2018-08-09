@@ -1,0 +1,16 @@
+
+<%= form_for @user do |f| %>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :email, "Email" %>
+    <%= f.text_field :email %>
+    <br>
+    <%= f.label :password_digest, "Password" %>
+    <%= f.text_field :password_digest %>
+    <br>
+    <%= label :'user[admin]', "Check for admin access" %>
+    <%= check_box_tag :'user[admin]', checked = true %>
+    <br>
+    <%= f.submit %>
+<% end %>
