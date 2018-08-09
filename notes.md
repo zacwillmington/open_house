@@ -17,11 +17,13 @@ User schema
 
 Apartment schema
     - address
-    - open_house_time
+    - available_times or time?
+    - image
 
 Appointment schema
     - time
     - user_id   
     - apartment_id
 
-    
+Scope method
+    - users_attending_appointment
