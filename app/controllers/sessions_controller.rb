@@ -15,21 +15,17 @@ class SessionsController < ApplicationController
     def create
 
         @user = User.find_by(:email => params[:email])
-        if @user.authenticate(params[:password])
+        if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
             redirect_to user_path(helpers.current_user)
         else
-            #error message
+            if @user == nil
+                flash[:notice] = "Email not found"
+            else
+                flash[:notice] = "Password does not match"
+            end
             render :new
         end
-    end
-
-    def show
-
-    end
-
-    def update
-
     end
 
     def destroy
