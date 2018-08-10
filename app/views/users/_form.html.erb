@@ -6,10 +6,10 @@
     <%= f.label :email, "Email" %>
     <%= f.text_field :email %>
     <br>
-    <%= f.label :password_digest, "Password" %>
-    <%= f.text_field :password_digest %>
+    <%= f.label :password, "Password" %>
+    <%= f.text_field :password %>
     <br>
-    <%= label :'user[admin]', "Check for admin access" %>
+    <%= label_tag :'user[admin]', "Check for admin access" %>
     <%= check_box_tag :'user[admin]', checked = true %>
     <br>
     <%= f.submit %>
