@@ -8,6 +8,7 @@ class UsersController < ApplicationController
         if helpers.logged_in?
             redirect_to user_path(helpers.current_user)
         else
+            #Add OmniAuth authentication here if request returns relevent data.
             @user = User.new(strong_params(params))
                 if @user.save
                     session[:user_id] = @user.id
@@ -20,8 +21,12 @@ class UsersController < ApplicationController
     end
 
     def show
-        binding.pry
-        @user = User.find_by(:id => params[:id])
+        if helpers.logged_in?
+            #renders :show
+        else
+            redirect_to '/signin'
+        end
+
     end
 
     def edit
