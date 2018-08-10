@@ -19,11 +19,7 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(helpers.current_user)
         else
-            if @user == nil
-                flash[:notice] = "Email not found"
-            else
-                flash[:notice] = "Password does not match"
-            end
+             flash[:notice] = helpers.error_msg_for_signin_attempt(@user) #Find in SessionsHelper
             render :new
         end
     end

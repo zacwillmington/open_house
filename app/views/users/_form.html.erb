@@ -7,7 +7,7 @@
     <%= f.text_field :email %>
     <br>
     <%= f.label :password, "Password" %>
-    <%= f.text_field :password %>
+    <%= f.password_field :password %>
     <br>
     <%= label_tag :'user[admin]', "Check for admin access" %>
     <%= check_box_tag :'user[admin]', checked = true %>
