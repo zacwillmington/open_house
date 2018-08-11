@@ -1,27 +1,23 @@
 class SessionsController < ApplicationController
 
-    # before_action :authentication_required
+    before_action :authentication_required , only: [:index, :new, :create] 
 
     def index #change to welcome action
 
     end
 
     def new
-        if helpers.logged_in?
-            redirect_to user_path(helpers.current_user)
-        else
-            #renders :new
-        end
+
     end
 
     def create
         if auth_hash = request.env["omniauth.auth"]
             @user = User.find_or_create_by_omniauth(auth_hash)
-             if !@user.save
+             if @user.save
+                 redirect_to user_path(@user)
+              else
                   flash[:notice] = "Change email to public on github.com"
                   redirect_to '/signin'
-              else
-                  redirect_to user_path(@user)
               end
         else
             @user = User.find_by(:email => params[:email])
