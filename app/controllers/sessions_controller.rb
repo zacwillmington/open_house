@@ -15,13 +15,16 @@ class SessionsController < ApplicationController
     end
 
     def create
-
-        @user = User.find_by(:email => params[:email])
-        if @user && @user.authenticate(params[:password])
-            session[:user_id] = @user.id
+        if auth_hash = request.env["omniauth.auth"]
+            @user = User.find_or_create_by_omniauth(auth_hash)
+            binding.pry
+            redirect_to user_path(@user)
+        elsif  User.authenticate_and_login_existing_user(params)
+            binding.pry
             redirect_to user_path(helpers.current_user)
         else
-             flash[:notice] = helpers.error_msg_for_signin_attempt(@user) #Find in SessionsHelper
+            binding.pry
+             flash[:notice] = @user.error_msg_for_signin_attempt
             render :new
         end
     end
@@ -34,4 +37,4 @@ class SessionsController < ApplicationController
 end
 
 
-# callback http://localhost:3000/auth/github/callback
+#   - add before_action :authentication_required test   it works

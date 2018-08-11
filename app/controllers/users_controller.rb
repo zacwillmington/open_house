@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+    before_action :authentication_required
+
     def new
         @user = User.new
     end
@@ -9,6 +11,7 @@ class UsersController < ApplicationController
             redirect_to user_path(helpers.current_user)
         else
             #Add OmniAuth authentication here if request returns relevent data.
+            binding.pry
             @user = User.new(strong_params(params))
                 if @user.save
                     session[:user_id] = @user.id
