@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+    before_action :authentication_required
+
     def index #change to welcome action
 
     end
@@ -30,3 +32,6 @@ class SessionsController < ApplicationController
     end
 
 end
+
+
+# callback http://localhost:3000/auth/github/callback

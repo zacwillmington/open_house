@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
- 
+
+  get '/auth/:provider/callback' => 'sessions#create'
 
   get 'logout' => 'sessions#destroy'
 
