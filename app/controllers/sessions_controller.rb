@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-    before_action :authentication_required
+    # before_action :authentication_required
 
     def index #change to welcome action
 
@@ -17,15 +17,22 @@ class SessionsController < ApplicationController
     def create
         if auth_hash = request.env["omniauth.auth"]
             @user = User.find_or_create_by_omniauth(auth_hash)
-            binding.pry
-            redirect_to user_path(@user)
-        elsif  User.authenticate_and_login_existing_user(params)
-            binding.pry
-            redirect_to user_path(helpers.current_user)
+             if !@user.save
+                  flash[:notice] = "Change email to public on github.com"
+                  redirect_to '/signin'
+              else
+                  redirect_to user_path(@user)
+              end
         else
-            binding.pry
-             flash[:notice] = @user.error_msg_for_signin_attempt
-            render :new
+            @user = User.find_by(:email => params[:email])
+            if @user && @user.authenticate(params[:password])
+                session[:user_id] = @user.id
+                redirect_to user_path(helpers.current_user)
+
+            else
+                flash[:notice] = User.error_msg_for_signin_attempt(@user)
+                render :new
+            end
         end
     end
 
