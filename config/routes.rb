@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   root 'sessions#index'
 
   resources :users
+  resources :apartments
+  resources :appointments  
+
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
