@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.center {
+  text-align: center;
+}
+
+.pic,
+.info {
+  padding: 20px;
+  display: inline-block;
+  background-color: #eeeeee;
+  border-radius: 7px;
+  vertical-align: middle;
+  margin: 10px;
+}
+
+.info {
+  height: 290px;
+  text-align: left;
+}
