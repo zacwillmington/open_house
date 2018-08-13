@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       resources :apartments
   end
 
+  get '/apartments' => 'apartments#index'
+
 
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'

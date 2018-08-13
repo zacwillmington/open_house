@@ -11,10 +11,14 @@ class ApartmentsController < ApplicationController
    end
 
    def create
+       binding.pry
        @apartment = Apartment.new(strong_params(params))
        if @apartment.save
-           redirect_to apartment_path(@apartment)
+           @appointment = Appointment.create(:user_id => helpers.current_user.id, :apartment_id => @apartment.id)
+           binding.pry
+           redirect_to user_apartment_path(@appointment.apartment, @appointment.user)
        else
+
            render :new
        end
    end
@@ -38,6 +42,6 @@ class ApartmentsController < ApplicationController
    private
 
    def strong_params(params)
-       params.require(:apartment).permit()
+       params.require(:apartment).permit(:address, :available_times)
    end
 end

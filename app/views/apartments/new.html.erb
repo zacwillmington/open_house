@@ -1,19 +1,12 @@
 
-<%= form_for current_user.appointment.build do |f| %>
-    <%= f.label :address, "address" %>
+<%= form_for @apartment, :url => user_apartments_path do |f| %>
+
+    <%= f.label :address, "Address" %>
     <%= f.text_field :address %>
     <br>
-
-
-<!-- #apartment.build -->
-    <!-- <%= f.label :address, "address" %>
-    <%= f.text_field :address %>
-    <br>
-    <%= f.label :available_times, "available_times" %>
+    <%= f.label :available_times, "Showing Time" %>
     <%= f.datetime_select :available_times, :ampm => true, :minute_step => 30 %>
     <h4>Add image?</h4>
     <br>
-
-    <br> -->
     <%= f.submit %>
 <% end %>
