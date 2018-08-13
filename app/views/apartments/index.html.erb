@@ -1,0 +1,6 @@
+<% if current_user.admin %>
+    <h1>Your Apartments</h1>
+    <%= link_to "Create New Listing", new_user_apartment_path(current_user) %> 
+<% else %>
+    <h1>All Available Apartments</h1>
+<% end %>

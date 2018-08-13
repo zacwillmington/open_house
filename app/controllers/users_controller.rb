@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-     before_action :authentication_required , only: [:index, :new, :create, :edit, :update, :destroy]
+     before_action :authentication_required , only: [:index, :edit, :update, :destroy]
 
     def new
         @user = User.new
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        
+
     end
 
     private

@@ -3,9 +3,13 @@ Rails.application.routes.draw do
 
   root 'sessions#index'
 
-  resources :users
-  resources :apartments
-  resources :appointments  
+  resources :users do
+      resources :appointments
+  end
+
+  resources :users do
+      resources :apartments
+  end
 
 
   get '/signup' => 'users#new'

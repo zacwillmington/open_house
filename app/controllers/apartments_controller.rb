@@ -3,11 +3,11 @@ class ApartmentsController < ApplicationController
    before_action :authentication_required , only: [:index, :new, :show, :create, :edit, :update, :destroy]
 
    def index
-       binding.pry
 
    end
 
    def new
+       binding.pry
        @apartment = Apartment.new
    end
 
