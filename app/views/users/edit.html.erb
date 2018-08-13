@@ -11,9 +11,11 @@
     <br>
     <%= f.label :password, "Password" %>
     <%= f.password_field :password %>
-    <br>
-    <%= label_tag :'user[admin]', "Remove admin access" %>
-    <%= check_box_tag :'user[admin]', checked = false %>
+    <% if @user.admin %>
+            <br>
+        <%= label_tag :'user[admin]', "Remove admin access" %>
+        <%= check_box_tag :'user[admin]', checked = false %>
+    <% end %>
     <br>
     <%= f.submit %>
 <% end %>

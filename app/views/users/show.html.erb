@@ -4,8 +4,7 @@
 <% if current_user.admin %>
     <%= link_to "View your apartments", user_apartments_path(current_user) %>
 <% else %>
-    <h2>You've RSVP'd to these showings</h2>
+    <h2>You've RSVP'D to these showings</h2>
     <% #current_user.happening_soon_open_houses.each do |apartment| %>
     <% # end %>
 <% end %>
-<%= link_to "Edit Account Information", edit_user_path(current_user) %>

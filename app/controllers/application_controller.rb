@@ -5,4 +5,10 @@ class ApplicationController < ActionController::Base
             redirect_to root_path
         end
     end
+
+    def admin_access_required
+        if !helpers.current_user.admin
+            redirect_to root_path
+        end
+    end
 end

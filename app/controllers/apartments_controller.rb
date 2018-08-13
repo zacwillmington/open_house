@@ -1,6 +1,7 @@
 class ApartmentsController < ApplicationController
 
    before_action :authentication_required , only: [:index, :new, :show, :create, :edit, :update, :destroy]
+    before_action :admin_access_required, only: [:create, :new, :edit, :update, :destroy]
 
    def index
 
@@ -11,11 +12,9 @@ class ApartmentsController < ApplicationController
    end
 
    def create
-       binding.pry
        @apartment = Apartment.new(strong_params(params))
        if @apartment.save
            @appointment = Appointment.create(:user_id => helpers.current_user.id, :apartment_id => @apartment.id)
-           binding.pry
            redirect_to user_apartment_path(@appointment.apartment, @appointment.user)
        else
 
