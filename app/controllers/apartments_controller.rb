@@ -7,7 +7,6 @@ class ApartmentsController < ApplicationController
    end
 
    def new
-       binding.pry
        @apartment = Apartment.new
    end
 

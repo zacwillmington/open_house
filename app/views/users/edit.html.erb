@@ -1,4 +1,23 @@
 <h1>Edit Account</h1>
 
 <%= render partial: 'errors', locals: { user: @user }  %>
-<%= render partial: 'form', locals: { user: @user } %>
+
+<%= form_for @user do |f| %>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+    <br>
+    <%= f.label :email, "Email" %>
+    <%= f.text_field :email %>
+    <br>
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password %>
+    <br>
+    <%= label_tag :'user[admin]', "Remove admin access" %>
+    <%= check_box_tag :'user[admin]', checked = false %>
+    <br>
+    <%= f.submit %>
+<% end %>
+
+<%= form_tag user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <%= submit_tag "Delete Account" %>
+<% end %>

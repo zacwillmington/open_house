@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
      before_action :authentication_required , only: [:index, :edit, :update, :destroy]
+     helper :all
 
     def new
         @user = User.new
@@ -21,14 +22,27 @@ class UsersController < ApplicationController
     end
 
     def edit
-        @user = User.new
+        @user = helpers.current_user
     end
 
     def update
         binding.pry
+        @user = User.find_by(:id => params[:id])
+        @user.update(strong_params(params))
+        #notice account updated
+        redirect_to user_path(@user)
+
     end
 
     def destroy
+        @user = User.find_by(:id => params[:id])
+
+        if helpers.current_user == @user
+            @user.destroy
+            redirect_to root_path
+        else
+            redirect_to user_path(helpers.current_user)
+        end
 
     end
 

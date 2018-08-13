@@ -30,6 +30,11 @@ Scope method
     - up_and_coming_appointments
 
 
+**** create apartment through appointment, but only allow admin to create appointment and apartment. The form will create and associate them simultaneously?  
+
+which route will that run to, user/:id/apartments/new or user/:id/appointments/new, also apartments or appointments controller? (I think apartments_controller because the appointments controller is the join tale.)
+
+
 
     ROUTES
       ADMIN
