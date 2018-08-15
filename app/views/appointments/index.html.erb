@@ -1,11 +1,10 @@
 <h1>Your Appointments</h1>
 
     <% @appointments.each do |appointment| %>
-        <p>Time: <%= appointment.time %></p>
+        <p>Showing <%= appointment.apartment.reformat_date_time %></p>
         <p>Leasing Agent: <%= appointment.apartment.leasing_agent_contact.name %></p>
         <p>Email: <%= appointment.apartment.leasing_agent_contact.email %></p>
         <p>Phone: <%= appointment.apartment.leasing_agent_contact.phone %></p>
         <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment)%>
         <br>
     <% end %>
-    

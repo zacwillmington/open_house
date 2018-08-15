@@ -1,9 +1,16 @@
 <% # add image later %>
 <p>Address: <%= @apartment.address %></p>
 
+<p>Agent Name: <%= @apartment.leasing_agent_contact.name %></p>
 <p>Email: <%= @apartment.leasing_agent_contact.email %></p>
 <p>Phone: <%= @apartment.leasing_agent_contact.phone %></p>
-<p>Showing at <%= @apartment.reformat_date_time %></p>
+<p>Showing on <%= @apartment.reformat_date_time %></p>
 <% if !current_user.admin %>
     <%= link_to "Make appointment", new_apartment_appointment_path(@apartment) %>
+<% else %>
+ <%= link_to "Edit apartment", edit_user_apartment_path(current_user, @apartment) %>
+    <%= form_tag user_apartment_path(current_user, @apartment), method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <%= submit_tag "Delete Apartment" %>
+    <% end %>
+
 <% end %>
