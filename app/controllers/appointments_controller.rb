@@ -8,6 +8,7 @@ class AppointmentsController < ApplicationController
 
     def new
         @appointment = Appointment.new
+        binding.pry
     end
 
     def create

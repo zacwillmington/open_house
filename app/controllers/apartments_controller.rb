@@ -14,7 +14,7 @@ class ApartmentsController < ApplicationController
    def create
        @apartment = Apartment.new(strong_params(params))
        if @apartment.save
-           @appointment = Appointment.create(:user_id => helpers.current_user.id, :apartment_id => @apartment.id)
+           @appointment = Appointment.create(:user_id => helpers.current_user.id, :apartment_id => @apartment.id, :time => @apartment.available_times)
            redirect_to user_apartment_path(@appointment.user, @appointment.apartment)
        else
 
@@ -24,6 +24,7 @@ class ApartmentsController < ApplicationController
 
    def show
        @apartment = Apartment.find_by(:id => params[:id])
+       binding.pry
    end
 
    def edit

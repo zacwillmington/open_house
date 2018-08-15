@@ -1,5 +1,9 @@
 <% # add image later %>
 <p>Address: <%= @apartment.address %></p>
-<p>Phone: <%= @apartment.leasing_agent_contact.phone %></p>
+
 <p>Email: <%= @apartment.leasing_agent_contact.email %></p>
-<%= link_to "Make appointment", new_apartment_appointment_path(@apartment) %> 
+<p>Phone: <%= @apartment.leasing_agent_contact.phone %></p>
+<p>Showing at <%= @apartment.reformat_date_time %></p>
+<% if !current_user.admin %>
+    <%= link_to "Make appointment", new_apartment_appointment_path(@apartment) %>
+<% end %>
