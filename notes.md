@@ -52,3 +52,7 @@ which route will that run to, user/:id/apartments/new or user/:id/appointments/n
         - user/:id/appointments/:id/destroy = cancels appointment
         - user/:id/appointments/:id/edit = change appointment time
         - user/:id/appointments/:id/apartment/:id = show apartment
+
+
+        create destroy action for apartment by admin
+        update edit to include phone number editing(authenticate with password?)

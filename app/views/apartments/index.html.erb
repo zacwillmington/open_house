@@ -2,7 +2,11 @@
     <h1>Your Apartments</h1>
     <% current_user.apartments.each do |apartment| %>
         <p>Address: <%= apartment.address %></p>
+        <p>Number of RSVP'D: <%= apartment.appointments.size - 1 %></p>
+        <%= link_to "View Apartment", user_apartment_path(current_user, apartment)%>
         <br>
+
+        <!-- # apartment.appointments.size is incuding the first appointment which is made by the admin. So I subtract the admin's appointment. I the admin has to make an appointmet to associate the apartment with the admin see create action in apartments_controller.-->
     <% end %>
     <%= link_to "Create New Listing", new_user_apartment_path(current_user) %>
 <% else %>

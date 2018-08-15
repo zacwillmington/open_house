@@ -11,6 +11,10 @@ Rails.application.routes.draw do
       resources :apartments
   end
 
+  resources :apartment do
+      resources :appointments
+  end
+
   get '/apartments' => 'apartments#index'
 
 

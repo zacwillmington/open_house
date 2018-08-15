@@ -3,7 +3,7 @@ class AppointmentsController < ApplicationController
     before_action :authentication_required , only: [:index, :new, :show, :create, :edit, :update, :destroy]
 
     def index
-
+        @appointments = helpers.current_user.appointments
     end
 
     def new
