@@ -7,4 +7,7 @@
         <p>Phone: <%= appointment.apartment.leasing_agent_contact.phone %></p>
         <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment)%>
         <br>
+        <%= form_tag apartment_appointment_path(appointment.apartment, appointment), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= submit_tag "Cancel Appointment" %>
+        <% end %>
     <% end %>

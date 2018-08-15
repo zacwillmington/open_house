@@ -55,7 +55,12 @@ which route will that run to, user/:id/apartments/new or user/:id/appointments/n
 
     TODO
 
-        1 - create destroy action for apartment by admin
-        update edit to include phone number editing(authenticate with password?)
 
-        2- add image uploader to new apartment form
+        1 - add image uploader to new apartment form
+        2 - finish all crud actions for all models
+            - attending_showing = returns a message under apartment
+            -   
+        3 - scope methods
+        4 - Errors and flash messages
+        5 - styling
+        6 - refactor
