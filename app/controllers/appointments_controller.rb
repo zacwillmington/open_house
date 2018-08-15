@@ -8,16 +8,15 @@ class AppointmentsController < ApplicationController
 
     def new
         @appointment = Appointment.new
+        @apartment = Apartment.find_by(:id => params[:apartment_id])
         binding.pry
     end
 
     def create
-        @appointment = Appointment.new(strong_params(params))
-        if @appointment.save
-            redirect_to appointment_path(@appointment)
-        else
-            render :new
-        end
+        binding.pry
+        @appointment = Appointment.create(strong_params(params))
+
+        redirect_to appointment_path(@appointment)
     end
 
     def show

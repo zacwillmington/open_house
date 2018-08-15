@@ -4,12 +4,8 @@ class Apartment < ApplicationRecord
 
 
     def leasing_agent_contact
-        binding.pry
-        @appointmet = self.appointments.find_by(:time => self.available_times)
-        binding.pry
-        @agent = User.find_by(:id => @appointmet.user_id)
-
-
+        @appointment ||= self.appointments.find_by(:time => self.available_times)
+        @agent ||= User.find_by(:id => @appointment.user_id)
     end
 
     def reformat_date_time

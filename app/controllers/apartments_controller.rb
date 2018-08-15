@@ -33,6 +33,7 @@ class ApartmentsController < ApplicationController
    def update
        @apartment = Apartment.find_by(:id => params[:id])
        @apartment.update(strong_params(params))
+
        @apartment.appointments.first.update_admin_appointment_time
        #add validations
        render :show
