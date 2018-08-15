@@ -32,6 +32,7 @@ class ApartmentsController < ApplicationController
    end
 
    def update
+       
        binding.pry
    end
 
