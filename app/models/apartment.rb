@@ -4,8 +4,9 @@ class Apartment < ApplicationRecord
 
 
     def leasing_agent_contact
+        binding.pry
         @appointmet = self.appointments.find_by(:time => self.available_times)
-
+        binding.pry
         @agent = User.find_by(:id => @appointmet.user_id)
 
 

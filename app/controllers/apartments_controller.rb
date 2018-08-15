@@ -24,20 +24,25 @@ class ApartmentsController < ApplicationController
 
    def show
        @apartment = Apartment.find_by(:id => params[:id])
-       binding.pry
    end
 
    def edit
-       @apartment = Apartment.new
+       @apartment = Apartment.find_by(:id => params[:id])
    end
 
    def update
-       
-       binding.pry
+       @apartment = Apartment.find_by(:id => params[:id])
+       @apartment.update(strong_params(params))
+       @apartment.appointments.first.update_admin_appointment_time
+       #add validations
+       render :show
    end
 
    def destroy
-
+       @apartment = Apartment.find_by(:id => params[:id])
+       @apartment.appointments.destroy_all
+       @apartment.destroy
+       redirect_to apartments_path
    end
 
    private
