@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-    before_action :authentication_required , only: [:destroy] 
+    before_action :authentication_required , only: [:destroy]
 
     def index #change to welcome action
 

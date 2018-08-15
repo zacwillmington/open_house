@@ -7,4 +7,10 @@
     <%= link_to "Create New Listing", new_user_apartment_path(current_user) %>
 <% else %>
     <h1>All Available Apartments</h1>
+    <% @apartments.each do |apartment| %>
+            <p>Address: <%= apartment.address %></p>
+            <p>Phone: <%= apartment.leasing_agent_contact.phone %></p>
+            <p>Email: <%= apartment.leasing_agent_contact.email %></p>
+        <br>
+    <% end %>
 <% end %>

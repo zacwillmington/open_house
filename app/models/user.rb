@@ -7,7 +7,7 @@ class User < ApplicationRecord
     validates :email, :presence => true, :uniqueness => true
     validates :password, :presence => true
 
-    #add validation for email address
+    #add validation for email address?
 
     def self.find_or_create_by_omniauth(auth_hash)
         oauth_email = auth_hash[:info][:email]

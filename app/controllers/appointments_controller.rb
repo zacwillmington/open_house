@@ -5,7 +5,7 @@ class AppointmentsController < ApplicationController
     def index
 
     end
-    
+
     def new
         @appointment = Appointment.new
     end
@@ -24,7 +24,7 @@ class AppointmentsController < ApplicationController
     end
 
     def edit
-        @appointment = Appointment.new
+        @appointment = Appointment.find_by(:id => params[:appointment_id] )
     end
 
     def update
@@ -38,7 +38,7 @@ class AppointmentsController < ApplicationController
     private
 
     def strong_params(params)
-        params.require(:appointment).permit()
+        params.require(:appointment).permit(:time, :user_id, :apartment_id)
     end
 
 end

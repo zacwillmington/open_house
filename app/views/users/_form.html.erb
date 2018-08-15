@@ -9,6 +9,9 @@
     <%= f.label :password, "Password" %>
     <%= f.password_field :password %>
     <br>
+    <%= f.label :phone, "Contact number" %>
+    <%= f.text_field :phone %>
+    <br>
     <%= label_tag :'user[admin]', "Check for admin access" %>
     <%= check_box_tag :'user[admin]', checked = true %>
     <br>
