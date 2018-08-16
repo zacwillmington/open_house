@@ -1,4 +1,5 @@
-<% # add image later %>
+
+<%= image_tag(@apartment.image_url.to_s, size: '500x300') %>
 <p>Address: <%= @apartment.address %></p>
 
 <p>Agent Name: <%= @apartment.leasing_agent_contact.name %></p>
@@ -10,7 +11,6 @@
 <% else %>
  <%= link_to "Edit apartment", edit_user_apartment_path(current_user, @apartment) %>
     <%= form_tag user_apartment_path(current_user, @apartment), method: :delete, data: { confirm: 'Are you sure?' } do %>
-    <%= submit_tag "Delete Apartment" %>
+        <%= submit_tag "Delete Apartment" %>
     <% end %>
-
 <% end %>

@@ -4,9 +4,11 @@
     <%= f.label :address, "Address" %>
     <%= f.text_field :address %>
     <br>
+    <%= f.label :image, "Add Image" %>
+    <%= f.file_field :image %>
+    <br>
     <%= f.label :available_times, "Showing Time" %>
     <%= f.datetime_select :available_times, :ampm => true, :minute_step => 30 %>
-    <h4>Add image?</h4>
     <br>
     <%= f.submit %>
 <% end %>

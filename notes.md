@@ -56,11 +56,13 @@ which route will that run to, user/:id/apartments/new or user/:id/appointments/n
     TODO
 
 
-        1 - add image uploader to new apartment form
-        2 - finish all crud actions for all models
-            - attending_showing = returns a message under apartment
-            -   
-        3 - scope methods
-        4 - Errors and flash messages
-        5 - styling
+
+        1 - finish all crud actions for all models
+            - #@user.attending_showing = returns a message under apartment
+            - edit appointment for non-admin
+            - thumbnail for appointments index page.
+        2 - scope methods
+        3 - Errors and flash messages
+        4 - styling
+        5 - Tidy up routes. Remove some
         6 - refactor

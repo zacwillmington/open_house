@@ -1,8 +1,10 @@
 <% if current_user.admin %>
     <h1>Your Apartments</h1>
     <% current_user.apartments.each do |apartment| %>
+        <%= image_tag(apartment.image_url.to_s, size: '500x300') %>
+
         <p>Address: <%= apartment.address %></p>
-        <p>Number of RSVP'D: <%= apartment.appointments.size - 1 %></p>
+        <p>Pontential tenents attending: <%= apartment.appointments.size - 1 %></p>
         <%= link_to "View Apartment", user_apartment_path(current_user, apartment)%>
         <br>
 
@@ -12,6 +14,7 @@
 <% else %>
     <h1>All Available Apartments</h1>
     <% @apartments.each do |apartment| %>
+            <%= image_tag(apartment.image_url.to_s, size: '500x300') %>
             <p>Address: <%= apartment.address %></p>
             <%= link_to "View Apartment", user_apartment_path(current_user, apartment)%>
         <br>
