@@ -25,7 +25,7 @@
             <% if  current_user && current_user.id != nil %>
                 <li><%= link_to  "Profile" , user_path(current_user) %></li>
                 <li><%= link_to  "Showings" , user_appointments_path(current_user) %></li>
-                <li><%= link_to  "Your Apartments" , user_apartments_path(current_user) %></li>
+                <li><%= link_to  "Apartments" , user_apartments_path(current_user) %></li>
                 <li><%= link_to "Account", edit_user_path(current_user) %>
                 <li><%= link_to "Logout", '/logout' %></li>
 </li>

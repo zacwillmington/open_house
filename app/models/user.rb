@@ -37,13 +37,15 @@ class User < ApplicationRecord
 
     def past_appointments
         today = Date.today
-        Appointment.all.find_all do |appointment|
+        self.appointments.all.find_all do |appointment|
             today > appointment.time && appointment.user.admin
         end
     end
 
     def order_by_date_acs
-
+        self.appointments.sort_by do |appointment|
+            appointment.time
+        end
     end
 
 end

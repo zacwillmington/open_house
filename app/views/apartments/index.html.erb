@@ -17,6 +17,7 @@
     <% @apartments.each do |apartment| %>
             <%= image_tag(apartment.image_url.to_s, size: '500x300') %>
             <p>Address: <%= apartment.address %></p>
+            <p>Showing: <%= apartment.reformat_date_time %></p>
             <%= link_to "View Apartment", user_apartment_path(current_user, apartment)%>
         <br>
     <% end %>

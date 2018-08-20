@@ -24,15 +24,6 @@ Appointment schema
     - user_id   
     - apartment_id
 
-Scope method
-    - number_of_appointments_for_apartment
-    - up_and_coming_appointments
-
-
-**** create apartment through appointment, but only allow admin to create appointment and apartment. The form will create and associate them simultaneously?  
-
-which route will that run to, user/:id/apartments/new or user/:id/appointments/new, also apartments or appointments controller? (I think apartments_controller because the appointments controller is the join table.)
-
 
 
     ROUTES
@@ -81,7 +72,8 @@ which route will that run to, user/:id/apartments/new or user/:id/appointments/n
 
          EXTRA
 
-         -  order_by_date_acs
-         -  order_by_date_des
+         - validates for phone number length and syntax
+         - validates for email length and syntax    
          - if appointments_happening_soon then show green border around apartment with happening soon displayed.
+         - if past_appointments then show red around appointment
          - thumbnail for index view of appointments         
