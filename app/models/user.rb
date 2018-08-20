@@ -30,13 +30,16 @@ class User < ApplicationRecord
     def appointments_happening_soon
         within_30_days = Date.today + 30
         today = Date.today
-        soon = []
         self.appointments.find_all do |appointment|
-            if within_30_days > appointment.time && today < appointment.time
-                soon << appointment
-            end
+            within_30_days > appointment.time && today < appointment.time
         end
-        soon
+    end
+
+    def past_appointments
+        today = Date.today
+        Appointment.all.find_all do |appointment|
+            today > appointment.time && appointment.user.admin
+        end
     end
 
 end

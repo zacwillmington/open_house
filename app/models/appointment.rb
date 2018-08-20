@@ -5,4 +5,5 @@ class Appointment < ApplicationRecord
     def update_admin_appointment_time
          self.update(:time => self.apartment.available_times)
     end
+
 end

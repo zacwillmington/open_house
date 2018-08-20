@@ -81,5 +81,6 @@ which route will that run to, user/:id/apartments/new or user/:id/appointments/n
 
          EXTRA
 
+         -  past_appointments. 
          - if appointments_happening_soon then show green border around apartment with happening soon displayed.
          - thumbnail for index view of appointments         

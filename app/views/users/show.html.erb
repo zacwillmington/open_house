@@ -2,11 +2,20 @@
 
 <h1>Welcome, <%= current_user.name %></h1>
     <p>Todays Date: <%= Date.today %></p>
+
     <h2>Appointments happening soon</h2>
+
     <% current_user.appointments_happening_soon.each do |appointment| %>
-    <h3>thumbnail??</h3>
+        <h3>thumbnail??</h3>
         <%= appointment.apartment.reformat_date_time %> at
         <%= appointment.apartment.address %>
         <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment) %>
         <br>
+    <% end %>
+
+    <h2>Past Appointments</h2>
+    <% current_user.past_appointments.each do |appointment| %>
+        <%= appointment.apartment.address %>
+        <% binding.pry %>
+        <%= link_to "Post again", edit_apartment_appointment_path(appointment.apartment, appointment)%>
     <% end %>
