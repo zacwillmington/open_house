@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
     validates :name, :presence => true
     validates :email, :presence => true, :uniqueness => true
+    validates :phone, :presence => true
     validates :password, :presence => true
 
     #add validation for email address?
@@ -24,6 +25,18 @@ class User < ApplicationRecord
         else
             "Password does not match"
         end
+    end
+
+    def appointments_happening_soon
+        within_30_days = Date.today + 30
+        today = Date.today
+        soon = []
+        self.appointments.find_all do |appointment|
+            if within_30_days > appointment.time && today < appointment.time
+                soon << appointment
+            end
+        end
+        soon
     end
 
 end

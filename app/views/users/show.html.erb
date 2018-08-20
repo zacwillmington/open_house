@@ -1,10 +1,12 @@
 
 
 <h1>Welcome, <%= current_user.name %></h1>
-<% if current_user.admin %>
-    <%= link_to "View your apartments", user_apartments_path(current_user) %>
-<% else %>
-    <h2>You've RSVP'D to these showings</h2>
-    <% #current_user.happening_soon_open_houses.each do |apartment| %>
-    <% # end %>
-<% end %>
+    <p>Todays Date: <%= Date.today %></p>
+    <h2>Appointments happening soon</h2>
+    <% current_user.appointments_happening_soon.each do |appointment| %>
+    <h3>thumbnail??</h3>
+        <%= appointment.apartment.reformat_date_time %> at
+        <%= appointment.apartment.address %>
+        <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment) %>
+        <br>
+    <% end %>

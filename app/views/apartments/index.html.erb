@@ -5,6 +5,7 @@
 
         <p>Address: <%= apartment.address %></p>
         <p>Pontential tenents attending: <%= apartment.appointments.size - 1 %></p>
+        <p>Appointment: <%= apartment.reformat_date_time %></p>
         <%= link_to "View Apartment", user_apartment_path(current_user, apartment)%>
         <br>
 

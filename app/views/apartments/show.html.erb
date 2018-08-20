@@ -9,7 +9,8 @@
 <% if !current_user.admin %>
     <%= link_to "Make appointment", new_apartment_appointment_path(@apartment) %>
 <% else %>
- <%= link_to "Edit apartment", edit_user_apartment_path(current_user, @apartment) %>
+    <p>Attending: <%= @apartment.appointments.size - 1 %></p>
+    <%= link_to "Edit apartment", edit_user_apartment_path(current_user, @apartment) %>
     <%= form_tag user_apartment_path(current_user, @apartment), method: :delete, data: { confirm: 'Are you sure?' } do %>
         <%= submit_tag "Delete Apartment" %>
     <% end %>
