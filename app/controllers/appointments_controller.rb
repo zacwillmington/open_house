@@ -23,11 +23,9 @@ class AppointmentsController < ApplicationController
 
     def edit
         @appointment = Appointment.find_by(:id => params[:id])
-        binding.pry
     end
 
     def update
-        binding.pry
     end
 
     def destroy

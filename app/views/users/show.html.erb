@@ -6,7 +6,7 @@
     <h2>Appointments happening soon</h2>
 
     <% current_user.appointments_happening_soon.each do |appointment| %>
-        <h3>thumbnail??</h3>
+        <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
         <%= appointment.apartment.reformat_date_time %> at
         <%= appointment.apartment.address %>
         <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment) %>
@@ -15,6 +15,7 @@
 
     <h2>Past Appointments</h2>
     <% current_user.past_appointments.each do |appointment| %>
+    <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
         <%= appointment.apartment.address %>
         <% if current_user.admin %>
             <%= link_to "Post again", edit_apartment_path(appointment.apartment) %>

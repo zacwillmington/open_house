@@ -2,21 +2,22 @@
 
     <% current_user.order_by_date_acs.each do |appointment| %>
         <% if !current_user.admin %>
+        <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
             <p>Showing <%= appointment.apartment.reformat_date_time %></p>
             <p>Address: <%= appointment.apartment.address %></p>
             <p>Leasing Agent: <%= appointment.apartment.leasing_agent_contact.name %></p>
             <p>Email: <%= appointment.apartment.leasing_agent_contact.email %></p>
             <p>Phone: <%= appointment.apartment.leasing_agent_contact.phone %></p>
             <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment)%>
+            <%= form_tag apartment_appointment_path(appointment.apartment, appointment), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <%= submit_tag "Cancel Appointment" %>
+            <% end %>
             <br>
         <% else %>
+        <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
             <p>Showing <%= appointment.apartment.reformat_date_time %></p>
             <p>Attending: <%= appointment.apartment.appointments.size - 1 %></p>
             <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment)%>
             <br>
-            <%= form_tag apartment_appointment_path(appointment.apartment, appointment), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                <%= submit_tag "Cancel Appointment" %>
-            <br>
-            <% end %>
         <% end %>
     <% end %>
