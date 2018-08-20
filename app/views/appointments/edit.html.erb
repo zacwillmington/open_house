@@ -1,1 +1,7 @@
-<%= render partial: 'form', locals: { apartment: @apartment } %>
+    <%= form_for @appointment, :url => edit_apartment_appointment_path(@appointment.apartment, @appointment) do |f| %>
+        <h4>Open house time: <%= @appointment.apartment.reformat_date_time %></h4>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= f.hidden_field :apartment_id, :value => @appointment.apartment.id %>
+        <%= f.hidden_field :time, :value =>  @appointment.apartment.available_times %>
+        <%= f.submit %>
+    <% end %>

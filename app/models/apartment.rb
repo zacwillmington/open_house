@@ -4,6 +4,14 @@ class Apartment < ApplicationRecord
     mount_uploader :image, ImageUploader
 
 
+    validates :address, :presence => true, :uniqueness => true
+    validates :available_times, :presence => true
+    validates :available_times, :uniqueness =>  {:message => "You have an appointment clash."}
+
+
+
+
+
     def leasing_agent_contact
         @appointment ||= self.appointments.find_by(:time => self.available_times)
         @agent ||= User.find_by(:id => @appointment.user_id)

@@ -22,8 +22,9 @@ class AppointmentsController < ApplicationController
     end
 
     def edit
+        
+        @appointment = Appointment.find_by(:id => params[:id])
         binding.pry
-        @appointment = Appointment.find_by(:id => params[:appointment_id])
     end
 
     def update

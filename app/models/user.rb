@@ -42,4 +42,8 @@ class User < ApplicationRecord
         end
     end
 
+    def order_by_date_acs
+
+    end
+
 end
