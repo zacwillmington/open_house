@@ -10,14 +10,13 @@ class Apartment < ApplicationRecord
 
 
 
-
-
     def leasing_agent_contact
-        @appointment ||= self.appointments.find_by(:time => self.available_times)
-        @agent ||= User.find_by(:id => @appointment.user_id)
+        # First appointment for each apartments is the creator/admin's appointment.
+        @agent = self.appointments.first.user
     end
 
     def reformat_date_time
         self.available_times.strftime("%m/%d/%Y at %H:%M %P")
     end
+
 end

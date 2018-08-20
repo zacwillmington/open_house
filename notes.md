@@ -70,10 +70,11 @@ Appointment schema
          I think I remember you saying that it's not a good idea to show the user's id in the url, for the reason that if hackers can find out your id then they can potentially get up to some mischief.    
 
 
-         EXTRA
+         todo
 
          - validates for phone number length and syntax
-         - validates for email length and syntax    
+         - validates for email length and syntax
+         - apartment.attending? if attending true then show green box of some sort.    
          - if appointments_happening_soon then show green border around apartment with happening soon displayed.
          - if past_appointments then show red around appointment
          - thumbnail for index view of appointments         

@@ -7,6 +7,7 @@
             <p>Leasing Agent: <%= appointment.apartment.leasing_agent_contact.name %></p>
             <p>Email: <%= appointment.apartment.leasing_agent_contact.email %></p>
             <p>Phone: <%= appointment.apartment.leasing_agent_contact.phone %></p>
+            <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment)%>
             <br>
         <% else %>
             <p>Showing <%= appointment.apartment.reformat_date_time %></p>

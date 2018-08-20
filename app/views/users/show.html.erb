@@ -16,5 +16,7 @@
     <h2>Past Appointments</h2>
     <% current_user.past_appointments.each do |appointment| %>
         <%= appointment.apartment.address %>
-        <%= link_to "Post again", edit_apartment_path(appointment.apartment)%>
+        <% if current_user.admin %>
+            <%= link_to "Post again", edit_apartment_path(appointment.apartment) %>
+        <% end %>
     <% end %>

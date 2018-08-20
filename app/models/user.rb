@@ -48,4 +48,8 @@ class User < ApplicationRecord
         end
     end
 
+    def attending_appointment?(apartment)
+        self.appointments.any?{ |appointment|  apartment.appointments.include?(appointment)}
+    end
+
 end
