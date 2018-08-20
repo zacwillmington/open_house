@@ -47,18 +47,20 @@ Appointment schema
 
     TODO
 
-        1 - finish all crud actions for all models
-            - #@user.attending_showing = returns a message under apartment
-            - edit appointment for non-admin
-            - thumbnail for appointments index page.
+        1 - validates email and phone
+            - validates for phone number length and syntax
+            - validates for email length and syntax
 
-        2 - scope methods
-        3 - Errors and flash messages
-        4 - styling
-        5 - Tidy up routes. Remove some
-        6 - refactor
-        7 - readme
-        8 -
+        2 - Errors and flash messages
+            - user.attending_appointment(apartment)? if attending true then show green box of some sort.    
+            - if appointments_happening_soon then show green border around apartment with happening soon displayed.
+            - if past_appointments then show red around appointment      
+            
+        3 - styling
+        4 - Tidy up routes. Remove some
+        5 - refactor
+        6 - readme
+        7 -
 
         Quick Question. I'm not quite sure if I am creating the correct routes for my project.
 
@@ -67,14 +69,4 @@ Appointment schema
         like this resources :users do
             resources :apartments
         end
-         I think I remember you saying that it's not a good idea to show the user's id in the url, for the reason that if hackers can find out your id then they can potentially get up to some mischief.    
-
-
-         todo
-
-         - thumbnail for index view of appointments 
-         - validates for phone number length and syntax
-         - validates for email length and syntax
-         - user.attending_appointment(apartment)? if attending true then show green box of some sort.    
-         - if appointments_happening_soon then show green border around apartment with happening soon displayed.
-         - if past_appointments then show red around appointment        
+         I think I remember you saying that it's not a good idea to show the user's id in the url, for the reason that if hackers can find out your id then they can potentially get up to some mischief.            
