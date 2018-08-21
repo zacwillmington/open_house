@@ -47,15 +47,12 @@ Appointment schema
 
     TODO
 
-        1 - validates email and phone
-            - validates for phone number length and syntax
-            - validates for email length and syntax
-
+        1 - Add number of bedrooms and bathrooms, parking ect to apt model
         2 - Errors and flash messages
             - user.attending_appointment(apartment)? if attending true then show green box of some sort.    
             - if appointments_happening_soon then show green border around apartment with happening soon displayed.
             - if past_appointments then show red around appointment      
-            
+
         3 - styling
         4 - Tidy up routes. Remove some
         5 - refactor
