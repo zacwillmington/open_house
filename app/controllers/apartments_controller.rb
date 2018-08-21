@@ -49,6 +49,6 @@ class ApartmentsController < ApplicationController
    private
 
    def strong_params(params)
-       params.require(:apartment).permit(:address, :available_times, :image)
+       params.require(:apartment).permit(:address, :available_times, :image, :bedrooms, :bathrooms, :parking, :price)
    end
 end

@@ -46,8 +46,7 @@ Appointment schema
 
 
     TODO
-
-        1 - Add number of bedrooms and bathrooms, parking ect to apt model
+    
         2 - Errors and flash messages
             - user.attending_appointment(apartment)? if attending true then show green box of some sort.    
             - if appointments_happening_soon then show green border around apartment with happening soon displayed.

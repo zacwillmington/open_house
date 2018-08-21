@@ -1,6 +1,10 @@
 
 <%= image_tag(@apartment.image_url.to_s, size: '500x300') %>
 <p>Address: <%= @apartment.address %></p>
+<p>Number of bedrooms: <%= @apartment.bedrooms %></p>
+<p>Number of bathrooms: <%= @apartment.bathrooms %></p>
+<p>Parking spaces: <%= @apartment.parking %></p>
+<p>Price per month: <%= @apartment.price %></p>
 
 <p>Agent Name: <%= @apartment.leasing_agent_contact.name %></p>
 <p>Email: <%= @apartment.leasing_agent_contact.email %></p>
