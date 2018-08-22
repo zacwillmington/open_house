@@ -1,22 +1,27 @@
 
-<%= image_tag(@apartment.image_url.to_s, size: '500x300') %>
-<p>Address: <%= @apartment.address %></p>
-<p>Number of bedrooms: <%= @apartment.bedrooms %></p>
-<p>Number of bathrooms: <%= @apartment.bathrooms %></p>
-<p>Parking spaces: <%= @apartment.parking %></p>
-<p>Price per month: <%= @apartment.price %></p>
+<div class="apartment container-fluid">
+    <%= image_tag(@apartment.image_url.to_s, size: '500x300') %>
+    <div class="apartment-info">
+        <p><%= @apartment.address %></p>
+        <p>Bdr: <%= @apartment.bedrooms %></p>
+        <p>Bath: <%= @apartment.bathrooms %></p>
+        <p>Parking: <%= @apartment.parking %></p>
+        <p>$<%= @apartment.price %></p>
+        <p>Showing on <%= @apartment.reformat_date_time %></p>
 
-<p>Agent Name: <%= @apartment.leasing_agent_contact.name %></p>
-<p>Email: <%= @apartment.leasing_agent_contact.email %></p>
-<p>Phone: <%= @apartment.leasing_agent_contact.phone %></p>
-<p>Showing on <%= @apartment.reformat_date_time %></p>
-
-<% if !current_user.admin && !current_user.attending_appointment?(@apartment) %>
-    <%= link_to "Make appointment", new_apartment_appointment_path(@apartment) %>
-<% elsif current_user.admin %>
-    <p>Attending: <%= @apartment.appointments.size - 1 %></p>
-    <%= link_to "Edit apartment", edit_user_apartment_path(current_user, @apartment) %>
-    <%= form_tag user_apartment_path(current_user, @apartment), method: :delete, data: { confirm: 'Are you sure?' } do %>
-        <%= submit_tag "Delete Apartment" %>
-    <% end %>
-<% end %>
+        <% if !current_user.admin && !current_user.attending_appointment?(@apartment) %>
+            <%= link_to "Make appointment", new_apartment_appointment_path(@apartment) %>
+        <% elsif current_user.admin %>
+            <p>Attending: <%= @apartment.appointments.size - 1 %></p>
+            <%= link_to "Edit apartment", edit_user_apartment_path(current_user, @apartment) %>
+            <%= form_tag user_apartment_path(current_user, @apartment), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <%= submit_tag "Delete Apartment" %>
+            <% end %>
+        <% end %>
+    </div>
+</div>
+<div class="apartment-contact-info">
+    <p>Contact: <%= @apartment.leasing_agent_contact.name %></p>
+    <p>Email: <%= @apartment.leasing_agent_contact.email %></p>
+    <p>Phone: <%= @apartment.leasing_agent_contact.phone %></p>
+</div>

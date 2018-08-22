@@ -16,6 +16,11 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "apartments";
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
 
  body {
   padding-top: 70px;

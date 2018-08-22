@@ -1,3 +1,28 @@
 // Place all the styles related to the apartments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.apartment {
+    display: flex;
+}
+
+img {
+     box-shadow: 5px 5px 5px grey;
+}
+
+.apartment-info {
+    margin: 0px 0px 0px 20px;
+}
+
+.apartment-contact-info {
+    margin-top: 25px;
+}
+
+.apartment-contact-info p {
+    display: inline;
+    padding: 0px 20px 0px 20px;
+}
+
+div.apartment-contact-info p:nth-child(1),  .apartment-contact-info p:nth-child(2) {
+    border-right: 1px solid grey;
+}
