@@ -1,3 +1,24 @@
 // Place all the styles related to the appointments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// appointments list (appointments/index)
+
+
+.appointment {
+    display: flex;
+    margin: 25px auto;
+}
+
+.appointment-info {
+    margin-left: 20px;
+}
+
+.appointment-buttons-info {
+    margin-left: 20px;
+}
+
+.appointment img {
+    width: 150px;
+    height: 100px;
+}

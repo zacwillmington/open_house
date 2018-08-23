@@ -55,18 +55,20 @@ a.make-appointment-btn:hover {
     margin: 25px 0px;
     border-radius: 5px;
     border: 1px solid white;
+    transition: background-color 2s ease;
     transition: border-color 2s ease;
 
 }
 
 .apartment-index-page:hover {
-    border-color: grey;
+    background-color: lightgrey;
+    border-color: black;
 
 }
 
 a.view-apartment-btn {
     display: inline-block;
-    margin-bottom: 0px;
+    bottom: 0px;
     background-color: #428bca;
     padding: 5px 30px;
     border-radius: 5px;
