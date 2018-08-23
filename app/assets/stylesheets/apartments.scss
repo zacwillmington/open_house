@@ -2,15 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.apartment {
-    display: flex;
-    padding: 40px 25px;
-    // border-top: 1px solid black;
-    border-bottom: 1px solid black;
-}
-
 img {
      box-shadow: 5px 5px 5px grey;
+}
+
+// Show apartment page styling(apartments/show.html.erb)
+
+.apartment {
+    display: flex;
+    padding: 10px 25px 40px 25px;
+    border-bottom: 1px solid black;
 }
 
 .apartment-info {
@@ -34,8 +35,46 @@ div.apartment-contact-info p:nth-child(1),  .apartment-contact-info p:nth-child(
 a.make-appointment-btn {
     display: inline-block;
     margin-top: 50px;
-    background-color: lightblue;
+    background-color: #428bca;
     padding: 5px 10px;
     border-radius: 5px;
     color: black;
+    text-decoration: none;
+}
+
+a.make-appointment-btn:hover {
+    background-color: lightblue
+}
+
+
+// All apartments page styling(apartments/index.html.erb)
+
+.apartment-index-page {
+    display: flex;
+    padding: 40px 25px 40px 25px;
+    margin: 25px 0px;
+    border-radius: 5px;
+    border: 1px solid white;
+    transition: border-color 2s ease;
+
+}
+
+.apartment-index-page:hover {
+    border-color: grey;
+
+}
+
+a.view-apartment-btn {
+    display: inline-block;
+    margin-bottom: 0px;
+    background-color: #428bca;
+    padding: 5px 30px;
+    border-radius: 5px;
+    color: black;
+    text-decoration: none;
+}
+
+
+a.view-apartment-btn:hover {
+    background-color: lightblue;
 }

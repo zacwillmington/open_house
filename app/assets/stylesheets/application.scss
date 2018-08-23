@@ -17,6 +17,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "apartments";
+ @import "appointments";
 
 * {
     font-family: 'Poppins', sans-serif;
@@ -29,6 +30,15 @@ a {
  body {
   padding-top: 70px;
   padding-bottom: 30px;
+
+}
+
+.navbar, .navbar-default{
+  // background-image: url('http://res.cloudinary.com/zacwillmington/image/upload/v1534992454/background_pattern_design_33_czdyhy.jpg');
+}
+
+.navbar-inverse {
+    border-color: lightgrey;
 }
 
 .theme-dropdown .dropdown-menu {

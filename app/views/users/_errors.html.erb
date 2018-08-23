@@ -1,6 +1,8 @@
 
 <% if @user.errors %>
     <% @user.errors.full_messages.each do |message| %>
-        <p><%= message %></p>
+    <div class="alert alert-danger">
+        <strong><%= message %></strong>
+    </div>
     <% end %>
 <% end %>

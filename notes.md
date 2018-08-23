@@ -46,13 +46,14 @@ Appointment schema
 
 
     TODO
-    
-        2 - Errors and flash messages
-            - user.attending_appointment(apartment)? if attending true then show green box of some sort.    
+
+        2 - Errors and flash messages  
             - if appointments_happening_soon then show green border around apartment with happening soon displayed.
             - if past_appointments then show red around appointment      
 
         3 - styling
+            - transparent buttons
+            - 
         4 - Tidy up routes. Remove some
         5 - refactor
         6 - readme

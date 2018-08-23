@@ -1,3 +1,8 @@
+<% if current_user.attending_appointment?(@apartment) %>
+    <div class="alert alert-success">
+        <strong>You RSVP'D to this apartment</strong>
+    </div>
+<% end %>
 
 <div class="apartment container-fluid">
     <%= image_tag(@apartment.image_url.to_s, size: '500x300') %>

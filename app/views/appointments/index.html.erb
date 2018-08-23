@@ -12,7 +12,6 @@
             <%= form_tag apartment_appointment_path(appointment.apartment, appointment), method: :delete, data: { confirm: 'Are you sure?' } do %>
                 <%= submit_tag "Cancel Appointment" %>
             <% end %>
-            <br>
         <% else %>
         <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
             <p>Showing <%= appointment.apartment.reformat_date_time %></p>
