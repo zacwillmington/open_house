@@ -4,6 +4,9 @@
 
 .apartment {
     display: flex;
+    padding: 40px 25px;
+    // border-top: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
 img {
@@ -15,7 +18,8 @@ img {
 }
 
 .apartment-contact-info {
-    margin-top: 25px;
+    margin: 25px auto;
+    text-align: center;
 }
 
 .apartment-contact-info p {
@@ -25,4 +29,13 @@ img {
 
 div.apartment-contact-info p:nth-child(1),  .apartment-contact-info p:nth-child(2) {
     border-right: 1px solid grey;
+}
+
+a.make-appointment-btn {
+    display: inline-block;
+    margin-top: 50px;
+    background-color: lightblue;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: black;
 }

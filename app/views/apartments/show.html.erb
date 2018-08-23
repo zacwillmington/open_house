@@ -10,7 +10,7 @@
         <p>Showing on <%= @apartment.reformat_date_time %></p>
 
         <% if !current_user.admin && !current_user.attending_appointment?(@apartment) %>
-            <%= link_to "Make appointment", new_apartment_appointment_path(@apartment) %>
+            <%= link_to "Make appointment", new_apartment_appointment_path(@apartment), class: "make-appointment-btn" %>
         <% elsif current_user.admin %>
             <p>Attending: <%= @apartment.appointments.size - 1 %></p>
             <%= link_to "Edit apartment", edit_user_apartment_path(current_user, @apartment) %>
