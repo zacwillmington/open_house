@@ -18,9 +18,9 @@
             <%= link_to "Make appointment", new_apartment_appointment_path(@apartment), class: "btn btn-primary" %>
         <% elsif current_user.admin %>
             <p>Attending: <%= @apartment.appointments.size - 1 %></p>
-            <%= link_to "Edit apartment", edit_user_apartment_path(current_user, @apartment) %>
+            <%= link_to "Edit apartment", edit_user_apartment_path(current_user, @apartment), class: "btn btn-primary" %>
             <%= form_tag user_apartment_path(current_user, @apartment), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                <%= submit_tag "Delete Apartment" %>
+                <%= submit_tag "Delete Apartment", class: "btn btn-primary" %>
             <% end %>
         <% end %>
     </div>

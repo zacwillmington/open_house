@@ -47,13 +47,12 @@ Appointment schema
 
     TODO
 
-        2 - Errors and flash messages  
-            - if appointments_happening_soon then show green border around apartment with happening soon displayed.
+        2 - Errors and flash messages 
             - if past_appointments then show red around appointment      
 
         3 - styling
             - transparent buttons
-            - 
+            -
         4 - Tidy up routes. Remove some
         5 - refactor
         6 - readme

@@ -1,23 +1,35 @@
 
 
 <h1>Welcome, <%= current_user.name %></h1>
-    <p>Todays Date: <%= Date.today %></p>
 
-    <h2>Appointments happening soon</h2>
+<p class="date-today">Today's Date: <%= Date.today.strftime("%m/%d/%Y") %></p>
+<%= link_to "Create New Listing", new_user_apartment_path(current_user), class: 'btn btn-primary' if current_user.admin %>
 
-    <% current_user.appointments_happening_soon.each do |appointment| %>
-        <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
-        <%= appointment.apartment.reformat_date_time %> at
-        <%= appointment.apartment.address %>
-        <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment) %>
-        <br>
-    <% end %>
+    <div class="all-appointments-profile-page">
+        <h2>Appointments happening soon</h2>
 
-    <h2>Past Appointments</h2>
-    <% current_user.past_appointments.each do |appointment| %>
-    <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
-        <%= appointment.apartment.address %>
-        <% if current_user.admin %>
-            <%= link_to "Post again", edit_apartment_path(appointment.apartment) %>
+        <% current_user.appointments_happening_soon.each do |appointment| %>
+        <div class="container appointment">
+            <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
+            <div class="appointment-info">
+                <p class="alert alert-success"><%= appointment.apartment.reformat_date_time %> at
+                <%= appointment.apartment.address %></p>
+                <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment), class: "btn btn-primary" %>
+            </div>
+        </div>
+        <% end %>
+    </div>
+
+    <% if !current_user.past_appointments.empty? %>
+        <h2>Past Appointments</h2>
+        <% current_user.past_appointments.each do |appointment| %>
+
+        <div class="container appointment">
+            <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
+                <div class="appointment-info">
+                    <%= appointment.apartment.address %>
+                <div>
+                    <%= link_to "Post again", edit_apartment_path(appointment.apartment), class: "btn btn-primary" if current_user.admin %>
+            </div>
         <% end %>
     <% end %>
