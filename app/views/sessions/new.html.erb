@@ -1,4 +1,4 @@
-<h1>Signin</h1>
+<h1 class="title">Signin</h1>
 <% if flash[:notice] %>
     <div class="alert alert-danger">
         <strong><%= flash[:notice] %></strong>
@@ -11,7 +11,7 @@
     <%= label_tag :password, "Password" %>
     <%= password_field_tag :password %>
     <br>
-    <%= submit_tag "Signin" %>
+    <%= submit_tag("Signin", class: 'btn btn-primary') %>
 <% end %>
 
 <%= link_to "Signin With Github", "/auth/github", class: 'btn btn-primary' %>
