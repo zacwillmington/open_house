@@ -1,8 +1,8 @@
 <h1>Your Appointments</h1>
-
+    <div class="appointments">
     <% current_user.order_by_date_acs.each do |appointment| %>
         <% if !current_user.admin %>
-            <div class="appointment container">
+            <div class="appointment">
                 <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
 
                 <div class="appointment-info">
@@ -18,9 +18,18 @@
                 </div>
             </div>
         <% else %>
-        <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
-            <p>Showing <%= appointment.apartment.reformat_date_time %></p>
-            <p>Attending: <%= appointment.apartment.appointments.size - 1 %></p>
-            <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment)%>
+            <div class="appointment">
+                <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
+
+                <div class="appointment-info">
+                    <p>Showing <%= appointment.apartment.reformat_date_time %></p>
+                    <p>Attending: <%= appointment.apartment.appointments.size - 1 %></p>
+                </div>
+
+                <div class="appointment-buttons-info">
+                    <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment), class: "btn btn-primary"%>
+                </div>
+            </div>
         <% end %>
     <% end %>
+</div>

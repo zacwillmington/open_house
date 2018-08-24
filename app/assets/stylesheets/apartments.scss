@@ -12,6 +12,7 @@ img {
     display: flex;
     padding: 10px 25px 40px 25px;
     border-bottom: 1px solid black;
+    max-width: 800px;
 }
 
 .apartment-info {
@@ -52,17 +53,18 @@ a.make-appointment-btn:hover {
 .apartment-index-page {
     display: flex;
     padding: 40px 25px 40px 25px;
-    margin: 25px 0px;
+    margin: 25px auto;
     border-radius: 5px;
     border: 1px solid white;
     transition: background-color 2s ease;
-    transition: border-color 2s ease;
+    transition: border-color 1s ease;
 
 }
 
 .apartment-index-page:hover {
-    background-color: lightgrey;
-    border-color: black;
+    background-color: #E0E0E0;
+    border-color: #C8C8C8;
+
 
 }
 
@@ -79,4 +81,13 @@ a.view-apartment-btn {
 
 a.view-apartment-btn:hover {
     background-color: lightblue;
+}
+
+.new-listing-btn {
+    float: right;
+}
+
+.apartment-content {
+    margin: auto;
+    display: flex;
 }

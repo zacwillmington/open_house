@@ -2,7 +2,7 @@
 
 <%= render partial: 'errors', locals: { user: @user }  %>
 
-<%= form_for @user do |f| %>
+<%= form_for( @user, html: {class: 'custom-form'} )do |f| %>
     <%= f.label :name, "Name" %>
     <%= f.text_field :name %>
     <br>
@@ -20,9 +20,9 @@
         <%= check_box_tag :'user[admin]', checked = false %>
     <% end %>
     <br>
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary'%>
 <% end %>
 
 <%= form_tag user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } do %>
-    <%= submit_tag "Delete Account" %>
+    <%= submit_tag "Delete Account", class: 'btn btn-primary' %>
 <% end %>

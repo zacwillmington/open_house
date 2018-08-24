@@ -4,7 +4,6 @@
 
 // appointments list (appointments/index)
 
-
 .appointment {
     display: flex;
     margin: 25px auto;
@@ -21,4 +20,16 @@
 .appointment img {
     width: 150px;
     height: 100px;
+}
+
+@media only screen and (min-width: 600px) {
+
+    .appointments {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .container {
+        min-width: 600px;
+    }
 }

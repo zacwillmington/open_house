@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
     before_action :authentication_required , only: [:destroy]
 
-    def index #change to welcome action
+    def index
 
     end
 
@@ -38,6 +38,3 @@ class SessionsController < ApplicationController
     end
 
 end
-
-
-#   - add before_action :authentication_required test   it works

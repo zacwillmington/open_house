@@ -1,4 +1,4 @@
-<%= form_for @appointment , :url => apartment_appointments_path(@apartment) do |f| %>
+<%= form_for @appointment , :url => apartment_appointments_path(@apartment), class: 'custom-from' do |f| %>
     <h4>Open house time: <%= @apartment.reformat_date_time %></h4>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.hidden_field :apartment_id, :value => @apartment.id %>

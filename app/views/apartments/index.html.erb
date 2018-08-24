@@ -1,26 +1,35 @@
 
     <% if current_user.admin %>
         <h1>Your Apartments</h1>
+        <%= link_to "Create New Listing", new_user_apartment_path(current_user), class: 'btn btn-primary new-listing-btn' %>
         <% current_user.apartments.each do |apartment| %>
             <div class="apartment-index-page container">
-                <%= image_tag(apartment.image_url.to_s, size: '500x300') %>
-                <div class="apartment-info">
-                    <strong>Address: </strong> <%= apartment.address %>
-                    <p>Pontential tenents attending: <%= apartment.appointments.size - 1 %></p>
-                    <p>Appointment: <%= apartment.reformat_date_time %></p>
-                    <%= link_to "View Apartment", user_apartment_path(current_user, apartment), class: "btn btn-primary" %>
+                <div class="apartment-content">
+                    <%= image_tag(apartment.image_url.to_s, size: '500x300') %>
+                    <div class="apartment-info">
+                        <p><%= apartment.address %></p>
+                        <p>Attending: <%= apartment.appointments.size - 1 %></p>
 
-                    <!-- # apartment.appointments.size is incuding the first appointment which is made by the admin. So I subtract the admin's appointment. I the admin has to make an appointmet to associate the apartment with the admin see create action in apartments_controller.-->
+                        <% if current_user.attending_appointment?(apartment) %>
+                            <%= render partial: 'attending_showing_msg', locals: {apartment: apartment} %>
+                        <% else %>
+                            <p>Showing: <%= apartment.reformat_date_time %></p>
+                        <% end %>
+                        <%= link_to "View Apartment", user_apartment_path(current_user, apartment), class: "btn btn-primary" %>
+
+                        <!-- # apartment.appointments.size is incuding the first appointment which is made by the admin. So I subtract the admin's appointment. I the admin has to make an appointmet to associate the apartment with the admin see create action in apartments_controller.-->
+                    </div>
                 </div>
             </div>
         <% end %>
-        <%= link_to "Create New Listing", new_user_apartment_path(current_user), class: 'btn btn-primary' %>
     <% else %>
         <h1>All Available Apartments</h1>
         <% @apartments.each do |apartment| %>
             <div class="apartment-index-page container">
 
+                <div class="apartment-content">
                     <%= image_tag(apartment.image_url.to_s, size: '500x300') %>
+
                     <div class="apartment-info">
                         <p><%= apartment.address %></p>
                         <% if current_user.attending_appointment?(apartment) %>
@@ -30,6 +39,9 @@
                         <% end %>
                             <%= link_to "View Apartment", user_apartment_path(current_user, apartment),  class: "btn btn-primary"%>
                     </div>
+
+                </div>
+                
             </div>
         <% end %>
     <% end %>

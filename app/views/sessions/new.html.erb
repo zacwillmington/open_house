@@ -1,8 +1,10 @@
 <h1>Signin</h1>
 <% if flash[:notice] %>
-    <p><%= flash[:notice] %></p>
+    <div class="alert alert-danger">
+        <strong><%= flash[:notice] %></strong>
+    </div>
 <% end %>
-<%= form_tag do %>
+<%= form_tag({action: 'create'}, {class: 'custom-form'}) do %>
     <%= label_tag :email, "Email" %>
     <%= text_field_tag :email %>
     <br>
@@ -12,4 +14,4 @@
     <%= submit_tag "Signin" %>
 <% end %>
 
-<%= link_to "Signin With Github", "/auth/github" %>
+<%= link_to "Signin With Github", "/auth/github", class: 'btn btn-primary' %>

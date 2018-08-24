@@ -30,6 +30,9 @@
                     <%= appointment.apartment.address %>
                 <div>
                     <%= link_to "Post again", edit_apartment_path(appointment.apartment), class: "btn btn-primary" if current_user.admin %>
+                    <%= form_tag user_apartment_path(current_user, appointment.apartment), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                        <%= submit_tag "Delete Apartment", class: "btn btn-primary" %>
+                    <% end %>
             </div>
         <% end %>
     <% end %>

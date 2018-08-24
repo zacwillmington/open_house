@@ -77,3 +77,20 @@ a {
 .btn, .btn-primary {
     margin-bottom: 5px;
 }
+
+.custom-form {
+    background-color: #E0E0E0;
+    border-radius: 5px;
+    padding: 25px;
+}
+
+.custom-form input {
+    margin: 5px;
+    border-radius: 2px;
+    border: 1px solid black;
+    font-weight: bold;
+}
+
+.custom-form label {
+    font-size: 1.2em;
+}
