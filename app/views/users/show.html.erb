@@ -5,11 +5,10 @@
 <p class="date-today">Today's Date: <%= Date.today.strftime("%m/%d/%Y") %></p>
 <%= link_to "Create New Listing", new_user_apartment_path(current_user), class: 'btn btn-primary' if current_user.admin %>
 
+    <h2>Appointments happening soon</h2>
     <div class="all-appointments-profile-page">
-        <h2>Appointments happening soon</h2>
-
         <% current_user.appointments_happening_soon.each do |appointment| %>
-        <div class="container appointment">
+        <div class="appointment">
             <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
             <div class="appointment-info">
                 <p class="alert alert-success"><%= appointment.apartment.reformat_date_time %> at
@@ -21,6 +20,7 @@
     </div>
 
     <% if !current_user.past_appointments.empty? %>
+
         <h2>Past Appointments</h2>
         <% current_user.past_appointments.each do |appointment| %>
 
@@ -28,11 +28,12 @@
             <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
                 <div class="appointment-info">
                     <%= appointment.apartment.address %>
-                <div>
+
                     <%= link_to "Post again", edit_apartment_path(appointment.apartment), class: "btn btn-primary" if current_user.admin %>
                     <%= form_tag user_apartment_path(current_user, appointment.apartment), method: :delete, data: { confirm: 'Are you sure?' } do %>
                         <%= submit_tag "Delete Apartment", class: "btn btn-primary" %>
                     <% end %>
+                </div>
             </div>
-        <% end %>
+            <% end %>
     <% end %>

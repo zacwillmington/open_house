@@ -27,9 +27,15 @@
     .appointments {
         display: flex;
         flex-wrap: wrap;
+        margin: auto;
     }
 
     .container {
-        min-width: 600px;
+        // min-width: 650px;
+    }
+
+    .appointment {
+         max-width: 500px;
+         margin: 25px 25px 25px 0;
     }
 }

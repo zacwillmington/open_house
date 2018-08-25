@@ -80,28 +80,38 @@ a {
 
 .btn, .btn-primary {
     margin-bottom: 5px;
+    width: 150px;
 }
 
 .custom-form {
     background-color: #E0E0E0;
     border-radius: 5px;
     padding: 25px;
-    max-width: 600px;
-    margin: auto;
+    max-width: 500px;
+    margin: 25px 50px;
 }
 
 .custom-form input {
-    margin: 5px auto;
-    border-radius: 2px;
-    border: 1px solid black;
-    font-weight: bold;
-    height: 30px;
+     // padding: 5px 0;
+    // border-radius: 2px;
+    // border: 1px solid black;
+    // font-weight: bold;
+    // height: 30px;
+    font-size: 1.2em;
+
 }
 
 .custom-form label {
-    font-size: 1.4em;
+    font-size: 1.2em;
+
 }
 
-.custom-form input[type=text] {
-    margin: auto;
+.custom-form input[type=text], .custom-form input[type=password] {
+    background: transparent;
+    border-bottom: 1px dashed black;
+    border-left: transparent;
+    border-right: transparent;
+    border-top: transparent;
+    float: right;
+
 }

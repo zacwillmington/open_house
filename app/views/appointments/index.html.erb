@@ -1,5 +1,5 @@
 <h1>Your Appointments</h1>
-    <div class="appointments">
+    <div class="container appointments">
     <% current_user.order_by_date_acs.each do |appointment| %>
         <% if !current_user.admin %>
             <div class="appointment">
@@ -13,7 +13,7 @@
                 <div class="appointment-buttons-info">
                     <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment), class: 'btn btn-primary'%>
                     <%= form_tag apartment_appointment_path(appointment.apartment, appointment), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                        <%= submit_tag "Cancel Appointment", class: "btn btn-primary" %>
+                        <%= submit_tag "Cancel", class: "btn btn-primary" %>
                     <% end %>
                 </div>
             </div>
