@@ -21,13 +21,6 @@ class AppointmentsController < ApplicationController
 
     end
 
-    def edit
-        @appointment = Appointment.find_by(:id => params[:id])
-    end
-
-    def update
-    end
-
     def destroy
         @appointment = Appointment.find_by(:id => params[:id])
         @appointment.destroy
@@ -37,7 +30,7 @@ class AppointmentsController < ApplicationController
     private
 
     def strong_params(params)
-        params.require(:appointment).permit(:time, :user_id, :apartment_id)
+        params.require(:appointment).permit(:time, :name, :user_id, :apartment_id)
     end
 
 end

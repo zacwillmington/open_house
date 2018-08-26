@@ -22,9 +22,18 @@
     height: 100px;
 }
 
+// past-appointments page
+
+.past-appointment {
+    display: flex;
+    margin: 25px auto;
+    width: auto;
+
+}
+
 @media only screen and (min-width: 600px) {
 
-    .appointments {
+    .appointments, .all-past-appointments-page {
         display: flex;
         flex-wrap: wrap;
         margin: auto;

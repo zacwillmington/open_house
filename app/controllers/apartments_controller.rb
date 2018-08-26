@@ -13,6 +13,7 @@ class ApartmentsController < ApplicationController
 
    def create
        @apartment = Apartment.new(strong_params(params))
+
        if @apartment.save
            @appointment = Appointment.create(:user_id => helpers.current_user.id, :apartment_id => @apartment.id, :time => @apartment.available_times)
            redirect_to user_apartment_path(@appointment.user, @appointment.apartment)
@@ -37,6 +38,10 @@ class ApartmentsController < ApplicationController
        @apartment.appointments.first.update_admin_appointment_time
        #add validations
        render :show
+   end
+
+   def past_appointments
+       render :past_appointments
    end
 
    def destroy

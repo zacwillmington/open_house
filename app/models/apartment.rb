@@ -5,7 +5,11 @@ class Apartment < ApplicationRecord
 
 
     validates :address, :presence => true, :uniqueness => true
-    validates :available_times, :presence => true
+    validates :bathrooms, :presence => true
+    validates :bedrooms, :presence => true
+    validates :parking, :presence => true
+    validates :price, :presence => true
+
     validates :available_times, :uniqueness =>  {:message => "You have an appointment clash."}
 
 

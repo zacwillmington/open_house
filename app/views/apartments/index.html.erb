@@ -16,7 +16,6 @@
                             <p>Showing: <%= apartment.reformat_date_time %></p>
                         <% end %>
                         <%= link_to "View Apartment", user_apartment_path(current_user, apartment), class: "btn btn-primary" %>
-
                         <!-- # apartment.appointments.size is incuding the first appointment which is made by the admin. So I subtract the admin's appointment. I the admin has to make an appointmet to associate the apartment with the admin see create action in apartments_controller.-->
                     </div>
                 </div>
@@ -41,7 +40,7 @@
                     </div>
 
                 </div>
-                
+
             </div>
         <% end %>
     <% end %>

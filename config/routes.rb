@@ -14,9 +14,10 @@ Rails.application.routes.draw do
   resources :apartments do
       resources :appointments
   end
-  
+
   resources :apartments
 
+  get '/past_appointments' => 'apartments#past_appointments'
 
   get '/apartments' => 'apartments#index'
 
