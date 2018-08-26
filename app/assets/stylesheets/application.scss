@@ -19,6 +19,7 @@
  @import "apartments";
  @import "appointments";
  @import "users";
+ @import "sessions";
 
 
 * {
@@ -80,24 +81,24 @@ a {
 
 .btn, .btn-primary {
     margin-bottom: 5px;
-    width: 150px;
 }
+
+
+  // Form styles
+
 
 .custom-form {
-    background-color: #E0E0E0;
+    background-color: rgba(97, 91, 91, .2);
     border-radius: 5px;
     padding: 25px;
-    max-width: 500px;
-    margin: 25px 50px;
+    max-width: 550px;
+    margin: 25px auto;
 }
 
-.custom-form input {
-     // padding: 5px 0;
-    // border-radius: 2px;
-    // border: 1px solid black;
-    // font-weight: bold;
-    // height: 30px;
+.custom-form input[type=submit] {
+    margin-top: 20px;
     font-size: 1.2em;
+    width: 100%;
 
 }
 
@@ -106,12 +107,18 @@ a {
 
 }
 
-.custom-form input[type=text], .custom-form input[type=password] {
+.custom-form input[type=text], .custom-form input[type=password], .custom-form input[type=number] {
     background: transparent;
     border-bottom: 1px dashed black;
     border-left: transparent;
     border-right: transparent;
     border-top: transparent;
     float: right;
+    color: #1F95DF;
+    width: 50%;
 
+}
+
+.custom-form input[type=text]:focus {
+    border-bottom: 1px dashed #D9FFA9;
 }

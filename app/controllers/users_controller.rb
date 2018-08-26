@@ -26,9 +26,8 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find_by(:id => params[:id])
-        binding.pry
+
         @user.update(strong_params(params))
-        binding.pry
         #notice account updated
         redirect_to user_path(@user)
 

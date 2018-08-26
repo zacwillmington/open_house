@@ -3,5 +3,5 @@
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <%= f.hidden_field :apartment_id, :value => @apartment.id %>
     <%= f.hidden_field :time, :value =>  @apartment.available_times %>
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-primary"  %>
 <% end %>
