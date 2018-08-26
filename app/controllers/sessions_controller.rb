@@ -13,9 +13,11 @@ class SessionsController < ApplicationController
     def create
         if auth_hash = request.env["omniauth.auth"]
             @user = User.find_or_create_by_omniauth(auth_hash)
-             if @user.save
+
+             if @user.save || @user.id != nil
+                 session[:user_id] = @user.id
                  redirect_to user_path(@user)
-              else
+             else
                   flash[:notice] = "Change email to public on github.com"
                   redirect_to '/signin'
               end

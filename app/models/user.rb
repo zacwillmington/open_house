@@ -6,9 +6,7 @@ class User < ApplicationRecord
     validates :name, :presence => true
     validates :email, :presence => true, :uniqueness => true
     validates :email, email: true
-    validates :phone, :presence => true
-    validates_format_of :phone, with: /\A(\d{10}|\(?\d{3}\)?[-. ]\d{3}[-.]\d{4})\z/, message: "Must be format 760111222"
-    validates :phone, length: { minimum: 10, maximum: 15 }  
+    # validates_format_of :phone, with: /\A(\d{10}|\(?\d{3}\)?[-. ]\d{3}[-.]\d{4})\z/, message: "Must be format 760111222"
     validates :password, :presence => true
 
 
@@ -17,6 +15,7 @@ class User < ApplicationRecord
 
     def self.find_or_create_by_omniauth(auth_hash)
         oauth_email = auth_hash[:info][:email]
+
         self.where(:email => oauth_email).first_or_create do |user|
             user.name = auth_hash[:info][:name]
             user.email = auth_hash[:info][:email]
