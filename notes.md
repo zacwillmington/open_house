@@ -47,13 +47,11 @@ Appointment schema
 
     TODO
 
-        4 - Tidy up routes. Remove some
-        5 - refactor
-        6 - readme
+        ***ATTN: Luisa
 
         Quick Question. I'm not quite sure if I am creating the correct routes for my project.
 
-        I'm trying to keep them RESTful but should I have the user.id in my url? e.g. new_user_apartment_path. Because I have the apartment nested under the user.
+        I'm trying to keep them RESTful, but should I have the user.id in my url? e.g. new_user_apartment_path. Because I have the apartment nested under the user.
 
         like this resources :users do
             resources :apartments

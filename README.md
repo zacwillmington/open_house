@@ -1,24 +1,34 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# open_house
 
-Things you may want to cover:
+Open_house is an application for scheduling and posting open houses. When creating and account you have two options, admin account or standard user. Admins can create listing and set the time of appointment. They can also delete and update the apartment. The standard user can make an appointment and delete their own appointments.
 
-* Ruby version
+## Getting Started
 
-* System dependencies
+Clone the repo, run bundle install then rake:db migrate. Once migrated successfully run rails s to open in the browser.
 
-* Configuration
 
-* Database creation
+### Prerequisites
 
-* Database initialization
+```
+ruby '2.5.0'
 
-* How to run the test suite
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Deployment
 
-* Deployment instructions
+Add additional notes about how to deploy this on a live system
 
-* ...
+## Built With
+
+* [Rails](https://rubyonrails.org/) - Ruby framework
+* [bootstrap](https://getbootstrap.com/) - CSS Framework
+
+## Authors
+
+* **Zac Willmington** - *Initial work* - [PurpleBooth](https://github.com/zacwillmington)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
