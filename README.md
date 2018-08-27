@@ -27,7 +27,7 @@ Add additional notes about how to deploy this on a live system
 
 ## Authors
 
-* **Zac Willmington** - *Initial work* - [PurpleBooth](https://github.com/zacwillmington)
+* **Zac Willmington** - *Initial work* - [Zac_Willmington](https://github.com/zacwillmington)
 
 ## License
 

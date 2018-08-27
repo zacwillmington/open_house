@@ -47,6 +47,8 @@ Appointment schema
 
     TODO
 
+    - Deployment on Heroku
+
         ***ATTN: Luisa
 
         Quick Question. I'm not quite sure if I am creating the correct routes for my project.
