@@ -1,6 +1,6 @@
 class ApartmentsController < ApplicationController
 
-   before_action :authentication_required , only: [:index, :new, :show, :create, :edit, :update, :destroy]
+   before_action :authentication_required , only: [:index, :new, :show, :create, :edit, :update, :destroy, :past_appointments]
     before_action :admin_access_required, only: [:create, :new, :edit, :update, :destroy]
 
    def index
@@ -18,7 +18,6 @@ class ApartmentsController < ApplicationController
            @appointment = Appointment.create(:user_id => helpers.current_user.id, :apartment_id => @apartment.id, :time => @apartment.available_times)
            redirect_to user_apartment_path(@appointment.user, @appointment.apartment)
        else
-
            render :new
        end
    end
@@ -34,9 +33,7 @@ class ApartmentsController < ApplicationController
    def update
        @apartment = Apartment.find_by(:id => params[:id])
        @apartment.update(strong_params(params))
-
        @apartment.appointments.first.update_admin_appointment_time
-       #add validations
        render :show
    end
 

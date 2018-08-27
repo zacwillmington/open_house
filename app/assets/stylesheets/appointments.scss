@@ -28,7 +28,6 @@
 .past-appointment {
     display: flex;
     margin: 25px auto;
-    width: auto;
 
 }
 
@@ -40,16 +39,8 @@
         margin: auto;
     }
 
-    .container {
-        // min-width: 650px;
-    }
-
-    .appointment {
-         // max-width: 500px;
-         // margin: 25px 25px 25px 0;
+    .past-appointment {
+         // width: 33.3%;
+         width: 50%;
     }
 }
-
-// @media only screen and (min-width: 1000px) {
-//
-// }

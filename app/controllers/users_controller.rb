@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        
+
     end
 
     def edit
@@ -27,9 +27,7 @@ class UsersController < ApplicationController
 
     def update
         @user = User.find_by(:id => params[:id])
-
         @user.update(strong_params(params))
-        #notice account updated
         redirect_to user_path(@user)
 
     end
@@ -38,13 +36,10 @@ class UsersController < ApplicationController
         @user = User.find_by(:id => params[:id])
 
         if helpers.current_user == @user
-            @user.appointments.each do |appointment|
-                appointment.apartment.appointments.destroy_all #deletes all appointments tied to each apartment that the user created, which includes the appointments of people attending the showing.
-            end
 
-            @user.appointments.each do |appointment|
-                appointment.apartment.destroy #deletes each apartment that the user created
-            end
+            @user.destroy_all_associated_appointments_belonging_to_apartments  #deletes all appointments tied to each apartment that the user created, which includes the appointments of people attending the showing.
+
+            @user.destroy_all_apartments_belonging_to_appointments #deletes each apartment that the user created
 
             @user.appointments.destroy_all
             @user.destroy

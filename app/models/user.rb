@@ -10,9 +10,6 @@ class User < ApplicationRecord
     validates :password, :presence => true
 
 
-    #add validation for email address?
-
-
     def self.find_or_create_by_omniauth(auth_hash)
         oauth_email = auth_hash[:info][:email]
 
@@ -56,4 +53,15 @@ class User < ApplicationRecord
         self.appointments.any?{ |appointment|  apartment.appointments.include?(appointment)}
     end
 
+    def destroy_all_associated_appointments_belonging_to_apartments
+        self.appointments.each do |appointment|
+            appointment.apartment.appointments.destroy_all #deletes all appointments tied to each apartment that the user created, which includes the appointments of people attending the showing.
+        end
+    end
+
+    def destroy_all_apartments_belonging_to_appointments
+        self.appointments.each do |appointment|
+            appointment.apartment.destroy #deletes each apartment that the user created
+        end
+    end
 end

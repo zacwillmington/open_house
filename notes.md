@@ -47,16 +47,9 @@ Appointment schema
 
     TODO
 
-        2 - Errors and flash messages 
-            - if past_appointments then show red around appointment      
-
-        3 - styling
-            - transparent buttons
-            -
         4 - Tidy up routes. Remove some
         5 - refactor
         6 - readme
-        7 -
 
         Quick Question. I'm not quite sure if I am creating the correct routes for my project.
 

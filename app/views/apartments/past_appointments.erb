@@ -3,14 +3,19 @@
 
         <div class="container past-appointment">
             <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
+
                 <div class="appointment-info">
-                    <%= appointment.apartment.address %>
+                    <div class="alert alert-danger">
+                        <strong>Shown at <%= appointment.apartment.reformat_date_time %> <%= appointment.apartment.address %></strong>
+                    </div>
+
                     <div>
                         <%= link_to "Post again", edit_apartment_path(appointment.apartment), class: "btn btn-primary" if current_user.admin %>
                         <%= form_tag user_apartment_path(current_user, appointment.apartment), method: :delete, data: { confirm: 'Are you sure?' } do %>
                             <%= submit_tag "Delete Apartment", class: "btn btn-primary" %>
                         <% end %>
                     </div>
+
               </div>
         </div>
     <% end %>
