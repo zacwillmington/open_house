@@ -36,14 +36,15 @@ class UsersController < ApplicationController
         @user = User.find_by(:id => params[:id])
 
         if helpers.current_user == @user
+            if helpers.current_user.admin
+                @user.destroy_all_associated_appointments_belonging_to_apartments  #deletes all appointments tied to each apartment that the user created, which includes the appointments of people attending the showing.
 
-            @user.destroy_all_associated_appointments_belonging_to_apartments  #deletes all appointments tied to each apartment that the user created, which includes the appointments of people attending the showing.
-
-            @user.destroy_all_apartments_belonging_to_appointments #deletes each apartment that the user created
-
-            @user.appointments.destroy_all
-            @user.destroy
-            redirect_to root_path
+                @user.destroy_all_apartments_belonging_to_appointments #deletes each apartment that the user created
+            end
+                @user.appointments.destroy_all
+                @user.destroy
+                session.clear
+                redirect_to root_path
         else
             redirect_to user_path(helpers.current_user)
         end

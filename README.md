@@ -25,6 +25,10 @@ Add additional notes about how to deploy this on a live system
 * [Rails](https://rubyonrails.org/) - Ruby framework
 * [bootstrap](https://getbootstrap.com/) - CSS Framework
 
+## Contributing
+
+Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.  
+
 ## Authors
 
 * **Zac Willmington** - *Initial work* - [Zac_Willmington](https://github.com/zacwillmington)

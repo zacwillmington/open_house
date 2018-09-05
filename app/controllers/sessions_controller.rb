@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
                  session[:user_id] = @user.id
                  redirect_to user_path(@user)
              else
-                  flash[:notice] = "Change email to public on github.com"
+                  flash[:notice] = "Unable to authenicate email, change email to public on github.com"
                   redirect_to '/signin'
               end
         else
