@@ -1,8 +1,6 @@
 
 Project Requirements
 
-- Must render at least one index page (index resource - 'list of things') via JavaScript and an Active Model Serialization JSON  Backend.
-
 - Must render at least one show page (show resource - 'one specific thing') via JavaScript and an Active Model Serialization JSON Backend.
 
 - Your Rails application must dynamically render on the page at least one 'has-many' relationship through JSON using JavaScript.
@@ -17,13 +15,15 @@ Project Requirements
 
 TODO
 
-- Create branch for Js work.
-- Setup backend to handle json requests(only on controller that require it.)
-    - Add activeModelSerializer to models.
 
-- Setup asset pipeline for Js add Js file.
-    - Pull in JQuery.  
-    - Require needed files
+- Must render at least one index page (index resource - 'list of things') via JavaScript and an Active Model Serialization JSON  Backend.
+    - Setup backend to handle json requests(only on controller that require it.)
+        - Add activeModelSerializer to models on apartments model.
+        - apartments/ index controller handle json.
+    - Remove resources apartments routes
+
+
+
 
 
 User

@@ -5,6 +5,7 @@ class ApartmentsController < ApplicationController
 
    def index
        @apartments = Apartment.all
+       binding.pry
    end
 
    def new
