@@ -6,4 +6,11 @@ class Appointment < ApplicationRecord
          self.update(:time => self.apartment.available_times)
     end
 
+    def self.past_appointments
+        today = Date.today
+        self.all.find_all do |appointment|
+            today > appointment.time
+        end
+    end
+
 end
