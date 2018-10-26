@@ -1,3 +1,31 @@
+
+Project Requirements
+
+- Must render at least one index page (index resource - 'list of things') via JavaScript and an Active Model Serialization JSON  Backend.
+
+- Must render at least one show page (show resource - 'one specific thing') via JavaScript and an Active Model Serialization JSON Backend.
+
+- Your Rails application must dynamically render on the page at least one 'has-many' relationship through JSON using JavaScript.
+
+- Must use your Rails application and JavaScript to render a form for creating a resource that submits dynamically.
+
+- Must translate the JSON responses into JavaScript Model Objects using either ES6 class or constructor syntax. The Model Objects must have at least one method on the prototype. Formatters work really well for this.
+
+- Deployment on Heroku
+
+
+
+TODO
+
+- Create branch for Js work.
+- Setup backend to handle json requests(only on controller that require it.)
+    - Add activeModelSerializer to models.
+
+- Setup asset pipeline for Js add Js file.
+    - Pull in JQuery.  
+    - Require needed files
+
+
 User
     - has many Apartments through Appointments
 
@@ -45,17 +73,16 @@ Appointment schema
         - user/:id/appointments/:id/apartment/:id = show apartment
 
 
-    TODO
 
-    - Deployment on Heroku
+        *** If SASS is an issue.
 
-        ***ATTN: Luisa
+        Ruby Sass is deprecated and will be unmaintained as of 26 March 2019.
 
-        Quick Question. I'm not quite sure if I am creating the correct routes for my project.
+        * If you use Sass as a command-line tool, we recommend using Dart Sass, the new
+          primary implementation: https://sass-lang.com/install
 
-        I'm trying to keep them RESTful, but should I have the user.id in my url? e.g. new_user_apartment_path. Because I have the apartment nested under the user.
+        * If you use Sass as a plug-in for a Ruby web framework, we recommend using the
+          sassc gem: https://github.com/sass/sassc-ruby#readme
 
-        like this resources :users do
-            resources :apartments
-        end
-         I think I remember you saying that it's not a good idea to show the user's id in the url, for the reason that if hackers can find out your id then they can potentially get up to some mischief.            
+        * For more details, please refer to the Sass blog:
+          http://sass.logdown.com/posts/7081811

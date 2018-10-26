@@ -1,5 +1,5 @@
 <div class="all-past-appointments-page">
-    <% current_user.past_appointments.each do |appointment| %>
+    <% Appointment.past_appointments.each do |appointment| %>
 
         <div class="container past-appointment">
             <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>

@@ -6,7 +6,7 @@ class User < ApplicationRecord
     validates :name, :presence => true
     validates :email, :presence => true, :uniqueness => true
     validates :email, email: true
-    # validates_format_of :phone, with: /\A(\d{10}|\(?\d{3}\)?[-. ]\d{3}[-.]\d{4})\z/, message: "Must be format 760111222"
+    # validates_format_of :phone, with: /\A(\d{10}|\(?\d{3}\)?[-. ]\d{3}[-.]\d{4})\z/, message: "Must be format 760111222" I left this out because when a user is signed in through GitHub the model cannot validate the returned information from GitHub when the user's GitHub account does not have a phone number.
     validates :password, :presence => true
 
 
@@ -36,12 +36,6 @@ class User < ApplicationRecord
         end
     end
 
-    def past_appointments
-        today = Date.today
-        self.appointments.all.find_all do |appointment|
-            today > appointment.time && appointment.user.admin
-        end
-    end
 
     def order_by_date_acs
         self.appointments.sort_by do |appointment|
@@ -61,7 +55,7 @@ class User < ApplicationRecord
 
     def destroy_all_apartments_belonging_to_appointments
         self.appointments.each do |appointment|
-            appointment.apartment.destroy #deletes each apartment that the user created
+            appointment.apartment.destroy #deletes each apartment that the user created.
         end
     end
 end
