@@ -19,6 +19,7 @@ gem 'bcrypt'
 # gem 'mini_racer', platforms: :ruby
 
 gem 'email_validator'
+gem "active_model_serializers"
 
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'rails-ujs', '~> 0.1.0'
