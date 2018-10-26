@@ -4,8 +4,7 @@ class ApartmentsController < ApplicationController
     before_action :admin_access_required, only: [:create, :new, :edit, :update, :destroy]
 
    def index
-       @apartments = Apartment.all
-       binding.pry
+       @apartments = Apartment.all       
    end
 
    def new

@@ -6,6 +6,11 @@
 <%= link_to "Create New Listing", new_user_apartment_path(current_user), class: 'btn btn-primary' if current_user.admin %>
 <%= link_to "View Past Appointments",  past_appointments_path, class: 'btn btn-primary' if !Appointment.past_appointments.empty? %>
 
+<%= link_to "Show All Apartments", apartments_path, class: 'btn btn-primary js-get-all-apartments-btn' %>
+<!-- dynamically add apartments index -->
+<div class="all-apartments">
+</div>
+
     <% if !current_user.appointments_happening_soon.empty? %>
         <h1>Happening Soon</h1>
     <% end %>
