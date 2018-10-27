@@ -16,4 +16,6 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require apartments
+//= require appointments
+//= require users
 //= require_tree .
