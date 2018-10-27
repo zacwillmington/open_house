@@ -4,7 +4,13 @@ class ApartmentsController < ApplicationController
     before_action :admin_access_required, only: [:create, :new, :edit, :update, :destroy]
 
    def index
-       @apartments = Apartment.all       
+       @apartments = Apartment.all
+       respond_to do |format|
+          format.json {
+            render json: @apartments, status: 201
+          }
+          format.html
+       end
    end
 
    def new
