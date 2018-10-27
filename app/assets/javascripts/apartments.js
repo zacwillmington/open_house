@@ -13,6 +13,9 @@ function attachListeners() {
 function getApartments(e) {
     $.get(`${e.target.href}`).done(function(data) {
         debugger;
-        // get data and insert into users/show page
+        // ES6 create class for each apartment. Then
+        // addToUsersShow(data);
     });
 }
+
+function
