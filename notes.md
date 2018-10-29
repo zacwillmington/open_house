@@ -11,7 +11,24 @@ Project Requirements
 
 - Deployment on Heroku
 
-
+<script id="apartment-template" type="text/x-lodash-template">
+       <div class="apartment-index-page container">
+           <div class="apartment-content">
+               // <%= image_tag(apartment.image_url.to_s, size: '500x300') %>
+               <div class="apartment-info">
+                   <p><%= apartment.address %></p>
+                   // <p>Attending: <%= apartment.appointments.size - 1 %></p>
+                   //
+                   // <% if current_user.attending_appointment?(apartment) %>
+                   //     <%= render partial: 'attending_showing_msg', locals: {apartment: apartment} %>
+                   // <% else %>
+                   //     <p>Showing: <%= apartment.reformat_date_time %></p>
+                   // <% end %>
+                   // <%= link_to "View Apartment", user_apartment_path(current_user, apartment), class: "btn btn-primary" %>
+               </div>
+           </div>
+       </div>
+</script>
 
 TODO
 
@@ -22,7 +39,7 @@ TODO
         - apartments/ index controller handle json.
     - Remove resources apartments routes
 
-- Fix OAuth github 
+- Fix OAuth github
 
 
 

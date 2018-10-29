@@ -4,7 +4,7 @@ class Apartment {
     constructor(id, address, available_times, image, bedrooms, bathrooms, parking, price) {
         self.id = id;
         self.address = address;
-        self.available_times = available_times;
+        self.availableTimes = available_times;
         self.image = image;
         self.bedrooms = bedrooms;
         self.bathrooms = bathrooms;
@@ -12,10 +12,11 @@ class Apartment {
         self.price = price;
     }
 
-    //Add prototype functions e.g.
-    // Apartment.prototype.someFunc = () => {
-    //     console.log(`Hello everybody`);
-    // };
+    // Is this prototype method?
+    reformatDateTime() {
+        let dateStr = moment(this.availableTimes).format('MMMM Do YYYY, h:mm a');
+        return dateStr;
+    }
 }
 
 function attachListenersApartments() {
@@ -32,7 +33,7 @@ function createApartments(apartments) {
         apt = new Apartment;
         apt.id = apartment.id;
         apt.address = apartment.address;
-        apt.available_times = apartment.available_times;
+        apt.availableTimes = apartment.available_times;
         apt.image = apartment.image;
         apt.bedrooms = apartment.bedrooms;
         apt.bathrooms = apartment.bathrooms;
@@ -52,10 +53,11 @@ function getApartments(e) {
 }
 
 function addApartmentsToUsersShow(apartments) {
-    debugger
-    // let allApartmentsDiv = $('all-apartments');
-    // apartments.forEach( (apartment) => {
-    //     document.createElement('')
-    //
-    // });
+    let allApartmentsDiv = $('.all-apartments');
+    apartments.forEach( (apartment) => {
+        let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
+        let templateFn = _.template(apartmentTemplate);
+        let templateHTML = templateFn({ address: apartment.address, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime() });
+        allApartmentsDiv.append(templateHTML);
+    });
 }
