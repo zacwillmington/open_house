@@ -1,5 +1,7 @@
 {
   "name": "open_house",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "moment": "^2.22.2"
+  }
 }

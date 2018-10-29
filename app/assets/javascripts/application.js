@@ -13,6 +13,8 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
+//= require lodash
+//= require moment
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require apartments
