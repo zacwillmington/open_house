@@ -57,7 +57,7 @@ function addApartmentsToUsersShow(apartments) {
     apartments.forEach( (apartment) => {
         let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
         let templateFn = _.template(apartmentTemplate);
-        let templateHTML = templateFn({ address: apartment.address, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime() });
+        let templateHTML = templateFn({ imageUrl: apartment.image, address: apartment.address, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime() });
         allApartmentsDiv.append(templateHTML);
     });
 }

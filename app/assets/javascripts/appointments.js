@@ -1,3 +1,17 @@
+$( document ).ready( () => attachListenersAppointments());
+
+
+function attachListenersAppointments() {
+    $('.js-make-appointment').on('click', (e) => {
+        e.preventDefault();
+        showAppointmentForm(e);
+    });
+    $('.js-submit-appointment').on('click', (e) => {
+        e.preventDefault();
+        makeAppointment(e);
+    });
+}
+
 class Appointment {
     constructor(id, time, user_id, apartment_id, name) {
             self.id = id;
@@ -20,4 +34,15 @@ function createAppointments(appointments) {
         appointmentsArray.push(appointment);
     });
     return appointmentsArray;
+}
+
+function showAppointmentForm(e) {
+    debugger;
+    $('.js-make-appointment').addClass('hidden');
+    $('form.hidden').removeClass('hidden');
+
+}
+
+function makeAppointment(e) {
+    debugger;
 }
