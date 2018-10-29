@@ -22,6 +22,7 @@ TODO
         - apartments/ index controller handle json.
     - Remove resources apartments routes
 
+- Fix OAuth github 
 
 
 
