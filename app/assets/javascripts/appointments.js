@@ -6,9 +6,10 @@ function attachListenersAppointments() {
         e.preventDefault();
         showAppointmentForm(e);
     });
-    $('.js-submit-appointment').on('click', (e) => {
+    $('#async-form').on('click', (e) => {
         e.preventDefault();
-        makeAppointment(e);
+        let $inputs = $('#async-form :input');
+        makeAppointment($inputs);
     });
 }
 
@@ -37,12 +38,12 @@ function createAppointments(appointments) {
 }
 
 function showAppointmentForm(e) {
-    debugger;
     $('.js-make-appointment').addClass('hidden');
     $('form.hidden').removeClass('hidden');
 
 }
 
-function makeAppointment(e) {
+function makeAppointment(values) {
     debugger;
+    //send post resquset to API to create appointment then update view.
 }
