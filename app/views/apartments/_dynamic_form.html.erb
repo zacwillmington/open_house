@@ -1,4 +1,4 @@
-<%= form_tag '/appointments', class: 'custom-from hidden' do |f| %>
+<%= form_tag '/appointments', id: 'async-form',class: 'custom-from hidden' do -%>
     <%= text_field_tag 'name', 'Your Name..' %>
     <%= hidden_field_tag 'user_id', :value => current_user.id %>
     <%= hidden_field_tag 'apartment_id', :value => @apartment.id %>
