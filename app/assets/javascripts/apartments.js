@@ -30,6 +30,42 @@ function attachListenersApartments() {
         e.preventDefault();
          getApartments(e);
     });
+
+    $('.js-view-apartment').on('click', (e) => {
+        e.preventDefault();
+        getApartment(e.currentTarget.href);
+    });
+}
+
+function getApartment(url) {
+    $.get(`${url}`, (data) => {
+        let newApartment = createApartment(data);
+        addApartmentsToAppointmentsIndex(newApartment);
+    });
+}
+
+function createApartment(apartment) {
+    apt = new Apartment;
+    apt.id = apartment.id;
+    apt.address = apartment.address;
+    apt.availableTimes = apartment.available_times;
+    apt.image = apartment.image;
+    apt.bedrooms = apartment.bedrooms;
+    apt.bathrooms = apartment.bathrooms;
+    apt.parking = apartment.parking;
+    apt.price = apartment.price;
+    apt.appointments = createAppointments(apartment.appointments);
+    return apt;
+}
+
+function addApartmentsToAppointmentsIndex(apartment) {
+    let div = $(`.async-show-apartment[data-id="${apartment.id}"]`);
+
+    let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
+
+    let templateFn = _.template(apartmentTemplate);
+    let templateHTML = templateFn({ id: apartment.id, url: apartment.image.url ,address: apartment.address, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime(), link: `/apartments/${apartment.id}` });
+    div.append(templateHTML);
 }
 
 function createApartments(apartments) {
@@ -65,8 +101,7 @@ function addApartmentsToUsersShow(apartments) {
         let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
 
         let templateFn = _.template(apartmentTemplate);
-        debugger;
-        let templateHTML = templateFn({ id: apartment.id, url: apartment.image.url ,address: apartment.address, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime()});
+        let templateHTML = templateFn({ id: apartment.id, url: apartment.image.url ,address: apartment.address, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime(), link: `/apartments/${apartment.id}` });
         allApartmentsDiv.append(templateHTML);
     });
 }
