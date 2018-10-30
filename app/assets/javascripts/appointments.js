@@ -44,6 +44,12 @@ function showAppointmentForm(e) {
 }
 
 function makeAppointment(values) {
-    debugger;
-    //send post resquset to API to create appointment then update view.
+    appointment = new Appointment;
+    appointment.name  = values[2].value;
+    appointment.user_id  = values[3].value;
+    appointment.apartment_id = values[4].value;
+    appointment.time = values[5].value;
+    $.post(`/apartments/${appointment.apartment_id}/appointments`, { appointment }).done( (data) => {
+        debugger;
+    }); 
 }
