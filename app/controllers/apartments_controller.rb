@@ -30,6 +30,10 @@ class ApartmentsController < ApplicationController
 
    def show
        @apartment = Apartment.find_by(:id => params[:id])
+       respond_to do |format|
+           format.json { render json: @apartment, status: 201 }
+           format.html
+       end
    end
 
    def edit

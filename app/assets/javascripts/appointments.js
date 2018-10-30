@@ -6,7 +6,7 @@ function attachListenersAppointments() {
         e.preventDefault();
         showAppointmentForm(e);
     });
-    $('#async-form').on('click', (e) => {
+    $('#async-form').on('submit', (e) => {
         e.preventDefault();
         let $inputs = $('#async-form :input');
         makeAppointment($inputs);
@@ -50,6 +50,7 @@ function makeAppointment(values) {
     appointment.apartment_id = values[4].value;
     appointment.time = values[5].value;
     $.post(`/apartments/${appointment.apartment_id}/appointments`, { appointment }).done( (data) => {
-        debugger;
-    }); 
+        $('#async-form').addClass('hidden');
+        alert("Thank you for making an appointment.");
+    });
 }

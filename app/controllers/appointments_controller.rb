@@ -12,7 +12,6 @@ class AppointmentsController < ApplicationController
     end
 
     def create
-        binding.pry
         @appointment = Appointment.create(strong_params(params))
 
         respond_to do |format|

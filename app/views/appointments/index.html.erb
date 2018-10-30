@@ -1,6 +1,7 @@
 <h1>Your Appointments</h1>
     <div class="container appointments">
     <% current_user.order_by_date_acs.each do |appointment| %>
+        <div class="async-show-apartment" data-id="<%= appointment.apartment_id %>"></div>
         <% if !current_user.admin %>
             <div class="appointment">
                 <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
@@ -11,7 +12,7 @@
                 </div>
 
                 <div class="appointment-buttons-info">
-                    <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment), class: 'btn btn-primary'%>
+                    <%= link_to "Show Apartment", user_apartment_path(current_user, appointment.apartment), class: 'btn btn-primary js-view-apartment'%>
                     <%= form_tag apartment_appointment_path(appointment.apartment, appointment), method: :delete, data: { confirm: 'Are you sure?' } do %>
                         <%= submit_tag "Cancel", class: "btn btn-primary" %>
                     <% end %>
@@ -33,3 +34,17 @@
         <% end %>
     <% end %>
 </div>
+
+<script id="apartment-template" type="x-lodash-template">
+       <div class="apartment-index-page container">
+           <div data-id={{= id }} class="apartment-content">
+           <img src={{= url }} class="large-image" />
+               <div class="apartment-info">
+                   <p>Address: {{= address }}</p>
+                   <p>Attending: {{= attending }}</p>
+                   <p>Showing: {{= showing }}</p>
+                   <a href={{= link }} class="btn btn-primary">View Apartment</a>
+               </div>
+           </div>
+       </div>
+</script>
