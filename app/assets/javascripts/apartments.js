@@ -1,5 +1,11 @@
 $( document ).ready( () => attachListenersApartments());
 
+// Change Lodash template interpolation characters from <%- foo %> to mustache style {{= foo }}. Erb syntax interferes with lodash.
+_.templateSettings = {
+    interpolate: /\{\{\=(.+?)\}\}/g,
+    evaluate: /\{\{(.+?)\}\}/g
+};
+
 class Apartment {
     constructor(id, address, available_times, image, bedrooms, bathrooms, parking, price) {
         self.id = id;
@@ -55,9 +61,12 @@ function getApartments(e) {
 function addApartmentsToUsersShow(apartments) {
     let allApartmentsDiv = $('.all-apartments');
     apartments.forEach( (apartment) => {
+
         let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
+
         let templateFn = _.template(apartmentTemplate);
-        let templateHTML = templateFn({ imageUrl: apartment.image, address: apartment.address, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime() });
+        debugger;
+        let templateHTML = templateFn({ id: apartment.id, url: apartment.image.url ,address: apartment.address, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime()});
         allApartmentsDiv.append(templateHTML);
     });
 }

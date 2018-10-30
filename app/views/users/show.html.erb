@@ -7,7 +7,7 @@
 <%= link_to "View Past Appointments",  past_appointments_path, class: 'btn btn-primary' if !Appointment.past_appointments.empty? %>
 
 <%= link_to "Show All Apartments", apartments_path, class: 'btn btn-primary js-get-all-apartments-btn' %>
-<!-- dynamically add apartments index -->
+
 <div class="all-apartments">
 </div>
 
@@ -27,13 +27,14 @@
         <% end %>
     </div>
 
-    <script id="apartment-template" type="text/x-lodash-template">
+    <script id="apartment-template" type="x-lodash-template">
            <div class="apartment-index-page container">
-               <div class="apartment-content">
+               <div data-id={{= id}} class="apartment-content">
+               <img src={{= url}} class="large-image" />
                    <div class="apartment-info">
-                       <p>Address: <%%= address %></p>
-                       <p>Attending: <%%= attending %></p>
-                       <p>Showing: <%%= showing %></p>
+                       <p>Address: {{= address }}</p>
+                       <p>Attending: {{= attending }}</p>
+                       <p>Showing: {{= showing }}</p>
                    </div>
                </div>
            </div>
