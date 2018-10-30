@@ -12,9 +12,16 @@ class AppointmentsController < ApplicationController
     end
 
     def create
+        binding.pry
         @appointment = Appointment.create(strong_params(params))
 
-        redirect_to user_appointments_path(helpers.current_user, @appointment)
+        respond_to do |format|
+
+            format.json {
+              render json: @appointment, status: 201
+            }
+            format.html { redirect_to user_appointments_path(helpers.current_user, @appointment) }
+        end
     end
 
     def show
@@ -30,7 +37,7 @@ class AppointmentsController < ApplicationController
     private
 
     def strong_params(params)
-        params.require(:appointment).permit(:time, :name, :user_id, :apartment_id)
+        params.require(:appointment).permit(:name, :user_id, :apartment_id, :time )
     end
 
 end
