@@ -38,12 +38,10 @@ function attachListenersApartments() {
 }
 
 function getApartment(url) {
-    let newApartment;
     $.get(`${url}`, (data) => {
         newApartment = createApartment(data);
         addApartmentsToAppointmentsIndex(newApartment);
     });
-    return newApartment;
 }
 
 function createApartment(apartment) {
@@ -62,6 +60,7 @@ function createApartment(apartment) {
 
 function addApartmentsToAppointmentsIndex(apartment) {
     let div = $(`[data-id="${apartment.id}"]`);
+
     if (div.length === 1) {
         let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
 
@@ -99,13 +98,18 @@ function getApartments(e) {
 }
 
 function addApartmentsToUsersShow(apartments) {
-    let allApartmentsDiv = $('.all-apartments');
-    apartments.forEach( (apartment) => {
+    let h2Apartments = document.getElementById("apartments-title");
+    if (h2Apartments === null) {
+        let allApartmentsDiv = $('.all-apartments');
 
-        let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
+        apartments.forEach( (apartment) => {
 
-        let templateFn = _.template(apartmentTemplate);
-        let templateHTML = templateFn({ id: apartment.id, url: apartment.image.url ,address: apartment.address, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime(), link: `/apartments/${apartment.id}` });
-        allApartmentsDiv.append(templateHTML);
-    });
+            let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
+
+            let templateFn = _.template(apartmentTemplate);
+            let templateHTML = templateFn({ id: apartment.id, url: apartment.image.url ,address: apartment.address, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime(), link: `/apartments/${apartment.id}` });
+            allApartmentsDiv.append(templateHTML);
+        });
+            $(".all-apartments").prepend('<div id="apartments-title"><h2>Apartments</h2></div>');
+    }
 }
