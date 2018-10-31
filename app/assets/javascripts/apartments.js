@@ -38,10 +38,12 @@ function attachListenersApartments() {
 }
 
 function getApartment(url) {
+    let newApartment;
     $.get(`${url}`, (data) => {
-        let newApartment = createApartment(data);
+        newApartment = createApartment(data);
         addApartmentsToAppointmentsIndex(newApartment);
     });
+    return newApartment;
 }
 
 function createApartment(apartment) {

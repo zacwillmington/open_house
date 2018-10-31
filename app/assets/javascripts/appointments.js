@@ -11,10 +11,9 @@ function attachListenersAppointments() {
         let $inputs = $('#async-form :input');
         makeAppointment($inputs);
     });
-    $('.js-get-appointment-btn').on('click', (e) => {
+    $('.js-get-appointments-btn').on('click', (e) => {
         e.preventDefault();
         getUsersAppointments(e.currentTarget.href);
-        // createAppointments(appointments);
     });
 }
 
@@ -25,6 +24,10 @@ class Appointment {
             self.user_id = user_id;
             self.apartment_id = apartment_id;
             self.name = name;
+    }
+
+    getAppointmentsApartment(appointment) {
+        debugger;
     }
 }
 
@@ -37,6 +40,7 @@ function getUsersAppointments(url) {
 
 function createAppointments(appointments) {
     let appointmentsArray = [];
+    // Look into adding appointment.apartment method to model seeing as Rails sends back the apartment object too. Then you can mass assign data.
     appointments.forEach( (app) => {
         let appointment = new Appointment;
         appointment.id = app.id;
@@ -44,18 +48,43 @@ function createAppointments(appointments) {
         appointment.user_id = app.user_id;
         appointment.apartment_id = app.apartment_id;
         appointment.name = app.name;
-        appointment.user = new User(app.user);
+        // appointment.user = new User(app.user); Only time this user object is return is when the request is sent from appointments controller
         appointmentsArray.push(appointment);
     });
     return appointmentsArray;
 }
 
 function addAppointmentsToUserShow(appointments) {
-    debugger;
-    
+
+    let div = $('.appointments');
+
+    appointments.forEach( (appointment) => {
+        // let apartment;
+        //  $.get(`apartments/${appointment.apartment_id}`).done( (data) => {
+        //      debugger;
+        //     apartment = createApartment(data);
+        // });
+        debugger
+        let appointmentTemplate = document.getElementById('appointment-template').innerHTML;
+
+        debugger;
+        let templateFn = _.template(appointmentTemplate);
+        let templateHTML = templateFn({
+            id: appointment.id,
+            time: appointment.time,
+            userId: appointment.user_id,
+            apartmentId: appointment.apartment_id,
+            name: appointment.name,
+            image: apartment.image.thumb.url,
+            showing: apartment.reformatDateTime,
+            attending: apartment.appointments.length - 1
+        });
+        debugger;
+        div.append(templateHTML);
+    });
 }
 
-function showAppointmentForm(e) {
+function showAppointmentForm() {
     $('.js-make-appointment').fadeOut("slow", function() {
         $(this).addClass('hidden');
     });
