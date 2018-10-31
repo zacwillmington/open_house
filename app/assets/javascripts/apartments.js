@@ -59,13 +59,15 @@ function createApartment(apartment) {
 }
 
 function addApartmentsToAppointmentsIndex(apartment) {
-    let div = $(`.async-show-apartment[data-id="${apartment.id}"]`);
+    let div = $(`[data-id="${apartment.id}"]`);
+    if (div.length === 1) {
+        let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
 
-    let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
-
-    let templateFn = _.template(apartmentTemplate);
-    let templateHTML = templateFn({ id: apartment.id, url: apartment.image.url ,address: apartment.address, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime(), link: `/apartments/${apartment.id}` });
-    div.append(templateHTML);
+        let templateFn = _.template(apartmentTemplate);
+        let templateHTML = templateFn({ id: apartment.id, url: apartment.image.url ,address: apartment.address, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime(), link: `/apartments/${apartment.id}` });
+        div.append(templateHTML);
+        let viewApartmentBtn = $('.js-view-apartment');
+    }
 }
 
 function createApartments(apartments) {
