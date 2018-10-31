@@ -38,9 +38,12 @@ function createAppointments(appointments) {
 }
 
 function showAppointmentForm(e) {
-    $('.js-make-appointment').addClass('hidden');
-    $('form.hidden').removeClass('hidden');
-
+    $('.js-make-appointment').fadeOut("slow", function() {
+        $(this).addClass('hidden');
+    });
+    $("form.hidden").fadeIn("slow", function() {
+        $(this).removeClass('hidden');
+    });
 }
 
 function makeAppointment(values) {
@@ -51,6 +54,10 @@ function makeAppointment(values) {
     appointment.time = values[5].value;
     $.post(`/apartments/${appointment.apartment_id}/appointments`, { appointment }).done( (data) => {
         $('#async-form').addClass('hidden');
-        alert("Thank you for making an appointment.");
+
+        let alertDiv = document.createElement('div');
+        alertDiv.className = "alert alert-success";
+        alertDiv.innerText = "You RSVP'D to this apartment";
+        $('div.apartment-info').append(alertDiv);
     });
 }

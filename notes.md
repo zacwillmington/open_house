@@ -1,21 +1,21 @@
 
-Project Requirements
-
-- Must translate the JSON responses into JavaScript Model Objects using either ES6 class or constructor syntax. The Model Objects must have at least one method on the prototype. Formatters work really well for this.
-
-- Deployment on Heroku
-
 TODO
 
-- Must use your Rails application and JavaScript to render a form for creating a resource that submits dynamically.
-    - display confirmation msg in alert.
-
 - Must render at least one show page (show resource - 'one specific thing') via JavaScript and an Active Model Serialization JSON Backend.(Show apartment)
+    - hide apartment buttons
+    - check if apartment is already on page if so then don't send request to get apt info
 
 - Your Rails application must dynamically render on the page at least one 'has-many' relationship through JSON using JavaScript.(show appointments for each apartment on show page)
 
-- Fix OAuth github
+- Jquery no loading after redirect(ajax only works after refresh)
 
+- Must translate the JSON responses into JavaScript Model Objects using either ES6 class or constructor syntax. The Model Objects must have at least one method on the prototype. Formatters work really well for this.(appointment and users need prototype methods)
+
+- Fix OAuth github(delete learn.co test app)
+
+- re-design app
+
+- Deployment on Heroku
 
 
 
