@@ -6,13 +6,17 @@ TODO
 
 - Your Rails application must dynamically render on the page at least one 'has-many' relationship through JSON using JavaScript.(show appointments for each user users/show)
 
-- Jquery no loading after redirect(ajax only works after refresh)
+- Jquery not loading after redirect(Ajax only works after refresh)
 
 - Must translate the JSON responses into JavaScript Model Objects using either ES6 class or constructor syntax. The Model Objects must have at least one method on the prototype. Formatters work really well for this.(appointment and users need prototype methods)
 
 - Fix OAuth github(delete learn.co test app)
 
+- Look into moving all lodash templates to one file and requiring file of some sort of partial 
+
 - re-design app
+
+- Check functionality make sure everything is working
 
 - Deployment on Heroku
 

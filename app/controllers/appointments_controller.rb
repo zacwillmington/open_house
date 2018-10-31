@@ -21,7 +21,6 @@ class AppointmentsController < ApplicationController
         @appointment = Appointment.create(strong_params(params))
 
         respond_to do |format|
-
             format.json {
               render json: @appointment, status: 201
             }
