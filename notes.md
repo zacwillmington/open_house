@@ -3,9 +3,8 @@ TODO
 
 - Must render at least one show page (show resource - 'one specific thing') via JavaScript and an Active Model Serialization JSON Backend.(Show apartment)
     - hide apartment buttons
-    - check if apartment is already on page if so then don't send request to get apt info
 
-- Your Rails application must dynamically render on the page at least one 'has-many' relationship through JSON using JavaScript.(show appointments for each apartment on show page)
+- Your Rails application must dynamically render on the page at least one 'has-many' relationship through JSON using JavaScript.(show appointments for each user users/show)
 
 - Jquery no loading after redirect(ajax only works after refresh)
 

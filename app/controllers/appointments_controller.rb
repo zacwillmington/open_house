@@ -4,6 +4,12 @@ class AppointmentsController < ApplicationController
 
     def index
         @appointments = helpers.current_user.appointments
+        respond_to do |format|
+            format.json {
+              render json: @appointments, status: 201
+            }
+            format.html
+        end
     end
 
     def new
