@@ -1,6 +1,12 @@
 $( document ).ready( () => attachListenersAppointments());
 
 
+// Change Lodash template interpolation characters from <%- foo %> to mustache style {{= foo }}. Erb syntax interferes with lodash.
+_.templateSettings = {
+    interpolate: /\{\{\=(.+?)\}\}/g,
+    evaluate: /\{\{(.+?)\}\}/g
+};
+
 function attachListenersAppointments() {
     $('.js-make-appointment').on('click', (e) => {
         e.preventDefault();
@@ -57,31 +63,31 @@ function createAppointments(appointments) {
 function addAppointmentsToUserShow(appointments) {
 
     let div = $('.appointments');
-
-    appointments.forEach( (appointment) => {
-        // let apartment;
-        //  $.get(`apartments/${appointment.apartment_id}`).done( (data) => {
-        //      debugger;
-        //     apartment = createApartment(data);
-        // });
-        debugger
-        let appointmentTemplate = document.getElementById('appointment-template').innerHTML;
-
-        debugger;
-        let templateFn = _.template(appointmentTemplate);
-        let templateHTML = templateFn({
-            id: appointment.id,
-            time: appointment.time,
-            userId: appointment.user_id,
-            apartmentId: appointment.apartment_id,
-            name: appointment.name,
-            image: apartment.image.thumb.url,
-            showing: apartment.reformatDateTime,
-            attending: apartment.appointments.length - 1
+    let h2Appointments = document.getElementById("appointments-title");
+    if (h2Appointments === null) {
+        appointments.forEach( (appointment) => {
+            // let apartment;
+            //  $.get(`apartments/${appointment.apartment_id}`).done( (data) => {
+            //      debugger;
+            //     apartment = createApartment(data);
+            // });
+            let appointmentTemplate = document.getElementById('appointment-template').innerHTML;
+            let templateFn = _.template(appointmentTemplate);
+            let templateHTML = templateFn({
+                id: appointment.id,
+                time: appointment.time,
+                userId: appointment.user_id,
+                apartmentId: appointment.apartment_id,
+                name: appointment.name,
+                apartmentUrl: `/apartments/${appointment.apartment_id}`
+            });
+            // image: apartment.image.thumb.url,
+            // showing: apartment.reformatDateTime,
+            // attending: apartment.appointments.length - 1
+            div.append(templateHTML);
         });
-        debugger;
-        div.append(templateHTML);
-    });
+        $(".appointments").prepend('<div id="appointments-title"><h2>Appointments</h2></div>');
+    }
 }
 
 function showAppointmentForm() {

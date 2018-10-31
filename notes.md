@@ -5,6 +5,7 @@ TODO
     - hide apartment buttons
 
 - Your Rails application must dynamically render on the page at least one 'has-many' relationship through JSON using JavaScript.(show appointments for each user users/show)
+    - Search page for <h2>Appointments</h2> div an if it is on page then do not update page.
 
 - Jquery not loading after redirect(Ajax only works after refresh)
 
@@ -12,7 +13,7 @@ TODO
 
 - Fix OAuth github(delete learn.co test app)
 
-- Look into moving all lodash templates to one file and requiring file of some sort of partial 
+- Look into moving all lodash templates to one file and requiring file of some sort of partial
 
 - re-design app
 
