@@ -13,9 +13,8 @@ function attachListenersAppointments() {
     });
     $('.js-get-appointment-btn').on('click', (e) => {
         e.preventDefault();
-        let appointments = getUsersAppointments(e.currentTarget.href);
-        debugger;
-        createAppointments(appointments);
+        getUsersAppointments(e.currentTarget.href);
+        // createAppointments(appointments);
     });
 }
 
@@ -30,8 +29,9 @@ class Appointment {
 }
 
 function getUsersAppointments(url) {
-    $.get(`${url}`).done( (data) => {
-        return createAppointments(appointments);
+    $.get(`${url}`, (data) => {
+        let appointments = createAppointments(data);
+        addAppointmentsToUserShow(appointments);
     });
 }
 
@@ -44,9 +44,15 @@ function createAppointments(appointments) {
         appointment.user_id = app.user_id;
         appointment.apartment_id = app.apartment_id;
         appointment.name = app.name;
+        appointment.user = new User(app.user);
         appointmentsArray.push(appointment);
     });
     return appointmentsArray;
+}
+
+function addAppointmentsToUserShow(appointments) {
+    debugger;
+    
 }
 
 function showAppointmentForm(e) {
