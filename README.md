@@ -24,6 +24,7 @@ Add additional notes about how to deploy this on a live system
 
 * [Rails](https://rubyonrails.org/) - Ruby framework
 * [bootstrap](https://getbootstrap.com/) - CSS Framework
+* [JQuery](https://jquery.com/) - JavaScript Framework
 
 ## Contributing
 
@@ -31,7 +32,7 @@ Please read CONTRIBUTING.md for details on our code of conduct, and the process 
 
 ## Authors
 
-* **Zac Willmington** - *Initial work* - [Zac_Willmington](https://github.com/zacwillmington)
+* **Zac Willmington** - *All work* - [Zac_Willmington](https://github.com/zacwillmington)
 
 ## License
 

@@ -11,6 +11,12 @@ function attachListenersAppointments() {
         let $inputs = $('#async-form :input');
         makeAppointment($inputs);
     });
+    $('.js-get-appointment-btn').on('click', (e) => {
+        e.preventDefault();
+        let appointments = getUsersAppointments(e.currentTarget.href);
+        debugger;
+        createAppointments(appointments);
+    });
 }
 
 class Appointment {
@@ -23,10 +29,16 @@ class Appointment {
     }
 }
 
+function getUsersAppointments(url) {
+    $.get(`${url}`).done( (data) => {
+        return createAppointments(appointments);
+    });
+}
+
 function createAppointments(appointments) {
     let appointmentsArray = [];
     appointments.forEach( (app) => {
-        appointment = new Appointment;
+        let appointment = new Appointment;
         appointment.id = app.id;
         appointment.time = app.time;
         appointment.user_id = app.user_id;
@@ -41,13 +53,13 @@ function showAppointmentForm(e) {
     $('.js-make-appointment').fadeOut("slow", function() {
         $(this).addClass('hidden');
     });
-    $("form.hidden").fadeIn("slow", function() {
+    $('form.hidden').fadeIn("slow", function() {
         $(this).removeClass('hidden');
     });
 }
 
 function makeAppointment(values) {
-    appointment = new Appointment;
+    let appointment = new Appointment;
     appointment.name  = values[2].value;
     appointment.user_id  = values[3].value;
     appointment.apartment_id = values[4].value;

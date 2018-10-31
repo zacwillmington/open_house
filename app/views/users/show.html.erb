@@ -2,11 +2,14 @@
 
 <h1>Welcome, <%= current_user.name %></h1>
 
-<p class="date-today">Today's Date: <%= Date.today.strftime("%m/%d/%Y") %></p>
+<p class="date-today">Today's Date: <%= Date.today.strftime("%m/%d/%Y") %></p><br>
+
 <%= link_to "Create New Listing", new_user_apartment_path(current_user), class: 'btn btn-primary' if current_user.admin %>
 <%= link_to "View Past Appointments",  past_appointments_path, class: 'btn btn-primary' if !Appointment.past_appointments.empty? %>
 
 <%= link_to "Show All Apartments", apartments_path, class: 'btn btn-primary js-get-all-apartments-btn' %>
+
+<%= link_to "Show Your Appointments", user_appointments_path(current_user), class: 'btn btn-primary js-get-appointment-btn' %>
 
 <div class="all-apartments">
 </div>
