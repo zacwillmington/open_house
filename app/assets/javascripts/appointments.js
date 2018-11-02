@@ -1,11 +1,3 @@
-$( document ).ready( () => attachListenersAppointments());
-
-
-// Change Lodash template interpolation characters from <%- foo %> to mustache style {{= foo }}. Erb syntax interferes with lodash.
-_.templateSettings = {
-    interpolate: /\{\{\=(.+?)\}\}/g,
-    evaluate: /\{\{(.+?)\}\}/g
-};
 
 function attachListenersAppointments() {
     $('.js-make-appointment').on('click', (e) => {
@@ -31,14 +23,14 @@ class Appointment {
             self.apartment_id = apartment_id;
             self.name = name;
     }
-
-    reformatDateTime() {
-        let dateStr = moment(this.time).format('MMMM Do YYYY, h:mm a');
-        return dateStr;
-    }
-
-
 }
+
+ Appointment.prototype.reformatDateTime = function () {
+    let dateStr = moment(this.time).format('MMMM Do YYYY, h:mm a');
+    return dateStr;
+ }
+
+
 
 function getUsersAppointments(url) {
     $.get(`${url}`, (data) => {
@@ -51,19 +43,16 @@ function getUsersAppointments(url) {
 
 function createAppointments(appointments) {
     let appointmentsArray = [];
-    // Look into adding appointment.apartment method to model seeing as Rails sends back the apartment object too. Then you can mass assign data.
     appointments.forEach( (app) => {
         let appointment = new Appointment;
         if (app.apartment){
-            appointment.apartment = app.apartment;
+            appointment.apartment = createApartment(app.apartment);
         }
         appointment.id = app.id;
         appointment.time = app.time;
         appointment.user_id = app.user_id;
         appointment.apartment_id = app.apartment_id;
         appointment.name = app.name;
-        // appointment.user = new User(app.user); Only time this user object is return is when the request is sent from appointments controller
-
         appointmentsArray.push(appointment);
     });
     return appointmentsArray;

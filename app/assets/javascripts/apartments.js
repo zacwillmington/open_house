@@ -1,4 +1,10 @@
-$( document ).ready( () => attachListenersApartments());
+$(document).on("turbolinks:load", () => {
+    const profileUrl = "http://0.0.0.0:3000/users/33";
+    if (window.location.href === profileUrl){
+        attachListenersApartments();
+        attachListenersAppointments();
+    }
+});
 
 // Change Lodash template interpolation characters from <%- foo %> to mustache style {{= foo }}. Erb syntax interferes with lodash.
 _.templateSettings = {
@@ -17,21 +23,21 @@ class Apartment {
         self.parking = parking;
         self.price = price;
     }
+}
 
-    // Is this prototype method?
-    reformatDateTime() {
-        let dateStr = moment(this.availableTimes).format('MMMM Do YYYY, h:mm a');
-        return dateStr;
-    }
+Apartment.prototype.reformatDateTime = function () {
+   let dateStr = moment(this.time).format('MMMM Do YYYY, h:mm a');
+   return dateStr;
 }
 
 function attachListenersApartments() {
     $('.js-get-all-apartments-btn').on('click', (e) => {
         e.preventDefault();
-         getApartments(e);
+        getApartments(e);
     });
 
     $('.js-view-apartment').on('click', (e) => {
+        debugger;
         e.preventDefault();
         getApartment(e.currentTarget.href);
     });
@@ -54,7 +60,9 @@ function createApartment(apartment) {
     apt.bathrooms = apartment.bathrooms;
     apt.parking = apartment.parking;
     apt.price = apartment.price;
-    apt.appointments = createAppointments(apartment.appointments);
+    if (apt.appointments){
+        apt.appointments = createAppointments(apartment.appointments);
+    }
     return apt;
 }
 

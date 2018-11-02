@@ -11,7 +11,7 @@
 }
 
 .appointment-info {
-    margin-left: 20px;
+    // margin-left: 20px;
 }
 
 .appointment-buttons-info {
@@ -23,7 +23,16 @@
     height: 100px;
 }
 
+form#async-form input{
+    width: 200px;
+    margin-left: 10px;
+}
+
 // past-appointments page
+
+.alert-danger {
+    max-width: 350px;
+}
 
 .past-appointment {
     display: flex;

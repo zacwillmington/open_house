@@ -5,11 +5,7 @@
 <p class="date-today">Today's Date: <%= Date.today.strftime("%m/%d/%Y") %></p><br>
 
 <%= link_to "Create New Listing", new_user_apartment_path(current_user), class: 'btn btn-primary' if current_user.admin %>
-<%= link_to "View Past Appointments",  past_appointments_path, class: 'btn btn-primary' if !Appointment.past_appointments.empty? %>
 
-<%= link_to "Show All Apartments", apartments_path, class: 'btn btn-primary js-get-all-apartments-btn' %>
-
-<%= link_to "Show Your Appointments", user_appointments_path(current_user), class: 'btn btn-primary js-get-appointments-btn' %>
 <div id="appointments-title-container"></div>
 <div class="appointments"></div>
 <div class="all-apartments">
@@ -31,6 +27,7 @@
         <% end %>
     </div>
 
+ <!-- Look into moving all lodash templates to one file and requiring file of some sort of partial -->
     <script id="appointment-template" type="x-lodash-template">
         <div class="appointment">
             <img src={{= imageThumb }}
