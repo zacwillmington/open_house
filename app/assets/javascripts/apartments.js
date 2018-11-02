@@ -38,8 +38,8 @@ function attachListenersApartments() {
 }
 
 function getApartment(url) {
-    $.get(`${url}`, (data) => {
-        newApartment = createApartment(data);
+    $.get(`${url}`).done( (data) => {
+        let newApartment = createApartment(data);
         addApartmentsToAppointmentsIndex(newApartment);
     });
 }
@@ -63,9 +63,8 @@ function addApartmentsToAppointmentsIndex(apartment) {
 
     if (div.length === 1) {
         let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
-
         let templateFn = _.template(apartmentTemplate);
-        let templateHTML = templateFn({ id: apartment.id, url: apartment.image.url ,address: apartment.address, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime(), link: `/apartments/${apartment.id}` });
+        let templateHTML = templateFn({ id: apartment.id, url: apartment.image.url ,address: apartment.address, bedrooms: apartment.bedrooms, bathrooms: apartment.bathrooms, parking: apartment.parking, price: apartment.price, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime(), link: `/apartments/${apartment.id}` });
         div.append(templateHTML);
         let viewApartmentBtn = $('.js-view-apartment');
     }

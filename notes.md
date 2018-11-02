@@ -1,15 +1,17 @@
 
-TODO
+TASKS   
 
 - Must render at least one show page (show resource - 'one specific thing') via JavaScript and an Active Model Serialization JSON Backend.(Show apartment)
-    - hide apartment buttons
+    - (renders apartment show page asynchronously on the appointments show page)
 
 - Your Rails application must dynamically render on the page at least one 'has-many' relationship through JSON using JavaScript.(show appointments for each user users/show)
-    - Search page for <h2>Appointments</h2> div an if it is on page then do not update page.
+    - Add thumb nail for each appointment and address
+    - (on user's show page renders appointments, a user has many appointments)
 
 - Jquery not loading after redirect(Ajax only works after refresh)
 
 - Must translate the JSON responses into JavaScript Model Objects using either ES6 class or constructor syntax. The Model Objects must have at least one method on the prototype. Formatters work really well for this.(appointment and users need prototype methods)
+    - Used the ES6 class syntax to create my objects.
 
 - Fix OAuth github(delete learn.co test app)
 
@@ -22,6 +24,9 @@ TODO
 - Deployment on Heroku
 
 
+----------------------------------------------------------------
+
+App information
 
 User
     - has many Apartments through Appointments

@@ -54,12 +54,20 @@ a {
   margin-bottom: 20px;
 }
 
+.alert {
+    margin: 0px 10px 0px 10px;
+}
 .theme-showcase > p > .btn {
   margin: 5px 0;
 }
 
 .center {
   text-align: center;
+}
+
+
+p {
+  margin: 10px 20px 10px 20px;
 }
 
 .pic,
@@ -88,7 +96,7 @@ a {
 }
 
 .btn, .btn-primary {
-    margin-bottom: 5px;
+    margin: 10px 10px 10px 10px;
 }
 
 .delete-btn {
@@ -109,7 +117,7 @@ a {
 .custom-form input[type=submit] {
     margin-top: 20px;
     font-size: 1.2em;
-    width: 100%;
+    width: 95%;
 
 }
 
