@@ -32,16 +32,21 @@ class Appointment {
             self.name = name;
     }
 
-    getAppointmentsApartment(appointment) {
-        debugger;
+    reformatDateTime() {
+        let dateStr = moment(this.time).format('MMMM Do YYYY, h:mm a');
+        return dateStr;
     }
+
+
 }
 
 function getUsersAppointments(url) {
     $.get(`${url}`, (data) => {
         let appointments = createAppointments(data);
         addAppointmentsToUserShow(appointments);
+        return appointments;
     });
+
 }
 
 function createAppointments(appointments) {
@@ -49,44 +54,39 @@ function createAppointments(appointments) {
     // Look into adding appointment.apartment method to model seeing as Rails sends back the apartment object too. Then you can mass assign data.
     appointments.forEach( (app) => {
         let appointment = new Appointment;
+        if (app.apartment){
+            appointment.apartment = app.apartment;
+        }
         appointment.id = app.id;
         appointment.time = app.time;
         appointment.user_id = app.user_id;
         appointment.apartment_id = app.apartment_id;
         appointment.name = app.name;
         // appointment.user = new User(app.user); Only time this user object is return is when the request is sent from appointments controller
+
         appointmentsArray.push(appointment);
     });
     return appointmentsArray;
 }
 
 function addAppointmentsToUserShow(appointments) {
-
     let div = $('.appointments');
     let h2Appointments = document.getElementById("appointments-title");
     if (h2Appointments === null) {
         appointments.forEach( (appointment) => {
-            // let apartment;
-            //  $.get(`apartments/${appointment.apartment_id}`).done( (data) => {
-            //      debugger;
-            //     apartment = createApartment(data);
-            // });
+            let url = `/apartments/${appointment.apartment_id}`;
             let appointmentTemplate = document.getElementById('appointment-template').innerHTML;
             let templateFn = _.template(appointmentTemplate);
             let templateHTML = templateFn({
                 id: appointment.id,
-                time: appointment.time,
-                userId: appointment.user_id,
+                time: appointment.reformatDateTime(),
                 apartmentId: appointment.apartment_id,
-                name: appointment.name,
-                apartmentUrl: `/apartments/${appointment.apartment_id}`
+                apartmentUrl: `/apartments/${appointment.apartment_id}`,
+                imageThumb: appointment.apartment.image.thumb.url
             });
-            // image: apartment.image.thumb.url,
-            // showing: apartment.reformatDateTime,
-            // attending: apartment.appointments.length - 1
             div.append(templateHTML);
         });
-        $(".appointments").prepend('<div id="appointments-title"><h2>Appointments</h2></div>');
+        $("#appointments-title-container").prepend('<div id="appointments-title"><h2>Appointments</h2></div>');
     }
 }
 

@@ -10,6 +10,7 @@
 <%= link_to "Show All Apartments", apartments_path, class: 'btn btn-primary js-get-all-apartments-btn' %>
 
 <%= link_to "Show Your Appointments", user_appointments_path(current_user), class: 'btn btn-primary js-get-appointments-btn' %>
+<div id="appointments-title-container"></div>
 <div class="appointments"></div>
 <div class="all-apartments">
 </div>
@@ -32,18 +33,13 @@
 
     <script id="appointment-template" type="x-lodash-template">
         <div class="appointment">
-            <%# image_tag(appointment.apartment.image_url(:thumb).to_s) %>
-
+            <img src={{= imageThumb }}
             <div class="appointment-info">
-                <p>Showing {{= time }}</p>
-            </div>
-
-            <div class="appointment-buttons-info">
-                // <%#= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment), class: "btn btn-primary"%>
-                <a class="btn btn-primary" href={{= apartmentUrl }}>View Apartment</a>
+                <p>Showing: {{= time }}</p>
             </div>
         </div>
     </script>
+
 
     <script id="apartment-template" type="x-lodash-template">
            <div class="apartment-index-page container">
