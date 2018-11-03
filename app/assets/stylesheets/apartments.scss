@@ -25,6 +25,16 @@ img {
     text-align: center;
 }
 
+.apartment-content {
+    padding: 50px 50px 50px 50px;
+    margin-top: 25px;
+}
+
+.apartment-content:hover {
+    box-shadow: 5px 5px 10px 5px grey;
+    transition: box-shadow 2s ease;
+}
+
 .apartment-contact-info p {
     display: inline;
     padding: 0px 20px 0px 20px;
@@ -78,10 +88,6 @@ input::placeholder{
     padding: 40px 25px 40px 25px;
     margin: 25px auto;
     border-radius: 5px;
-    border-top: 3px solid white;
-    border-bottom: 3px solid white;
-    transition: background-color 2s ease;
-    transition: border-color 1s ease;
 
 }
 
