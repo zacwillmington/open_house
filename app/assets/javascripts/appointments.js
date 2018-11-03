@@ -1,12 +1,17 @@
 
+_.templateSettings = {
+    interpolate: /\{\{\=(.+?)\}\}/g,
+    evaluate: /\{\{(.+?)\}\}/g
+};
+
 function attachListenersAppointments() {
-    const profileUrl = "http://0.0.0.0:3000/users/33";
-    if (window.location.href === profileUrl){
+    // const profileUrl = "http://0.0.0.0:3000/users/33";
+    // if (window.location.href === profileUrl){
         $('.js-get-appointments-btn').on('click', (e) => {
             e.preventDefault();
             getUsersAppointments(e.currentTarget.href);
         });
-    }
+    // }
 
     $('.js-make-appointment').on('click', (e) => {
         e.preventDefault();
