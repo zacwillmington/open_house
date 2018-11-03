@@ -1,7 +1,7 @@
 <%= form_tag '/appointments', id: 'async-form',class: 'custom-from hidden' do -%>
     <%= text_field_tag 'name', 'Your Name..' %>
     <%= hidden_field_tag 'user_id', current_user.id %>
-    <%= hidden_field_tag 'apartment_id', @apartment.id %>
-    <%= hidden_field_tag 'time', @apartment.available_times %>
+    <%= hidden_field_tag 'apartment_id', apartment.id %>
+    <%= hidden_field_tag 'time', apartment.available_times %>
     <%= submit_tag 'Submit Appointment',class: "btn btn-primary js-submit-appointment"  %>
 <% end %>

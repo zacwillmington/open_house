@@ -32,7 +32,6 @@
                 <li><%= link_to "Past Appointments",  past_appointments_path if !Appointment.past_appointments.empty? %></li>
                 <li><%= link_to "Account", edit_user_path(current_user) %></li>
                 <li><%= link_to "Logout", '/logout' %></li>
-
             <% else %>
                 <li><a href="/signup">Sign Up</a></li>
                 <li><a href="/signin">Sign In</a></li>

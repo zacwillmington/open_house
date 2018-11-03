@@ -20,4 +20,4 @@
 //= require apartments
 //= require appointments
 //= require users
-//= require_tree .
+//= require_tree ./lodashTemplates

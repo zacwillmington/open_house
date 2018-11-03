@@ -10,6 +10,8 @@ TASKS
 - Must translate the JSON responses into JavaScript Model Objects using either ES6 class or constructor syntax. The Model Objects must have at least one method on the prototype. Formatters work really well for this.(appointment and users need prototype methods)
     - User model needs a proto function
 
+- add make appointment button to users show page apartments list 
+
 - re-design app
 
 - Look into moving all lodash templates to one file and requiring file of some sort of partial
