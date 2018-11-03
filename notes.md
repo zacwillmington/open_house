@@ -15,7 +15,7 @@ TASKS
 
 - put address above img of apartment
 
--  let vs const
+- let vs const
 
 - add make appointment button to users show page apartments list
 

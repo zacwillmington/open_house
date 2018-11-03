@@ -5,8 +5,8 @@
     </div>
 <% end %>
 
-<div class="apartment container-fluid">
-<!--  -->
+<div data-id="<%= @apartment.id %>" class="apartment container-fluid" id="apartment">
+<!-- Replace -->
     <%= image_tag(@apartment.image_url.to_s, size: '500x300') %>
     <div class="apartment-info">
         <p><%= @apartment.address %></p>
@@ -38,3 +38,20 @@
     <p>Email: <%= @apartment.leasing_agent_contact.email %></p>
     <p>Phone: <%= @apartment.leasing_agent_contact.phone %></p>
 </div>
+
+
+<script id="apartment-template-apartments-show" type="x-lodash-template">
+           <div data-id={{= id }} class="apartment-content">
+           <img src={{= url }} class="large-image" />
+               <div class="apartment-info">
+                   <p>Address: {{= address }}</p>
+                   <p>Bedrooms: {{= bedrooms }}</p>
+                   <p>Bathrooms: {{= bathrooms }}</p>
+                   <p>Parking: {{= parking }}</p>
+                   <p>Price: ${{= price }}</p>
+                   <p>Attending: {{= attending }}</p>
+                   <p>Showing: {{= showing }}</p>
+                   <a href={{= link }} class="btn btn-primary">View Apartment</a>
+               </div>
+           </div>
+</script>
