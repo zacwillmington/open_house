@@ -1,10 +1,12 @@
 <% if current_user.attending_appointment?(@apartment) %>
+
     <div class="alert alert-success">
         <strong>You RSVP'D to this apartment</strong>
     </div>
 <% end %>
 
 <div class="apartment container-fluid">
+<!--  -->
     <%= image_tag(@apartment.image_url.to_s, size: '500x300') %>
     <div class="apartment-info">
         <p><%= @apartment.address %></p>
@@ -16,7 +18,8 @@
 
         <% if !current_user.admin && !current_user.attending_appointment?(@apartment) %>
             <%= link_to "Make appointment", new_apartment_appointment_path(@apartment), class: "btn btn-primary js-make-appointment" %>
-            <%= render partial: 'dynamic_form', locals: { apartment: @apartment } %>
+            <%= render partial: 'async_form', locals: { apartment: @apartment } %>
+<!--  -->
         <% elsif current_user.admin %>
             <p>Attending: <%= @apartment.appointments.size - 1 %></p>
             <%= link_to "Edit apartment", edit_user_apartment_path(current_user, @apartment), class: "btn btn-primary" %>
@@ -26,6 +29,10 @@
         <% end %>
     </div>
 </div>
+<%= link_to "<", "/apartments/#{@apartment.id - 1}", class: "btn btn-primary js-previous-apartment", id: "js-previous-apartment" if Apartment.all.first.id != @apartment.id %>
+
+<%= link_to ">", "/apartments/#{@apartment.id + 1}", class: "btn btn-primary", id: "js-next-apartment" if Apartment.all.last.id != @apartment.id %>
+
 <div class="apartment-contact-info">
     <p>Contact: <%= @apartment.leasing_agent_contact.name %></p>
     <p>Email: <%= @apartment.leasing_agent_contact.email %></p>

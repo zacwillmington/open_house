@@ -11,11 +11,11 @@
 <div class="all-apartments">
 </div>
 
-    <% if !current_user.appointments_happening_soon.empty? %>
-        <h1>Happening Soon</h1>
-    <% end %>
-    <div class="all-appointments-profile-page">
-        <% current_user.appointments_happening_soon.each do |appointment| %>
+<% if !current_user.appointments_happening_soon.empty? %>
+    <h1>Happening Soon</h1>
+<% end %>
+<div class="all-appointments-profile-page">
+    <% current_user.appointments_happening_soon.each do |appointment| %>
         <div class="appointment">
             <%= image_tag(appointment.apartment.image_url(:thumb).to_s) %>
             <div class="appointment-info">
@@ -24,30 +24,33 @@
                 <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment), class: "btn btn-primary" %>
             </div>
         </div>
-        <% end %>
-    </div>
+    <% end %>
+</div>
 
  <!-- Look into moving all lodash templates to one file and requiring file of some sort of partial -->
-    <script id="appointment-template" type="x-lodash-template">
-        <div class="appointment">
-            <img src={{= imageThumb }}
-            <div class="appointment-info">
-                <p>Showing: {{= time }}</p>
-            </div>
+<script id="appointment-template" type="x-lodash-template">
+    <div class="appointment">
+        <img src={{= imageThumb }}
+        <div class="appointment-info">
+            <p>Showing: {{= time }}</p>
         </div>
-    </script>
+    </div>
+</script>
 
-
-    <script id="apartment-template" type="x-lodash-template">
-           <div class="apartment-index-page container">
-               <div data-id={{= id }} class="apartment-content">
-               <img src={{= url }} class="large-image" />
-                   <div class="apartment-info">
-                       <p>Address: {{= address }}</p>
-                       <p>Attending: {{= attending }}</p>
-                       <p>Showing: {{= showing }}</p>
-                       <a href={{= link }} class="btn btn-primary">View Apartment</a>
-                   </div>
+<script id="apartment-template" type="x-lodash-template">
+       <div class="apartment-index-page container">
+           <div data-id={{= id }} class="apartment-content">
+           <img src={{= url }} class="large-image" />
+               <div class="apartment-info">
+                   <p>Address: {{= address }}</p>
+                   <p>Bedrooms: {{= bedrooms }}</p>
+                   <p>Bathrooms: {{= bathrooms }}</p>
+                   <p>Parking: {{= parking }}</p>
+                   <p>Price: ${{= price }}</p>
+                   <p>Attending: {{= attending }}</p>
+                   <p>Showing: {{= showing }}</p>
+                   <a href={{= link }} class="btn btn-primary">View Apartment</a>
                </div>
            </div>
-    </script>
+       </div>
+</script>

@@ -10,9 +10,10 @@ img {
 
 .apartment {
     display: flex;
-    padding: 10px 25px 40px 25px;
-    border-bottom: 1px solid black;
+    padding: 40px 25px 40px 25px;
     max-width: 800px;
+    margin-top: 25px;
+    box-shadow: 5px 5px 10px 5px grey;
 }
 
 .apartment-info {
@@ -20,7 +21,7 @@ img {
 }
 
 .apartment-contact-info {
-    margin: 25px auto;
+    margin: 40px auto;
     text-align: center;
 }
 
@@ -31,6 +32,24 @@ img {
 
 div.apartment-contact-info p:nth-child(1),  .apartment-contact-info p:nth-child(2) {
     border-right: 1px solid grey;
+}
+
+#js-next-apartment {
+    // margin-right: 25%;
+    float: right;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 2em;
+}
+
+#js-previous-apartment {
+    // margin-left: 25%;
+    float: left;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 2em;
 }
 
 a.make-appointment-btn {

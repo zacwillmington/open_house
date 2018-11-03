@@ -1,9 +1,6 @@
 $(document).on("turbolinks:load", () => {
-    const profileUrl = "http://0.0.0.0:3000/users/33";
-    if (window.location.href === profileUrl){
-        attachListenersApartments();
-        attachListenersAppointments();
-    }
+    attachListenersApartments();
+    attachListenersAppointments();
 });
 
 // Change Lodash template interpolation characters from <%- foo %> to mustache style {{= foo }}. Erb syntax interferes with lodash.
@@ -32,12 +29,11 @@ Apartment.prototype.reformatDateTime = function () {
 
 function attachListenersApartments() {
     $('.js-get-all-apartments-btn').on('click', (e) => {
-        e.preventDefault();
-        getApartments(e);
+            e.preventDefault();
+            getApartments(e);
     });
 
     $('.js-view-apartment').on('click', (e) => {
-        debugger;
         e.preventDefault();
         getApartment(e.currentTarget.href);
     });
@@ -60,7 +56,7 @@ function createApartment(apartment) {
     apt.bathrooms = apartment.bathrooms;
     apt.parking = apartment.parking;
     apt.price = apartment.price;
-    if (apt.appointments){
+    if (apartment.appointments){
         apt.appointments = createAppointments(apartment.appointments);
     }
     return apt;
@@ -79,7 +75,6 @@ function addApartmentsToAppointmentsIndex(apartment) {
 }
 
 function createApartments(apartments) {
-    // Try mass assignment for cleaner code.
     let apartmentsArray = [];
     apartments.forEach( (apartment) => {
         apt = new Apartment;
@@ -110,11 +105,16 @@ function addApartmentsToUsersShow(apartments) {
         let allApartmentsDiv = $('.all-apartments');
 
         apartments.forEach( (apartment) => {
-
             let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
-
+            // debugger;
             let templateFn = _.template(apartmentTemplate);
-            let templateHTML = templateFn({ id: apartment.id, url: apartment.image.url ,address: apartment.address, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime(), link: `/apartments/${apartment.id}` });
+            let templateHTML = templateFn({ id: apartment.id,
+                 url: apartment.image.url,
+                 address: apartment.address,
+                 attending: apartment.appointments.length - 1,
+                 showing: apartment.reformatDateTime(),
+                 link: `/apartments/${apartment.id}`
+             });
             allApartmentsDiv.append(templateHTML);
         });
             $(".all-apartments").prepend('<div id="apartments-title"><h2>Apartments</h2></div>');
