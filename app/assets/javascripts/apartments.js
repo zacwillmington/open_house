@@ -27,6 +27,17 @@ Apartment.prototype.reformatDateTime = () => {
    return dateStr;
 }
 
+Apartment.prototype.isAttending = function() {
+    let userId = User.getCurrentUserId();
+    let included = (appointment) => {
+        return appointment.user_id === userId;
+    }
+    return this.appointments.some(included);
+
+}
+
+
+
 function attachListenersApartments() {
     $('.js-get-all-apartments-btn').on('click', (e) => {
             e.preventDefault();
@@ -41,17 +52,13 @@ function attachListenersApartments() {
     $('#js-previous-apartment').on('click', (e) => {
         e.preventDefault();
         let apartmentId = $('.apartment-content').data('id');
-
-         //if (Apartment.all.first.id != @apartment.id - 1){}
         getApartmentForApartmentShow(apartmentId - 1);
     });
 
     $('#js-next-apartment').on('click', (e) => {
         e.preventDefault();
         let apartmentId = $('.apartment-content').data('id');
-        //if (Apartment.all.last.id !== apartmentId + 1) {
-            getApartmentForApartmentShow(apartmentId + 1);
-         // }
+        getApartmentForApartmentShow(apartmentId + 1);
     });
 }
 
@@ -127,7 +134,6 @@ function addApartmentsToUsersShow(apartments) {
         let allApartmentsDiv = $('.all-apartments');
 
         apartments.forEach( (apartment) => {
-            debugger;
             let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
             let templateFn = _.template(apartmentTemplate);
             let templateHTML = templateFn({
@@ -166,4 +172,7 @@ function addApartmentsToApartmentShow(apt) {
         link: `/apartments/${apartment.id}`
      });
     apartmentDiv.innerHTML = templateHTML;
+    if( !Apartment.prototype.isAttending.call(apartment) ){
+        $('.alert-success').remove();
+    }
 }

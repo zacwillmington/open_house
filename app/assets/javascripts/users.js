@@ -9,3 +9,7 @@ class User {
         this.phone = phone;
     }
 }
+
+User.getCurrentUserId = () => {
+    return window.userId;
+}

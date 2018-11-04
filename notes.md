@@ -3,10 +3,12 @@ TASKS
 
 - Must render at least one show page (show resource - 'one specific thing') via JavaScript and an Active Model Serialisation JSON Backend.(Show apartment)
     - (renders apartment show page asynchronously moving from apt to apt)
-    - Need to implement
+    - View apartment button is not taking user to the correct show page.
+    - should be able to make appointment there and then.
+    - remove previous and next buttons when on the first and last apts.
 
 - Your Rails application must dynamically render on the page at least one 'has-many' relationship through JSON using JavaScript.(show appointments for each user users/show)
-    - (on user's show page renders appointments, a user has many appointments)
+    - (on user's show page renders appointments, a user has many appointments)???
 
 - Must translate the JSON responses into JavaScript Model Objects using either ES6 class or constructor syntax. The Model Objects must have at least one method on the prototype. Formatters work really well for this.(appointment and users need prototype methods)
     - User model needs a proto function
