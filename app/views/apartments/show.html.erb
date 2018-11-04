@@ -5,33 +5,35 @@
     </div>
 <% end %>
 
-<div data-id="<%= @apartment.id %>" class="apartment container-fluid" id="apartment">
+<div class="apartment container-fluid" id="apartment">
 <!-- Replace -->
-    <%= image_tag(@apartment.image_url.to_s, size: '500x300') %>
-    <div class="apartment-info">
-        <p><%= @apartment.address %></p>
-        <p>Bdr: <%= @apartment.bedrooms %></p>
-        <p>Bath: <%= @apartment.bathrooms %></p>
-        <p>Parking: <%= @apartment.parking %></p>
-        <p>$<%= @apartment.price %></p>
-        <p>Showing on <%= @apartment.reformat_date_time %></p>
+    <div class="apartment-content" data-id="<%= @apartment.id %>">
+        <%= image_tag(@apartment.image_url.to_s, size: '500x300') %>
+            <div class="apartment-info">
+                <p><%= @apartment.address %></p>
+                <p>Bdr: <%= @apartment.bedrooms %></p>
+                <p>Bath: <%= @apartment.bathrooms %></p>
+                <p>Parking: <%= @apartment.parking %></p>
+                <p>$<%= @apartment.price %></p>
+                <p>Showing on <%= @apartment.reformat_date_time %></p>
 
-        <% if !current_user.admin && !current_user.attending_appointment?(@apartment) %>
-            <%= link_to "Make appointment", new_apartment_appointment_path(@apartment), class: "btn btn-primary js-make-appointment" %>
-            <%= render partial: 'async_form', locals: { apartment: @apartment } %>
-<!--  -->
-        <% elsif current_user.admin %>
-            <p>Attending: <%= @apartment.appointments.size - 1 %></p>
-            <%= link_to "Edit apartment", edit_user_apartment_path(current_user, @apartment), class: "btn btn-primary" %>
-            <%= form_tag user_apartment_path(current_user, @apartment), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                <%= submit_tag "Delete Apartment", class: "btn btn-primary" %>
-            <% end %>
-        <% end %>
+                <% if !current_user.admin && !current_user.attending_appointment?(@apartment) %>
+                    <%= link_to "Make appointment", new_apartment_appointment_path(@apartment), class: "btn btn-primary js-make-appointment" %>
+                    <%= render partial: 'async_form', locals: { apartment: @apartment } %>
+        <!--  -->
+                <% elsif current_user.admin %>
+                    <p>Attending: <%= @apartment.appointments.size - 1 %></p>
+                    <%= link_to "Edit apartment", edit_user_apartment_path(current_user, @apartment), class: "btn btn-primary" %>
+                    <%= form_tag user_apartment_path(current_user, @apartment), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                        <%= submit_tag "Delete Apartment", class: "btn btn-primary" %>
+                    <% end %>
+                <% end %>
+            </div>
     </div>
 </div>
-<%= link_to "<", "/apartments/#{@apartment.id - 1}", class: "btn btn-primary js-previous-apartment", id: "js-previous-apartment" if Apartment.all.first.id != @apartment.id %>
+<%= link_to "<", "#", class: "btn btn-primary js-previous-apartment", id: "js-previous-apartment" %>
 
-<%= link_to ">", "/apartments/#{@apartment.id + 1}", class: "btn btn-primary", id: "js-next-apartment" if Apartment.all.last.id != @apartment.id %>
+<%= link_to ">", "#", class: "btn btn-primary", id: "js-next-apartment" %>
 
 <div class="apartment-contact-info">
     <p>Contact: <%= @apartment.leasing_agent_contact.name %></p>
