@@ -11,7 +11,9 @@ TASKS
 - Must translate the JSON responses into JavaScript Model Objects using either ES6 class or constructor syntax. The Model Objects must have at least one method on the prototype. Formatters work really well for this.(appointment and users need prototype methods)
     - User model needs a proto function
 
-- add cancel button to appointments on users show passwordDigest
+- Handle redirect to appointments when not on profile page
+
+- add cancel button to appointments on users show page
 
 - put address above img of apartment
 

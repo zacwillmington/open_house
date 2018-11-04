@@ -40,12 +40,18 @@ function attachListenersApartments() {
 
     $('#js-previous-apartment').on('click', (e) => {
         e.preventDefault();
-        getApartmentForApartmentShow(e.currentTarget.href);
+        let apartmentId = $('.apartment-content').data('id');
+
+         //if (Apartment.all.first.id != @apartment.id - 1){}
+        getApartmentForApartmentShow(apartmentId - 1);
     });
 
     $('#js-next-apartment').on('click', (e) => {
         e.preventDefault();
-         getApartmentForApartmentShow(e.currentTarget.href);
+        let apartmentId = $('.apartment-content').data('id');
+        //if (Apartment.all.last.id !== apartmentId + 1) {
+            getApartmentForApartmentShow(apartmentId + 1);
+         // }
     });
 }
 
@@ -77,7 +83,7 @@ function createApartment(apartment) {
     }
     return apt;
 }
-
+// may not need this---------->
 function addApartmentsToAppointmentsIndex(apartment) {
     let div = $(`[data-id="${apartment.id}"]`);
 
@@ -121,6 +127,7 @@ function addApartmentsToUsersShow(apartments) {
         let allApartmentsDiv = $('.all-apartments');
 
         apartments.forEach( (apartment) => {
+            debugger;
             let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
             let templateFn = _.template(apartmentTemplate);
             let templateHTML = templateFn({
@@ -158,6 +165,5 @@ function addApartmentsToApartmentShow(apt) {
         showing: apartment.reformatDateTime(),
         link: `/apartments/${apartment.id}`
      });
-     // debugger;
     apartmentDiv.innerHTML = templateHTML;
 }
