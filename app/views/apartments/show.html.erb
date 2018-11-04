@@ -18,7 +18,7 @@
                 <p>Showing on <%= @apartment.reformat_date_time %></p>
 
                 <% if !current_user.admin && !current_user.attending_appointment?(@apartment) %>
-                    <%= link_to "Make appointment", new_apartment_appointment_path(@apartment), class: "btn btn-primary js-make-appointment" %>
+                    <!-- <%= link_to "Make appointment", new_apartment_appointment_path(@apartment), class: "btn btn-primary js-make-appointment" %> -->
                     <%= render partial: 'async_form', locals: { apartment: @apartment } %>
         <!--  -->
                 <% elsif current_user.admin %>
@@ -53,7 +53,7 @@
                    <p>Price: ${{= price }}</p>
                    <p>Attending: {{= attending }}</p>
                    <p>Showing: {{= showing }}</p>
-                   <a href={{= link }} class="btn btn-primary">View Apartment</a>
+                   <a href={{= link }} class="btn btn-primary">make Appointment</a>
                </div>
            </div>
 </script>
