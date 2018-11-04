@@ -6,11 +6,11 @@
 <% end %>
 
 <div class="apartment container-fluid" id="apartment">
-<!-- Replace -->
+    <h2 id="apartment-address"><%= @apartment.address %></h2>
     <div class="apartment-content" data-id="<%= @apartment.id %>">
         <%= image_tag(@apartment.image_url.to_s, size: '500x300') %>
             <div class="apartment-info">
-                <p><%= @apartment.address %></p>
+                <!-- <h2><%= @apartment.address %></h2> -->
                 <p>Bdr: <%= @apartment.bedrooms %></p>
                 <p>Bath: <%= @apartment.bathrooms %></p>
                 <p>Parking: <%= @apartment.parking %></p>
@@ -18,9 +18,7 @@
                 <p>Showing on <%= @apartment.reformat_date_time %></p>
 
                 <% if !current_user.admin && !current_user.attending_appointment?(@apartment) %>
-                    <!-- <%= link_to "Make appointment", new_apartment_appointment_path(@apartment), class: "btn btn-primary js-make-appointment" %> -->
                     <%= render partial: 'async_form', locals: { apartment: @apartment } %>
-        <!--  -->
                 <% elsif current_user.admin %>
                     <p>Attending: <%= @apartment.appointments.size - 1 %></p>
                     <%= link_to "Edit apartment", edit_user_apartment_path(current_user, @apartment), class: "btn btn-primary" %>
@@ -43,10 +41,10 @@
 
 
 <script id="apartment-template-apartments-show" type="x-lodash-template">
+          <h2 id="apartment-address">{{= address }}</h2>
            <div data-id={{= id }} class="apartment-content">
            <img src={{= url }} class="large-image" />
                <div class="apartment-info">
-                   <p>Address: {{= address }}</p>
                    <p>Bedrooms: {{= bedrooms }}</p>
                    <p>Bathrooms: {{= bathrooms }}</p>
                    <p>Parking: {{= parking }}</p>
