@@ -30,6 +30,10 @@ a {
     text-decoration: none;
 }
 
+.navbar a:active {
+    color: black;
+}
+
  body {
   padding-top: 70px;
   padding-bottom: 30px;
@@ -37,7 +41,7 @@ a {
 }
 
 .navbar, .navbar-default{
-  // background-image: url('http://res.cloudinary.com/zacwillmington/image/upload/v1534992454/background_pattern_design_33_czdyhy.jpg');
+  background-image: url('http://res.cloudinary.com/zacwillmington/image/upload/v1534992454/background_pattern_design_33_czdyhy.jpg');
 }
 
 .hidden {

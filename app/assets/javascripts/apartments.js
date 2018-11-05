@@ -108,7 +108,7 @@ function getApartments(url) {
 
 function addApartmentsToUsersShow(apartments) {
     let h2Apartments = document.getElementById("apartments-title");
-    $('.appointment').remove();
+    $('#appointments-title-container h2').innerText = "";
     if (h2Apartments === null) {
         let allApartmentsDiv = $('.all-apartments');
         apartments.forEach( (apartment) => {
