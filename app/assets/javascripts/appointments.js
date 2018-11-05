@@ -5,18 +5,22 @@ _.templateSettings = {
 };
 
 function attachListenersAppointments() {
-    // const profileUrl = "http://0.0.0.0:3000/users/33";
-    // if (window.location.href === profileUrl){
+    // $('a#js-delete-appointment').on('click', (e) => {
+    //     e.preventDefault();
+    //     debugger;
+    //     deleteAppointment(e);
+    // });
+    console.log("Running")
         $('.js-get-appointments-btn').on('click', (e) => {
             e.preventDefault();
             getUsersAppointments(e.currentTarget.href);
         });
-    // }
 
     $('.js-make-appointment').on('click', (e) => {
         e.preventDefault();
         showAppointmentForm(e);
     });
+
     $('#async-form').on('submit', (e) => {
         e.preventDefault();
         let $inputs = $('#async-form :input');
@@ -80,7 +84,8 @@ function addAppointmentsToUserShow(appointments) {
                 time: appointment.reformatDateTime(),
                 apartmentId: appointment.apartment_id,
                 apartmentUrl: `/apartments/${appointment.apartment_id}`,
-                imageThumb: appointment.apartment.image.thumb.url
+                imageThumb: appointment.apartment.image.thumb.url,
+                deletetUrl: `/apartments/${appointment.apartment_id}/appointments/${appointment.id}`
             });
             div.append(templateHTML);
         });
@@ -111,4 +116,28 @@ function makeAppointment(values) {
         alertDiv.innerText = "You RSVP'D to this apartment";
         $('div.apartment-info').append(alertDiv);
     });
+}
+
+function deleteAppointment(data) {
+    window.event.preventDefault();
+    let appointmentDiv = $('.appointment');
+    let apartmentId = appointmentDiv.data('apartmentid');
+    let appointmentId = appointmentDiv.data('appointmentid');
+    let deleteUrl = `/apartments/${apartmentId}/appointments/${appointmentId}`;
+
+    $.ajax({
+    url: deleteUrl,
+    type: 'DELETE',
+    dataType: 'script',
+    format: 'js',
+    contentType: 'application/json',
+    success: function(result) {
+        alert('Appointment Canceled');
+        removeAppointment(appointmentId);
+        }
+    });
+}
+
+function removeAppointment(appointmentId) {
+    $(".appointment").find(`[data-appointmentId='${appointmentId}']`).remove();
 }
