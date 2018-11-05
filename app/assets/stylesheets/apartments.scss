@@ -1,11 +1,10 @@
 // Place all the styles related to the apartments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 img {
-     // box-shadow: 5px 5px 5px grey;
+    // border: 5px solid black;
+    border-radius: 5px;
 }
-
 // Show apartment page styling(apartments/show.html.erb)
 
 .apartment {
