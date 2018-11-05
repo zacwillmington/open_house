@@ -1,6 +1,7 @@
+<div id="appointments-title-container"></div>
+<div class="appointments"></div>
+<div class="all-apartments"></div>
 <div class="all-past-appointments-page">
-    <div class="all-apartments">
-    </div>
     <% Appointment.past_appointments.each do |appointment| %>
 
         <div class="container past-appointment">
@@ -25,6 +26,16 @@
     <% end %>
 </div>
 
+<script id="appointment-template" type="x-lodash-template">
+    <div class="appointment" data-appointmentId={{= id }} data-apartmentId={{= apartmentId }}>
+        <img src={{= imageThumb }}
+        <div class="appointment-info">
+            <p>Showing: {{= time }}</p>
+                <a href="#" onclick="deleteAppointment();" class="btn btn-primary" id="js-delete-appointment">Delete Appointment</a>
+            </form>
+        </div>
+    </div>
+</script>
 
 <script id="apartment-template" type="x-lodash-template">
        <div class="apartment-index-page container">

@@ -1,11 +1,9 @@
 TODO
     - remove previous and next buttons when on the first and last apts.
 
-    - Handle redirect to appointments when not on profile page
+    - show RSVPd alert on next apartment
 
     - let vs const
-
-    - refactor Remove redundant code 
 
     - Look into moving all lodash templates to one file and requiring file of some sort of partial
 

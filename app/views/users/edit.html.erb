@@ -1,28 +1,63 @@
-<h1 class="title">Edit Account</h1>
+<div id="appointments-title-container"></div>
+<div class="appointments"></div>
+<div class="all-apartments">
+</div>
 
-<%= render partial: 'errors', locals: { user: @user }  %>
+<div class="account">
+    <h1 class="title">Edit Account</h1>
+    <%= render partial: 'errors', locals: { user: @user }  %>
 
-<%= form_for( @user, html: {class: 'custom-form'} )do |f| %>
-    <%= f.label :name, "Name" %>
-    <%= f.text_field :name %>
-    <br>
-    <%= f.label :email, "Email" %>
-    <%= f.text_field :email %>
-    <br>
-    <%= f.label :phone, "Contact number" %>
-    <%= f.text_field :phone %>
-    <br>
-    <%= f.label :password, "Password" %>
-    <%= f.password_field :password %>
-    <% if @user.admin %>
-            <br>
-        <%= label_tag :'user[admin]', "Remove admin access" %>
-        <%= check_box_tag :'user[admin]', checked = false %>
+    <%= form_for( @user, html: {class: 'custom-form'} )do |f| %>
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name %>
+        <br>
+        <%= f.label :email, "Email" %>
+        <%= f.text_field :email %>
+        <br>
+        <%= f.label :phone, "Contact number" %>
+        <%= f.text_field :phone %>
+        <br>
+        <%= f.label :password, "Password" %>
+        <%= f.password_field :password %>
+        <% if @user.admin %>
+                <br>
+            <%= label_tag :'user[admin]', "Remove admin access" %>
+            <%= check_box_tag :'user[admin]', checked = false %>
+        <% end %>
+        <br>
+        <%= f.submit class: 'btn btn-primary'%>
     <% end %>
-    <br>
-    <%= f.submit class: 'btn btn-primary'%>
-<% end %>
 
-<%= form_tag user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } do %>
-    <%= submit_tag "Delete Account", class: 'btn btn-primary delete-btn' %>
-<% end %>
+    <%= form_tag user_path(@user), method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <%= submit_tag "Delete Account", class: 'btn btn-primary delete-btn' %>
+    <% end %>
+</div>
+
+<script id="appointment-template" type="x-lodash-template">
+    <div class="appointment" data-appointmentId={{= id }} data-apartmentId={{= apartmentId }}>
+        <img src={{= imageThumb }}
+        <div class="appointment-info">
+            <p>Showing: {{= time }}</p>
+                <a href="#" onclick="deleteAppointment();" class="btn btn-primary" id="js-delete-appointment">Delete Appointment</a>
+            </form>
+        </div>
+    </div>
+</script>
+
+<script id="apartment-template" type="x-lodash-template">
+       <div class="apartment-index-page container">
+       <h2 id="apartment-address">{{= address }}</h2>
+           <div data-id={{= id }} class="apartment-content">
+           <img src={{= url }} class="large-image" />
+               <div class="apartment-info">
+                   <p>Bedrooms: {{= bedrooms }}</p>
+                   <p>Bathrooms: {{= bathrooms }}</p>
+                   <p>Parking: {{= parking }}</p>
+                   <p>Price: ${{= price }}</p>
+                   <p>Attending: {{= attending }}</p>
+                   <p>Showing: {{= showing }}</p>
+                   <a href={{= link }} class="btn btn-primary">View Apartment</a>
+               </div>
+           </div>
+       </div>
+</script>

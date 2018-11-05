@@ -40,7 +40,6 @@ Apartment.prototype.isAttending = function() {
 
 function attachListenersApartments() {
     $('.js-get-all-apartments-btn').on('click', (e) => {
-        // const rootUrl = `http://0.0.0.0:3000/users/${User.getCurrentUserId()}`;
             e.preventDefault();
             getApartments(e.target.href);
     });
@@ -81,18 +80,6 @@ function createApartment(apartment) {
     }
     return apt;
 }
-// may not need this---------->
-// function addApartmentsToAppointmentsIndex(apartment) {
-//     let div = $(`[data-id="${apartment.id}"]`);
-//
-//     if (div.length === 1) {
-//         let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
-//         let templateFn = _.template(apartmentTemplate);
-//         let templateHTML = templateFn({ id: apartment.id, url: apartment.image.url ,address: apartment.address, bedrooms: apartment.bedrooms, bathrooms: apartment.bathrooms, parking: apartment.parking, price: apartment.price, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime(), link: `/apartments/${apartment.id}` });
-//         div.append(templateHTML);
-//         let viewApartmentBtn = $('.js-view-apartment');
-//     }
-// }
 
 function createApartments(apartments) {
     let apartmentsArray = [];
@@ -121,11 +108,8 @@ function getApartments(url) {
 
 function addApartmentsToUsersShow(apartments) {
     let h2Apartments = document.getElementById("apartments-title");
-    debugger;
     if (h2Apartments === null) {
         let allApartmentsDiv = $('.all-apartments');
-        debugger;
-
         apartments.forEach( (apartment) => {
             let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
             let templateFn = _.template(apartmentTemplate);
@@ -167,5 +151,7 @@ function addApartmentsToApartmentShow(apt) {
     apartmentDiv.innerHTML = templateHTML;
     if( !Apartment.prototype.isAttending.call(apartment) ){
         $('.alert-success').remove();
+    }else {
+        $('a#make-appointment-btn').addClass('hidden');
     }
 }
