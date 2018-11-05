@@ -1,18 +1,12 @@
 TODO
+
+    - Remove appointment title on user show when rendering apartments.
+
+    - Refactor(let vs const)
+
     - remove previous and next buttons when on the first and last apts.
 
-    - async from apartments show page fpor appointments and apartmentsArray
-
-    - remove past_appointments on async rendering.
-     
-
-    - fix layout
-
-    - let vs const
-
     - Look into moving all lodash templates to one file and requiring file of some sort of partial
-
-    - Check functionality make sure everything is working
 
     - Deployment on Heroku
 
