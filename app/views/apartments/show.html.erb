@@ -42,6 +42,7 @@
         <p>Phone: <%= @apartment.leasing_agent_contact.phone %></p>
     </div>
 </div>
+
 <script id="appointment-template" type="x-lodash-template">
     <div class="appointment" data-appointmentId={{= id }} data-apartmentId={{= apartmentId }}>
         <img src={{= imageThumb }} />
@@ -54,7 +55,8 @@
     </div>
 </script>
 
-<script id="apartment-template-apartments-show" type="x-lodash-template">
+<script id="apartment-template" type="x-lodash-template">
+    <div class="container">
           <h2 id="apartment-address">{{= address }}</h2>
            <div data-id={{= id }} class="apartment-content">
            <img src={{= url }} class="large-image" />
@@ -68,4 +70,5 @@
                    <a id="make-appointment-btn" href={{= link }} class="btn btn-primary">make Appointment</a>
                </div>
            </div>
+      </div>
 </script>
