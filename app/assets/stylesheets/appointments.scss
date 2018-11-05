@@ -7,27 +7,22 @@
 .appointment {
     display: flex;
     margin: 25px auto;
-    max-width: 500px;
+    
+    width: 500px;
     box-shadow: 5px 5px 10px 5px grey;
 }
-
-// .appointment:hover {
-//     box-shadow: 5px 5px 10px 5px grey;
-//     transition: box-shadow 2s ease;
-// }
 
 .appointment-buttons-info {
     margin-left: 20px;
 }
 
-.appointment img {
-    width: 150px;
-    height: 100px;
-}
-
 form#async-form input{
     width: 200px;
     margin-left: 10px;
+}
+
+.appointment-info p {
+    font-size: 1em;
 }
 
 // past-appointments page

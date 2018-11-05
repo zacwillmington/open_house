@@ -1,7 +1,12 @@
 TODO
     - remove previous and next buttons when on the first and last apts.
 
-    - show RSVPd alert on next apartment
+    - async from apartments show page fpor appointments and apartmentsArray
+
+    - remove past_appointments on async rendering.
+     
+
+    - fix layout
 
     - let vs const
 

@@ -1,16 +1,18 @@
 <% if current_user.attending_appointment?(@apartment) %>
-
     <div class="alert alert-success">
         <strong>You RSVP'D to this apartment</strong>
     </div>
 <% end %>
+<div id="appointments-title-container"></div>
+<div class="appointments"></div>
+<div class="all-apartments">
+</div>
 
 <div class="apartment container-fluid" id="apartment">
     <h2 id="apartment-address"><%= @apartment.address %></h2>
     <div class="apartment-content" data-id="<%= @apartment.id %>">
         <%= image_tag(@apartment.image_url.to_s, size: '500x300') %>
             <div class="apartment-info">
-                <!-- <h2><%= @apartment.address %></h2> -->
                 <p>Bdr: <%= @apartment.bedrooms %></p>
                 <p>Bath: <%= @apartment.bathrooms %></p>
                 <p>Parking: <%= @apartment.parking %></p>
@@ -29,16 +31,28 @@
             </div>
     </div>
 </div>
-<%= link_to "<", "#", class: "btn btn-primary js-previous-apartment", id: "js-previous-apartment" %>
+<div id="apartment-contact-previous-next">
+    <%= link_to "<", "#", class: "btn btn-primary js-previous-apartment", id: "js-previous-apartment" %>
 
-<%= link_to ">", "#", class: "btn btn-primary", id: "js-next-apartment" %>
+    <%= link_to ">", "#", class: "btn btn-primary", id: "js-next-apartment" %>
 
-<div class="apartment-contact-info">
-    <p>Contact: <%= @apartment.leasing_agent_contact.name %></p>
-    <p>Email: <%= @apartment.leasing_agent_contact.email %></p>
-    <p>Phone: <%= @apartment.leasing_agent_contact.phone %></p>
+    <div class="apartment-contact-info">
+        <p>Contact: <%= @apartment.leasing_agent_contact.name %></p>
+        <p>Email: <%= @apartment.leasing_agent_contact.email %></p>
+        <p>Phone: <%= @apartment.leasing_agent_contact.phone %></p>
+    </div>
 </div>
-
+<script id="appointment-template" type="x-lodash-template">
+    <div class="appointment" data-appointmentId={{= id }} data-apartmentId={{= apartmentId }}>
+        <img src={{= imageThumb }} />
+        <div class="appointment-info">
+            <p>Showing: {{= time }}</p>
+                <a href="#" onclick="deleteAppointment();" class="btn btn-primary" id="js-delete-appointment">Delete Appointment</a>
+                <a href={{= apartmentUrl }} class="btn btn-primary">View Apartment</a>
+            </form>
+        </div>
+    </div>
+</script>
 
 <script id="apartment-template-apartments-show" type="x-lodash-template">
           <h2 id="apartment-address">{{= address }}</h2>
