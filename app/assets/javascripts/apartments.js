@@ -108,6 +108,7 @@ function getApartments(url) {
 
 function addApartmentsToUsersShow(apartments) {
     let h2Apartments = document.getElementById("apartments-title");
+    $('.appointment').remove();
     if (h2Apartments === null) {
         let allApartmentsDiv = $('.all-apartments');
         apartments.forEach( (apartment) => {
@@ -134,7 +135,7 @@ function addApartmentsToUsersShow(apartments) {
 function addApartmentsToApartmentShow(apt) {
     let apartmentDiv = document.getElementById('apartment');
     let apartment = createApartment(apt);
-    let apartmentTemplate = document.getElementById('apartment-template-apartments-show').innerHTML;
+    let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
     let templateFn = _.template(apartmentTemplate);
     let templateHTML = templateFn({
         id: apartment.id,
