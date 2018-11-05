@@ -9,7 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <%= javascript_tag do %>
-        window.userId = <%= current_user.id %>;
+        window.userId = <%= current_user.id if current_user %>;
     <% end %>
 
   </head>
