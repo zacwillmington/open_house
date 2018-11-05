@@ -61,6 +61,8 @@ function createAppointments(appointments) {
 }
 
 function addAppointmentsToUserShow(appointments) {
+    $('.all-past-appointments-page').remove();
+    $('.account').remove();
     let div = $('.appointments');
     let h2Appointments = document.getElementById("appointments-title");
     if (h2Appointments === null) {
