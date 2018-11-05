@@ -2,16 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 img {
-    // border: 5px solid black;
     border-radius: 5px;
 }
 // Show apartment page styling(apartments/show.html.erb)
 
 .apartment {
-    // display: flex;
     padding: 40px 25px 40px 25px;
     max-width: 900px;
-    margin-top: 25px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     box-shadow: 5px 5px 10px 5px grey;
 }
 
@@ -26,6 +25,7 @@ img {
 
 .apartment-info {
     margin: 0px 0px 0px 20px;
+
 }
 
 .apartment-contact-info {

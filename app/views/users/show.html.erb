@@ -28,12 +28,14 @@
 </div>
 
  <!-- Look into moving all lodash templates to one file and requiring file of some sort of partial -->
+
 <script id="appointment-template" type="x-lodash-template">
     <div class="appointment" data-appointmentId={{= id }} data-apartmentId={{= apartmentId }}>
-        <img src={{= imageThumb }}
+        <img src={{= imageThumb }} />
         <div class="appointment-info">
             <p>Showing: {{= time }}</p>
                 <a href="#" onclick="deleteAppointment();" class="btn btn-primary" id="js-delete-appointment">Delete Appointment</a>
+                <a href={{= apartmentUrl }} class="btn btn-primary">See Apartment</a>
             </form>
         </div>
     </div>

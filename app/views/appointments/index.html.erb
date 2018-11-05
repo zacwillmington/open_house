@@ -8,11 +8,10 @@
 
                 <div class="appointment-info">
                     <p>Showing <%= appointment.apartment.reformat_date_time %></p>
-                    <p><%= appointment.apartment.address %></p>
                 </div>
 
                 <div class="appointment-buttons-info">
-                    <%= link_to "Show Apartment", user_apartment_path(current_user, appointment.apartment), class: 'btn btn-primary js-view-apartment'%>
+                    <%= link_to "View Apartment", user_apartment_path(current_user, appointment.apartment), class: 'btn btn-primary js-view-apartment'%>
                     <%= form_tag apartment_appointment_path(appointment.apartment, appointment), method: :delete, data: { confirm: 'Are you sure?' } do %>
                         <%= submit_tag "Cancel", class: "btn btn-primary" %>
                     <% end %>

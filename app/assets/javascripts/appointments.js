@@ -63,6 +63,9 @@ function createAppointments(appointments) {
 function addAppointmentsToUserShow(appointments) {
     $('.all-past-appointments-page').remove();
     $('.account').remove();
+    $('#apartment-contact-previous-next').remove();
+    $('.apartment').remove();
+    $('.alert-success').remove();
     let div = $('.appointments');
     let h2Appointments = document.getElementById("appointments-title");
     if (h2Appointments === null) {
@@ -106,7 +109,6 @@ function deleteAppointment(data) {
     let apartmentId = appointmentDiv.data('apartmentid');
     let appointmentId = appointmentDiv.data('appointmentid');
     let deleteUrl = `/apartments/${apartmentId}/appointments/${appointmentId}`;
-    //prevent turbolinks refresh
     $.ajax({
     url: deleteUrl,
     type: 'DELETE',
