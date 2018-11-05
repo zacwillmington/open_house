@@ -5,20 +5,9 @@ _.templateSettings = {
 };
 
 function attachListenersAppointments() {
-    // $('a#js-delete-appointment').on('click', (e) => {
-    //     e.preventDefault();
-    //     debugger;
-    //     deleteAppointment(e);
-    // });
-    console.log("Running")
-        $('.js-get-appointments-btn').on('click', (e) => {
-            e.preventDefault();
-            getUsersAppointments(e.currentTarget.href);
-        });
-
-    $('.js-make-appointment').on('click', (e) => {
+    $('.js-get-appointments-btn').on('click', (e) => {
         e.preventDefault();
-        showAppointmentForm(e);
+        getUsersAppointments(e.currentTarget.href);
     });
 
     $('#async-form').on('submit', (e) => {
@@ -93,15 +82,6 @@ function addAppointmentsToUserShow(appointments) {
     }
 }
 
-function showAppointmentForm() {
-    $('.js-make-appointment').fadeOut("slow", function() {
-        $(this).addClass('hidden');
-    });
-    $('form.hidden').fadeIn("slow", function() {
-        $(this).removeClass('hidden');
-    });
-}
-
 function makeAppointment(values) {
     let appointment = new Appointment;
     appointment.name  = values[2].value;
@@ -124,7 +104,7 @@ function deleteAppointment(data) {
     let apartmentId = appointmentDiv.data('apartmentid');
     let appointmentId = appointmentDiv.data('appointmentid');
     let deleteUrl = `/apartments/${apartmentId}/appointments/${appointmentId}`;
-
+    //prevent turbolinks refresh
     $.ajax({
     url: deleteUrl,
     type: 'DELETE',
