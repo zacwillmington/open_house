@@ -40,32 +40,23 @@ Apartment.prototype.isAttending = function() {
 
 function attachListenersApartments() {
     $('.js-get-all-apartments-btn').on('click', (e) => {
+        // const rootUrl = `http://0.0.0.0:3000/users/${User.getCurrentUserId()}`;
             e.preventDefault();
-            getApartments(e);
-    });
-
-    $('.js-view-apartment').on('click', (e) => {
-        e.preventDefault();
-        getApartment(e.currentTarget.href);
+            getApartments(e.target.href);
     });
 
     $('#js-previous-apartment').on('click', (e) => {
         e.preventDefault();
         let apartmentId = $('.apartment-content').data('id');
         getApartmentForApartmentShow(apartmentId - 1);
+
     });
 
     $('#js-next-apartment').on('click', (e) => {
         e.preventDefault();
         let apartmentId = $('.apartment-content').data('id');
         getApartmentForApartmentShow(apartmentId + 1);
-    });
-}
 
-function getApartment(url) {
-    $.get(`${url}`).done( (data) => {
-        let newApartment = createApartment(data);
-        addApartmentsToAppointmentsIndex(newApartment);
     });
 }
 
@@ -91,17 +82,17 @@ function createApartment(apartment) {
     return apt;
 }
 // may not need this---------->
-function addApartmentsToAppointmentsIndex(apartment) {
-    let div = $(`[data-id="${apartment.id}"]`);
-
-    if (div.length === 1) {
-        let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
-        let templateFn = _.template(apartmentTemplate);
-        let templateHTML = templateFn({ id: apartment.id, url: apartment.image.url ,address: apartment.address, bedrooms: apartment.bedrooms, bathrooms: apartment.bathrooms, parking: apartment.parking, price: apartment.price, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime(), link: `/apartments/${apartment.id}` });
-        div.append(templateHTML);
-        let viewApartmentBtn = $('.js-view-apartment');
-    }
-}
+// function addApartmentsToAppointmentsIndex(apartment) {
+//     let div = $(`[data-id="${apartment.id}"]`);
+//
+//     if (div.length === 1) {
+//         let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
+//         let templateFn = _.template(apartmentTemplate);
+//         let templateHTML = templateFn({ id: apartment.id, url: apartment.image.url ,address: apartment.address, bedrooms: apartment.bedrooms, bathrooms: apartment.bathrooms, parking: apartment.parking, price: apartment.price, attending: apartment.appointments.length - 1, showing: apartment.reformatDateTime(), link: `/apartments/${apartment.id}` });
+//         div.append(templateHTML);
+//         let viewApartmentBtn = $('.js-view-apartment');
+//     }
+// }
 
 function createApartments(apartments) {
     let apartmentsArray = [];
@@ -121,8 +112,8 @@ function createApartments(apartments) {
     return apartmentsArray;
 }
 
-function getApartments(e) {
-    $.get(`${e.target.href}`).done( (data) => {
+function getApartments(url) {
+    $.get(`${url}`).done( (data) => {
         let apartments = createApartments(data);
         addApartmentsToUsersShow(apartments);
     });
@@ -130,8 +121,10 @@ function getApartments(e) {
 
 function addApartmentsToUsersShow(apartments) {
     let h2Apartments = document.getElementById("apartments-title");
+    debugger;
     if (h2Apartments === null) {
         let allApartmentsDiv = $('.all-apartments');
+        debugger;
 
         apartments.forEach( (apartment) => {
             let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
