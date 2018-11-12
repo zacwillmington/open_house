@@ -23,13 +23,13 @@ class Apartment {
 }
 
 Apartment.prototype.reformatDateTime = () => {
-   let dateStr = moment(this.time).format('MMMM Do YYYY, h:mm a');
+   const dateStr = moment(this.time).format('MMMM Do YYYY, h:mm a');
    return dateStr;
 }
 
 Apartment.prototype.isAttending = function() {
-    let userId = User.getCurrentUserId();
-    let included = (appointment) => {
+    const userId = User.getCurrentUserId();
+    const included = (appointment) => {
         return appointment.user_id === userId;
     }
     return this.appointments.some(included);
@@ -46,14 +46,14 @@ function attachListenersApartments() {
 
     $('#js-previous-apartment').on('click', (e) => {
         e.preventDefault();
-        let apartmentId = $('.apartment-content').data('id');
+        const apartmentId = $('.apartment-content').data('id');
         getApartmentForApartmentShow(apartmentId - 1);
 
     });
 
     $('#js-next-apartment').on('click', (e) => {
         e.preventDefault();
-        let apartmentId = $('.apartment-content').data('id');
+        const apartmentId = $('.apartment-content').data('id');
         getApartmentForApartmentShow(apartmentId + 1);
 
     });
@@ -82,7 +82,7 @@ function createApartment(apartment) {
 }
 
 function createApartments(apartments) {
-    let apartmentsArray = [];
+    const apartmentsArray = [];
     apartments.forEach( (apartment) => {
         apt = new Apartment;
         apt.id = apartment.id;
@@ -101,20 +101,22 @@ function createApartments(apartments) {
 
 function getApartments(url) {
     $.get(`${url}`).done( (data) => {
-        let apartments = createApartments(data);
+        const apartments = createApartments(data);
         addApartmentsToUsersShow(apartments);
     });
 }
 
 function addApartmentsToUsersShow(apartments) {
-    let h2Apartments = document.getElementById("apartments-title");
+    const h2Apartments = document.getElementById("apartments-title");
     $('#appointments-title-container h2').innerText = "";
     if (h2Apartments === null) {
+        $('.apartment').remove();
+        $('#apartment-contact-previous-next').remove();
         let allApartmentsDiv = $('.all-apartments');
         apartments.forEach( (apartment) => {
-            let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
-            let templateFn = _.template(apartmentTemplate);
-            let templateHTML = templateFn({
+            const apartmentTemplate = document.getElementById('apartment-template').innerHTML;
+            const templateFn = _.template(apartmentTemplate);
+            const templateHTML = templateFn({
                 id: apartment.id,
                 url: apartment.image.url,
                 address: apartment.address,
@@ -134,10 +136,10 @@ function addApartmentsToUsersShow(apartments) {
 
 function addApartmentsToApartmentShow(apt) {
     let apartmentDiv = document.getElementById('apartment');
-    let apartment = createApartment(apt);
-    let apartmentTemplate = document.getElementById('apartment-template').innerHTML;
-    let templateFn = _.template(apartmentTemplate);
-    let templateHTML = templateFn({
+    const apartment = createApartment(apt);
+    const apartmentTemplate = document.getElementById('apartment-show-template').innerHTML;
+    const templateFn = _.template(apartmentTemplate);
+    const templateHTML = templateFn({
         id: apartment.id,
         url: apartment.image.url,
         address: apartment.address,
