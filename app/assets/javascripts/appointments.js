@@ -12,7 +12,7 @@ function attachListenersAppointments() {
 
     $('#async-form').on('submit', (e) => {
         e.preventDefault();
-        let $inputs = $('#async-form :input');
+        const $inputs = $('#async-form :input');
         makeAppointment($inputs);
     });
 }
@@ -28,15 +28,14 @@ class Appointment {
 }
 
  Appointment.prototype.reformatDateTime = function () {
-    let dateStr = moment(this.time).format('MMMM Do YYYY, h:mm a');
+    const dateStr = moment(this.time).format('MMMM Do YYYY, h:mm a');
     return dateStr;
  }
 
 
-
 function getUsersAppointments(url) {
     $.get(`${url}`, (data) => {
-        let appointments = createAppointments(data);
+        const appointments = createAppointments(data);
         addAppointmentsToUserShow(appointments);
         return appointments;
     });
@@ -44,9 +43,9 @@ function getUsersAppointments(url) {
 }
 
 function createAppointments(appointments) {
-    let appointmentsArray = [];
-    appointments.forEach( (app) => {
-        let appointment = new Appointment;
+    const appointmentsArray = [];
+    appointments.forEach((app) => {
+        const appointment = new Appointment;
         if (app.apartment){
             appointment.apartment = createApartment(app.apartment);
         }
@@ -67,13 +66,13 @@ function addAppointmentsToUserShow(appointments) {
     $('.apartment').remove();
     $('.alert-success').remove();
     let div = $('.appointments');
-    let h2Appointments = document.getElementById("appointments-title");
+    const h2Appointments = document.getElementById("appointments-title");
     if (h2Appointments === null) {
         appointments.forEach( (appointment) => {
-            let url = `/apartments/${appointment.apartment_id}`;
-            let appointmentTemplate = document.getElementById('appointment-template').innerHTML;
-            let templateFn = _.template(appointmentTemplate);
-            let templateHTML = templateFn({
+            const url = `/apartments/${appointment.apartment_id}`;
+            const appointmentTemplate = document.getElementById('appointment-template').innerHTML;
+            const templateFn = _.template(appointmentTemplate);
+            const templateHTML = templateFn({
                 id: appointment.id,
                 time: appointment.reformatDateTime(),
                 apartmentId: appointment.apartment_id,
@@ -88,7 +87,7 @@ function addAppointmentsToUserShow(appointments) {
 }
 
 function makeAppointment(values) {
-    let appointment = new Appointment;
+    const appointment = new Appointment;
     appointment.name  = values[2].value;
     appointment.user_id  = values[3].value;
     appointment.apartment_id = values[4].value;
@@ -105,10 +104,10 @@ function makeAppointment(values) {
 
 function deleteAppointment(data) {
     window.event.preventDefault();
-    let appointmentDiv = $('.appointment');
-    let apartmentId = appointmentDiv.data('apartmentid');
-    let appointmentId = appointmentDiv.data('appointmentid');
-    let deleteUrl = `/apartments/${apartmentId}/appointments/${appointmentId}`;
+    const appointmentDiv = $('.appointment');
+    const apartmentId = appointmentDiv.data('apartmentid');
+    const appointmentId = appointmentDiv.data('appointmentid');
+    const deleteUrl = `/apartments/${apartmentId}/appointments/${appointmentId}`;
     $.ajax({
     url: deleteUrl,
     type: 'DELETE',
