@@ -19,11 +19,11 @@ function attachListenersAppointments() {
 
 class Appointment {
     constructor(id, time, user_id, apartment_id, name) {
-            self.id = id;
-            self.time = time;
-            self.user_id = user_id;
-            self.apartment_id = apartment_id;
-            self.name = name;
+            this.id = id;
+            this.time = time;
+            this.user_id = user_id;
+            this.apartment_id = apartment_id;
+            this.name = name;
     }
 }
 

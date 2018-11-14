@@ -10,15 +10,15 @@ _.templateSettings = {
 };
 
 class Apartment {
-    constructor(id, address, available_times, image, bedrooms, bathrooms, parking, price) {
-        self.id = id;
-        self.address = address;
-        self.availableTimes = available_times;
-        self.image = image;
-        self.bedrooms = bedrooms;
-        self.bathrooms = bathrooms;
-        self.parking = parking;
-        self.price = price;
+    constructor(apartment) {
+        this.id = apartment.id;
+        this.address = apartment.address;
+        this.availableTimes = apartment.available_times;
+        this.image = apartment.image;
+        this.bedrooms = apartment.bedrooms;
+        this.bathrooms = apartment.bathrooms;
+        this.parking = apartment.parking;
+        this.price = apartment.price;
     }
 }
 
@@ -44,6 +44,11 @@ function attachListenersApartments() {
             getApartments(e.target.href);
     });
 
+    $('.js-get-all-apartments-low-to-high').on('click', (e) => {
+            e.preventDefault();
+            getApartmentsLowToHigh(e.target.href);
+    });
+
     $('#js-previous-apartment').on('click', (e) => {
         e.preventDefault();
         const apartmentId = $('.apartment-content').data('id');
@@ -57,24 +62,29 @@ function attachListenersApartments() {
         getApartmentForApartmentShow(apartmentId + 1);
 
     });
+
+
 }
 
+function sortApartments(x, y) {
+     return x.price - y.price;
+}
+
+function getApartmentsLowToHigh(url) {
+    $.get(url + ".json").done( (data) => {
+        data.sort(sortApartments);
+        addApartmentsToUsersShow(data);
+    });
+
+}
 function getApartmentForApartmentShow(url) {
-    $.get(`${url}`).done( (data) => {
+    $.get(url + ".json").done( (data) => {
         addApartmentsToApartmentShow(data);
     });
 }
 
 function createApartment(apartment) {
-    apt = new Apartment;
-    apt.id = apartment.id;
-    apt.address = apartment.address;
-    apt.availableTimes = apartment.available_times;
-    apt.image = apartment.image;
-    apt.bedrooms = apartment.bedrooms;
-    apt.bathrooms = apartment.bathrooms;
-    apt.parking = apartment.parking;
-    apt.price = apartment.price;
+    const apt = new Apartment(apartment);
     if (apartment.appointments){
         apt.appointments = createAppointments(apartment.appointments);
     }
@@ -83,24 +93,12 @@ function createApartment(apartment) {
 
 function createApartments(apartments) {
     const apartmentsArray = [];
-    apartments.forEach( (apartment) => {
-        apt = new Apartment;
-        apt.id = apartment.id;
-        apt.address = apartment.address;
-        apt.availableTimes = apartment.available_times;
-        apt.image = apartment.image;
-        apt.bedrooms = apartment.bedrooms;
-        apt.bathrooms = apartment.bathrooms;
-        apt.parking = apartment.parking;
-        apt.price = apartment.price;
-        apt.appointments = createAppointments(apartment.appointments);
-        apartmentsArray.push(apt);
-    });
+    apartments.forEach((apartment) => apartmentsArray.push(createApartment(apartment)));
     return apartmentsArray;
 }
 
 function getApartments(url) {
-    $.get(`${url}`).done( (data) => {
+    $.get(url + ".json").done( (data) => {
         const apartments = createApartments(data);
         addApartmentsToUsersShow(apartments);
     });
@@ -125,7 +123,7 @@ function addApartmentsToUsersShow(apartments) {
                 parking: apartment.parking,
                 price: apartment.price,
                 attending: apartment.appointments.length - 1,
-                showing: apartment.reformatDateTime(),
+                // showing: apartment.reformatDateTime(),
                 link: `/apartments/${apartment.id}`
              });
             allApartmentsDiv.append(templateHTML);
@@ -158,3 +156,16 @@ function addApartmentsToApartmentShow(apt) {
         $('a#make-appointment-btn').addClass('hidden');
     }
 }
+
+
+// Are both of these call backs? And what's the diffenrence?
+
+// $.get(`${url}`).done( (data) => {
+//     const apartments = createApartments(data);
+//     addApartmentsToUsersShow(apartments);
+// });
+
+// $.get(`${url}`, (data) => {
+//     const apartments = createApartments(data);
+//     addApartmentsToUsersShow(apartments);
+// });

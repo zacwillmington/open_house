@@ -6,10 +6,10 @@ class ApartmentsController < ApplicationController
    def index
        @apartments = Apartment.all
        respond_to do |format|
+          format.html
           format.json {
             render json: @apartments, status: 201
           }
-          format.html
        end
    end
 
