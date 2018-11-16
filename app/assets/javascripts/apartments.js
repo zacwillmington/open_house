@@ -22,8 +22,8 @@ class Apartment {
     }
 }
 
-Apartment.prototype.reformatDateTime = () => {
-   const dateStr = moment(this.time).format('MMMM Do YYYY, h:mm a');
+Apartment.prototype.reformatDateTime = function() {
+   const dateStr = moment(this.availableTimes).format('MMMM Do YYYY, h:mm a');
    return dateStr;
 }
 
@@ -44,11 +44,6 @@ function attachListenersApartments() {
             getApartments(e.target.href);
     });
 
-    $('.js-get-all-apartments-low-to-high').on('click', (e) => {
-            e.preventDefault();
-            getApartmentsLowToHigh(e.target.href);
-    });
-
     $('#js-previous-apartment').on('click', (e) => {
         e.preventDefault();
         const apartmentId = $('.apartment-content').data('id');
@@ -62,21 +57,8 @@ function attachListenersApartments() {
         getApartmentForApartmentShow(apartmentId + 1);
 
     });
-
-
 }
 
-function sortApartments(x, y) {
-     return x.price - y.price;
-}
-
-function getApartmentsLowToHigh(url) {
-    $.get(url + ".json").done( (data) => {
-        data.sort(sortApartments);
-        addApartmentsToUsersShow(data);
-    });
-
-}
 function getApartmentForApartmentShow(url) {
     $.get(url + ".json").done( (data) => {
         addApartmentsToApartmentShow(data);
@@ -123,7 +105,7 @@ function addApartmentsToUsersShow(apartments) {
                 parking: apartment.parking,
                 price: apartment.price,
                 attending: apartment.appointments.length - 1,
-                // showing: apartment.reformatDateTime(),
+                showing: apartment.reformatDateTime.call(apartment),
                 link: `/apartments/${apartment.id}`
              });
             allApartmentsDiv.append(templateHTML);
@@ -156,16 +138,3 @@ function addApartmentsToApartmentShow(apt) {
         $('a#make-appointment-btn').addClass('hidden');
     }
 }
-
-
-// Are both of these call backs? And what's the diffenrence?
-
-// $.get(`${url}`).done( (data) => {
-//     const apartments = createApartments(data);
-//     addApartmentsToUsersShow(apartments);
-// });
-
-// $.get(`${url}`, (data) => {
-//     const apartments = createApartments(data);
-//     addApartmentsToUsersShow(apartments);
-// });

@@ -18,12 +18,14 @@ function attachListenersAppointments() {
 }
 
 class Appointment {
-    constructor(id, time, user_id, apartment_id, name) {
-            this.id = id;
-            this.time = time;
-            this.user_id = user_id;
-            this.apartment_id = apartment_id;
-            this.name = name;
+    constructor(appointment) {
+       if (appointment !== undefined) {
+            this.id = appointment.id
+            this.time = appointment.time;
+            this.user_id = appointment.user_id;
+            this.apartment_id = appointment.apartment_id;
+            this.name = appointment.name;
+         }
     }
 }
 
@@ -45,15 +47,10 @@ function getUsersAppointments(url) {
 function createAppointments(appointments) {
     const appointmentsArray = [];
     appointments.forEach((app) => {
-        const appointment = new Appointment;
+        const appointment = new Appointment(app);
         if (app.apartment){
             appointment.apartment = createApartment(app.apartment);
         }
-        appointment.id = app.id;
-        appointment.time = app.time;
-        appointment.user_id = app.user_id;
-        appointment.apartment_id = app.apartment_id;
-        appointment.name = app.name;
         appointmentsArray.push(appointment);
     });
     return appointmentsArray;

@@ -30,7 +30,6 @@
             <% if  current_user && current_user.id != nil %>
                 <li><%= link_to "Appointments", user_appointments_path(current_user), class: 'js-get-appointments-btn' %></li>
                 <li><%= link_to  "Apartments", user_apartments_path(current_user), class: "js-get-all-apartments-btn" %></li>
-                <li><%= link_to  "Apartments low to high", user_apartments_path(current_user), class: "js-get-all-apartments-low-to-high" %></li>
                 <li><%= link_to "Past Appointments",  past_appointments_path if !Appointment.past_appointments.empty? %></li>
                 <li><%= link_to "Account", edit_user_path(current_user) %></li>
                 <li><%= link_to "Logout", '/logout' %></li>
