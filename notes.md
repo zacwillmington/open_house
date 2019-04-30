@@ -1,6 +1,7 @@
 TODO
     - redesign 
-    - Remove or fix two factor authentication
+    - Fix Github factor authentication
+    - Fix errors in Rails Console
     - remove previous and next buttons when on the first and last apts.
     - Look into moving all lodash templates to one file and requiring file of some sort of partial
     - apartment show AJAx need to update the Agent contact info.
