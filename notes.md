@@ -1,15 +1,10 @@
 TODO
+    - redesign 
+    - Remove or fix two factor authentication
     - remove previous and next buttons when on the first and last apts.
-
     - Look into moving all lodash templates to one file and requiring file of some sort of partial
-
-    - Comments to separate content in views
-
     - apartment show AJAx need to update the Agent contact info.
-
     - accessibility
-
-    - Deployment on Heroku
 
 ----------------------------------------------------------------
 
