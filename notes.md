@@ -1,4 +1,5 @@
 TODO
+    - add check for correct img file extensiton(PNG)
     - redesign 
     - Fix Github factor authentication
     - Fix errors in Rails Console

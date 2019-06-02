@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_08_26_164139) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "apartments", force: :cascade do |t|
     t.string "address"
     t.datetime "available_times"
