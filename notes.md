@@ -1,11 +1,12 @@
 TODO
     - add check for correct img file extensiton(PNG)
     - redesign 
-    - Fix Github factor authentication
+    - Fix Github Oauth authentication(Could be the base url is different for the hosted app.)***Try changing app github auth callback url on developer app github account. 
     - Fix errors in Rails Console
     - remove previous and next buttons when on the first and last apts.
     - Look into moving all lodash templates to one file and requiring file of some sort of partial
     - apartment show AJAx need to update the Agent contact info.
+    - Install Dart SASS due to deprication see bottom of page.
     - accessibility
 
 ----------------------------------------------------------------
